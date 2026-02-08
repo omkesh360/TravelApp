@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TravelHub - Stays Search Results</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TravelHub - Stays Search Results</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -41,551 +46,557 @@
         }
     </script>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
-<header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
-<div class="max-w-[1140px] mx-auto px-4 md:px-6">
-<div class="flex items-center justify-between py-4">
-<div class="flex items-center gap-2 cursor-pointer">
-<h1 class="text-2xl font-bold tracking-tight">TravelHub</h1>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative hidden md:block">
-<select id="currencySelect" class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
-<option value="USD">USD ($)</option>
-<option value="EUR">EUR (€)</option>
-<option value="INR">INR (₹)</option>
-</select>
-<span class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
-</div>
-<div class="hidden md:flex items-center gap-1 cursor-pointer">
-<span class="material-symbols-outlined text-[24px]">help_outline</span>
-</div>
-<button class="text-white text-sm font-medium px-3 py-2 hover:bg-white/10 rounded transition-colors">List your property</button>
-<div class="flex gap-2">
-<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Register</button>
-<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign in</button>
-</div>
-</div>
-</div>
-<nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group" href="stays.html">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
-<span class="text-sm font-medium">Stays</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="car-rentals.html">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
-<span class="text-sm font-medium">Car Rentals</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bike-rentals.html">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
-<span class="text-sm font-medium">Bike Rentals</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="restaurant.html">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
-<span class="text-sm font-medium">Restaurants</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="attraction.html">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
-<span class="text-sm font-medium">Attractions</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bus.html">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
-<span class="text-sm font-medium">Buses</span>
-</a>
-</nav>
-<span class="text-sm font-medium">Restaurants</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="#">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
-<span class="text-sm font-medium">Attractions</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="#">
-<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
-<span class="text-sm font-medium">Buses</span>
-</a>
-</nav>
-</div>
-</header>
-<div class="bg-primary pb-8 -mt-1 relative z-40">
-<div class="max-w-[1140px] mx-auto px-4 md:px-6">
-<div class="bg-accent p-1 rounded-lg">
-<div class="bg-white rounded p-1 flex flex-col lg:flex-row gap-1">
-<div class="flex-1 relative group">
-<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-gray-400">bed</span>
-</div>
-<input class="w-full pl-10 pr-4 py-2 rounded border-none focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors h-10 truncate" placeholder="Where are you going?" type="text" value="Paris, France"/>
-</div>
-<div class="flex-1 relative border-t lg:border-t-0 lg:border-l border-gray-200">
-<button class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left">
-<span class="material-symbols-outlined text-gray-400">calendar_month</span>
-<div class="flex flex-col justify-center">
-<span class="text-text-main font-medium leading-none text-sm">Sat 24 Jun — Sat 1 Jul</span>
-</div>
-</button>
-</div>
-<div class="flex-1 relative border-t lg:border-t-0 lg:border-l border-gray-200">
-<button class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left">
-<span class="material-symbols-outlined text-gray-400">person</span>
-<div class="flex flex-col justify-center">
-<span class="text-text-main font-medium leading-none text-sm">2 adults · 0 children · 1 room</span>
-</div>
-<span class="material-symbols-outlined text-gray-400 ml-auto">expand_more</span>
-</button>
-</div>
-<button class="bg-primary hover:bg-primary-hover text-white font-bold text-base px-6 py-2 rounded lg:w-auto w-full transition-colors flex items-center justify-center">
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+    <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 md:h-[60px]">
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden sm:block">
+                        <select id="currencySelect"
+                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="INR">INR (₹)</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
+                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
+                    </div>
+                    <button
+                        class="text-white text-sm font-medium px-3 py-2 hover:bg-white/10 rounded transition-colors hidden lg:block">List
+                        your property</button>
+                    <div class="flex gap-2">
+                        <button
+                            class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</button>
+                        <button
+                            class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign
+                            in</button>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                    href="stays.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+                    <span class="text-sm font-medium">Stays</span>
+                </a>
+                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="car-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+                    <span class="text-sm font-medium">Car Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bike-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+                    <span class="text-sm font-medium">Bike Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="restaurant.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+                    <span class="text-sm font-medium">Restaurants</span>
+                </a>
+                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="attraction.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+                    <span class="text-sm font-medium">Attractions</span>
+                </a>
+                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bus.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+                    <span class="text-sm font-medium">Buses</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <div class="bg-primary pb-8 -mt-1 relative z-40">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="bg-accent p-1 rounded-lg">
+                <div class="bg-white rounded p-1 flex flex-col lg:flex-row gap-1">
+                    <div class="flex-1 relative group">
+                        <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-gray-400">bed</span>
+                        </div>
+                        <input
+                            class="w-full pl-10 pr-4 py-3 rounded border-2 border-transparent focus:border-transparent focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors h-12"
+                            placeholder="Where are you going?" type="text" value="Chhatrapati Sambhajinagar, India" />
+                    </div>
+                    <div class="flex-1 relative border-t lg:border-t-0 lg:border-l border-gray-200">
+                        <button
+                            class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left">
+                            <span class="material-symbols-outlined text-gray-400">calendar_month</span>
+                            <div class="flex flex-col justify-center">
+                                <span class="text-text-main font-medium leading-none text-sm">Sat 24 Jun — Sat 1
+                                    Jul</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex-1 relative border-t lg:border-t-0 lg:border-l border-gray-200">
+                        <button
+                            class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left">
+                            <span class="material-symbols-outlined text-gray-400">person</span>
+                            <div class="flex flex-col justify-center">
+                                <span class="text-text-main font-medium leading-none text-sm">2 adults · 0 children · 1
+                                    room</span>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-400 ml-auto">expand_more</span>
+                        </button>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-primary-hover text-white font-bold text-lg px-8 py-3 rounded md:w-auto w-full transition-colors flex items-center justify-center h-12">
                         Search
                     </button>
-</div>
-</div>
-</div>
-</div>
-<main class="flex-grow pt-6 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full">
-<div class="flex flex-col lg:flex-row gap-6">
-<aside class="w-full lg:w-[280px] flex-shrink-0 space-y-4">
-<div class="bg-white border border-gray-200 rounded-lg p-2 relative h-32 flex items-center justify-center overflow-hidden cursor-pointer group hover:border-primary transition-colors">
-<img alt="Map view" class="absolute inset-0 w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-sUc6xJa7rNEqg7wv4Sfxz2up7BVXsqYVRmryqp_ikWIK7BfdvwrdEzNKlaXA-of28T4TMQZuU3w7IUMu-rkOQVL43hSOWSrcd43W-brrnBwzGMSlHbydoexiPh0hmoOk3_pDmcE-r8knl5hU9C1Eq9QierF0U2tiW4aIjJO61t9LoersawZirSd7E96dEt6QrIMBA0mDlrOxGzdxwHAFtqN6M8RQScf2UvLISTAEqMUZk8KtZqZbBSn2BKIA1_dWy-wyiFGgEWhC"/>
-<button class="relative bg-primary text-white text-sm font-bold px-4 py-2 rounded shadow-md group-hover:bg-primary-hover transition-colors">Show on map</button>
-</div>
-<div class="bg-white border border-gray-200 rounded-lg divide-y divide-gray-200">
-<div class="p-4">
-<h3 class="font-bold text-text-main mb-3">Popular Filters</h3>
-<div class="space-y-2">
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Breakfast included</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Hotels</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Free cancellation</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Very Good: 8+</span>
-</label>
-</div>
-</div>
-<div class="p-4">
-<h3 class="font-bold text-text-main mb-3">Your Budget (per night)</h3>
-<div class="space-y-2">
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">€ 0 - € 50</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">€ 50 - € 100</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">€ 100 - € 150</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">€ 150 +</span>
-</label>
-</div>
-</div>
-<div class="p-4">
-<h3 class="font-bold text-text-main mb-3">Star Rating</h3>
-<div class="space-y-2">
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<div class="flex text-yellow-500">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<div class="flex text-yellow-500">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<div class="flex text-yellow-500">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-</label>
-</div>
-</div>
-<div class="p-4">
-<h3 class="font-bold text-text-main mb-3">Amenities</h3>
-<div class="space-y-2">
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Parking</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Restaurant</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Pet friendly</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
-<span class="text-sm text-text-main group-hover:text-primary">Room service</span>
-</label>
-</div>
-</div>
-</div>
-</aside>
-<section class="flex-1 space-y-4">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-<h2 class="text-xl font-bold text-text-main">Paris: 1,230 properties found</h2>
-<div class="flex items-center gap-2 mt-2 sm:mt-0">
-<button class="px-4 py-1.5 rounded-full border border-primary bg-primary text-white text-sm font-medium shadow-sm">Top Picks</button>
-<button class="px-4 py-1.5 rounded-full border border-gray-300 bg-white text-text-main text-sm font-medium hover:bg-gray-50">Lowest Price</button>
-<button class="px-4 py-1.5 rounded-full border border-gray-300 bg-white text-text-main text-sm font-medium hover:bg-gray-50">Review Score</button>
-</div>
-</div>
-<div class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
-<div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
-<img alt="Hotel Louvre" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOum_jDhUT19TDJMS9Fa4o9wRy9liAV3kKpDbrbZ_aAFpvwr7-727SPhcGmjH_xi0qsZkQVFIZ1hTtKuc5XOIKeZTUa6oChADwzJJ6ZYPBFt2nLSOLct2Td9a1Oc08RHQSOT9kgUmTWrnRP7M-wkm3aweitoHyU48GFWbJPVZF1l6et8WCh5ZGrl3Je4ETzuRI81OWEPaU7TJ-8mUy8LmaDw8q2S7ttZERG2hLKBo2izpBuAR_5wBQEQjZqrcP7uICIrY2BJvo3AwB"/>
-<div class="absolute top-2 left-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Genius</div>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<div>
-<div class="flex items-center gap-2 mb-1">
-<h3 class="text-xl font-bold text-primary hover:text-primary-hover">Grand Hotel Louvre</h3>
-<div class="flex text-yellow-500">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-<div class="bg-yellow-500 rounded-sm p-0.5 ml-1">
-<span class="material-symbols-outlined text-white text-[12px]">thumb_up</span>
-</div>
-</div>
-<div class="flex gap-2 text-xs text-primary mb-2">
-<a class="underline hover:text-primary-hover" href="#">1st arr., Paris</a>
-<span class="text-gray-400">•</span>
-<a class="underline hover:text-primary-hover" href="#">Show on map</a>
-<span class="text-gray-400">•</span>
-<span class="text-text-muted">500m from center</span>
-</div>
-<div class="text-xs text-green-700 font-bold mb-2 p-1 bg-green-50 inline-block rounded">
-                                    Sustainable Travel Level 3
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="flex-grow pt-6 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <aside class="w-full lg:w-[280px] flex-shrink-0 space-y-4">
+                <div
+                    class="bg-white border border-gray-200 rounded-lg p-2 relative h-32 flex items-center justify-center overflow-hidden cursor-pointer group hover:border-primary transition-colors">
+                    <img alt="Map view" class="absolute inset-0 w-full h-full object-cover opacity-50"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-sUc6xJa7rNEqg7wv4Sfxz2up7BVXsqYVRmryqp_ikWIK7BfdvwrdEzNKlaXA-of28T4TMGZuU3w7IUMu-rkOQVL43hSOWSrcd43W-brrnBwzGMSlHbydoexiPh0hmoOk3_pDmcE-r8knl5hU9C1Eq9QierF0U2tiW4aIjJO61t9LoersawZirSd7E96dEt6QrIMBA0mDlrOxGzdxwHAFtqN6M8RQScf2UvLISTAEqMUZk8KtZqZbBSn2BKIA1_dWy-wyiFGgEWhC" />
+                    <button
+                        class="relative bg-primary text-white text-sm font-bold px-4 py-2 rounded shadow-md group-hover:bg-primary-hover transition-colors">Show
+                        on map</button>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg divide-y divide-gray-200">
+                    <div class="p-4">
+                        <h3 class="font-bold text-text-main mb-3">Popular Filters</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Breakfast included</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Hotels</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Free cancellation</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Very Good: 8+</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-text-main mb-3">Your Budget (per night)</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">₹ 0 - ₹ 2,000</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">₹ 2,000 - ₹ 5,000</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">₹ 5,000 - ₹ 10,000</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">₹ 10,000+</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-text-main mb-3">Star Rating</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <div class="flex text-yellow-500">
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
                                 </div>
-<p class="text-sm text-text-main line-clamp-2 border-l-2 border-gray-200 pl-2 mb-2">
-                                    Ideally located in the heart of Paris, this luxury hotel offers stunning views of the Louvre Museum and walking distance to the Tuileries Garden.
-                                </p>
-</div>
-<div class="flex flex-col items-end gap-1">
-<div class="flex items-center gap-2">
-<div class="text-right">
-<div class="text-base font-bold text-text-main">Superb</div>
-<div class="text-xs text-text-muted">1,834 reviews</div>
-</div>
-<div class="bg-primary text-white text-base font-bold p-1.5 rounded-tr-lg rounded-bl-lg rounded-br-lg min-w-[2.5rem] text-center">9.2</div>
-</div>
-</div>
-</div>
-<div class="flex justify-between items-end mt-4">
-<div class="text-xs">
-<div class="font-bold text-green-700 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check</span> Breakfast included</div>
-<div class="font-bold text-green-700 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check</span> Free cancellation</div>
-<div class="text-red-600 font-medium mt-1">Only 2 rooms left at this price</div>
-</div>
-<div class="text-right">
-<div class="text-xs text-text-muted">7 nights, 2 adults</div>
-<div class="text-xs text-red-600 line-through">€ 2,450</div>
-<div class="text-xl font-bold text-text-main">€ 2,150</div>
-<div class="text-xs text-text-muted mb-2">+ € 50 taxes and charges</div>
-<button class="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-1">
-                                    See availability <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
-<div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
-<img alt="Eiffel View Apartments" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUMYUWdQbON8yWKHG1-pHyLYt3kDXHE9k8yjSOw5cYZlQjLTukbeizOKNR8da3k12oaH3MaZWe7Y6_OgIhQJvPrtrA4UxLvSTkjQPRDtW5ZN56fXU2jJC_kdETumL5cnSBN9twNkUbW0R1NXWz75OxtmpYGr8tAWJySODfhWgI-rbyJI6q-ihW2moUbp2RRv6YyMKbsSFfDCbFyPWdjGeVURC3zjUH6abKVtVktPpRf2JSGgWIr5x90VodcG4kyl4YhrahfrCiwwl5"/>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<div>
-<div class="flex items-center gap-2 mb-1">
-<h3 class="text-xl font-bold text-primary hover:text-primary-hover">Eiffel View Residences</h3>
-<div class="flex text-yellow-500">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-</div>
-<div class="flex gap-2 text-xs text-primary mb-2">
-<a class="underline hover:text-primary-hover" href="#">7th arr., Paris</a>
-<span class="text-gray-400">•</span>
-<a class="underline hover:text-primary-hover" href="#">Show on map</a>
-<span class="text-gray-400">•</span>
-<span class="text-text-muted">1.2km from center</span>
-</div>
-<p class="text-sm text-text-main line-clamp-2 border-l-2 border-gray-200 pl-2 mb-2">
-                                    Modern apartments with direct views of the Eiffel Tower. Perfect for couples seeking a romantic getaway.
-                                </p>
-</div>
-<div class="flex flex-col items-end gap-1">
-<div class="flex items-center gap-2">
-<div class="text-right">
-<div class="text-base font-bold text-text-main">Very Good</div>
-<div class="text-xs text-text-muted">842 reviews</div>
-</div>
-<div class="bg-primary text-white text-base font-bold p-1.5 rounded-tr-lg rounded-bl-lg rounded-br-lg min-w-[2.5rem] text-center">8.4</div>
-</div>
-</div>
-</div>
-<div class="flex justify-between items-end mt-4">
-<div class="text-xs">
-<div class="font-bold text-text-main flex items-center gap-1">Entire apartment • 1 bedroom</div>
-<div class="font-bold text-green-700 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check</span> Free cancellation</div>
-</div>
-<div class="text-right">
-<div class="text-xs text-text-muted">7 nights, 2 adults</div>
-<div class="text-xl font-bold text-text-main">€ 1,890</div>
-<div class="text-xs text-text-muted mb-2">+ € 42 taxes and charges</div>
-<button class="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-1">
-                                    See availability <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
-<div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
-<img alt="Le Marais Boutique" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4OgsIetAE2RtfKBsDp7ISM584n1QXMCLkW-T-MVH0vwu_513TewHa_aSP9eux5folAlRDuC7hUVhoz4qEhBYvy94fHzBb3IiAeVyQs7vyIrxpijsHkE6Ed-2YPkAXBeC8ADySTGSuig7wlVMIGcCQJEl3i0GAepfcB0DJVRf6WfL2NkrkOdiMHIwV77JvnM77Da8HFNiqwPJgnBv0YDQKfzpHBM_NQ1l_jNWs1hGwThmHCMh4EhMggTrBKJGKQ32QrG_0pVzJs_fy"/>
-<div class="absolute top-2 left-2 bg-accent text-primary text-xs font-bold px-2 py-1 rounded">Black Friday Deal</div>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<div>
-<div class="flex items-center gap-2 mb-1">
-<h3 class="text-xl font-bold text-primary hover:text-primary-hover">Le Marais Boutique Hotel</h3>
-<div class="flex text-yellow-500">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-</div>
-<div class="flex gap-2 text-xs text-primary mb-2">
-<a class="underline hover:text-primary-hover" href="#">3rd arr., Paris</a>
-<span class="text-gray-400">•</span>
-<a class="underline hover:text-primary-hover" href="#">Show on map</a>
-<span class="text-gray-400">•</span>
-<span class="text-text-muted">Metro access nearby</span>
-</div>
-<p class="text-sm text-text-main line-clamp-2 border-l-2 border-gray-200 pl-2 mb-2">
-                                    Charming boutique hotel featuring classic Parisian decor and an intimate courtyard garden.
-                                </p>
-</div>
-<div class="flex flex-col items-end gap-1">
-<div class="flex items-center gap-2">
-<div class="text-right">
-<div class="text-base font-bold text-text-main">Fabulous</div>
-<div class="text-xs text-text-muted">456 reviews</div>
-</div>
-<div class="bg-primary text-white text-base font-bold p-1.5 rounded-tr-lg rounded-bl-lg rounded-br-lg min-w-[2.5rem] text-center">8.9</div>
-</div>
-</div>
-</div>
-<div class="flex justify-between items-end mt-4">
-<div class="text-xs">
-<div class="font-bold text-green-700 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check</span> Breakfast included</div>
-<div class="font-bold text-green-700 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check</span> No prepayment needed</div>
-</div>
-<div class="text-right">
-<div class="text-xs text-text-muted">7 nights, 2 adults</div>
-<div class="text-xs text-red-600 line-through">€ 1,600</div>
-<div class="text-xl font-bold text-text-main">€ 1,240</div>
-<div class="text-xs text-text-muted mb-2">+ € 30 taxes and charges</div>
-<button class="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-1">
-                                    See availability <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
-<div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
-<img alt="City Hostel" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKwfoAprG4IKC3cZ2kQlpvfPyuaYp0AKNC_bi0SFiLF2wx_bs-2uPqfDXnb049ldahrMdU05hvvMxqn1fSByBy2fZcBrxxtiSJ3jHqgAQJGOSpklo8r2pc9zjp4yfK42VV4cfGZ1UTgrmf1qYHqx1kJyjgxZU06mKT0k1OOJKROswp7QTkP7WuzaeGWkWGg5dggSEabJDKfTN2Mnhz-ZQ39mWih9CnBj9n-MiY9ZvRyjaL-2nkPsDyv7KGF8a6lf8Qz8CCuGzlSr6K"/>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<div>
-<div class="flex items-center gap-2 mb-1">
-<h3 class="text-xl font-bold text-primary hover:text-primary-hover">Backpacker City Hub</h3>
-<div class="flex text-gray-400">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-</div>
-</div>
-<div class="flex gap-2 text-xs text-primary mb-2">
-<a class="underline hover:text-primary-hover" href="#">11th arr., Paris</a>
-<span class="text-gray-400">•</span>
-<a class="underline hover:text-primary-hover" href="#">Show on map</a>
-<span class="text-gray-400">•</span>
-<span class="text-text-muted">Trending area</span>
-</div>
-<p class="text-sm text-text-main line-clamp-2 border-l-2 border-gray-200 pl-2 mb-2">
-                                    Affordable, clean, and vibrant. A great place to meet fellow travelers with a lively bar downstairs.
-                                </p>
-</div>
-<div class="flex flex-col items-end gap-1">
-<div class="flex items-center gap-2">
-<div class="text-right">
-<div class="text-base font-bold text-text-main">Good</div>
-<div class="text-xs text-text-muted">2,105 reviews</div>
-</div>
-<div class="bg-primary text-white text-base font-bold p-1.5 rounded-tr-lg rounded-bl-lg rounded-br-lg min-w-[2.5rem] text-center">7.5</div>
-</div>
-</div>
-</div>
-<div class="flex justify-between items-end mt-4">
-<div class="text-xs">
-<div class="font-bold text-text-main flex items-center gap-1">Bunk Bed in Mixed Dormitory Room</div>
-<div class="text-green-700 font-medium mt-1">Free cancellation until 18:00 on check-in day</div>
-</div>
-<div class="text-right">
-<div class="text-xs text-text-muted">7 nights, 1 adult</div>
-<div class="text-xl font-bold text-text-main">€ 350</div>
-<div class="text-xs text-text-muted mb-2">+ € 10 taxes and charges</div>
-<button class="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-1">
-                                    See availability <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-<footer class="bg-primary text-white pt-16 pb-8 mt-auto">
-<div class="max-w-[1140px] mx-auto px-4 md:px-6">
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-<div class="space-y-4">
-<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
-<ul class="space-y-2 text-sm text-white/70">
-<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
-</ul>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
-<ul class="space-y-2 text-sm text-white/70">
-<li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
-</ul>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
-<ul class="space-y-2 text-sm text-white/70">
-<li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
-</ul>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
-<ul class="space-y-2 text-sm text-white/70">
-<li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
-<li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
-</ul>
-</div>
-<div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
-<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
-<ul class="space-y-2 text-sm text-white/70">
-<li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
-<li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-<div class="flex items-center gap-2">
-<h1 class="text-xl font-bold tracking-tight text-white">TravelHub</h1>
-</div>
-<div class="text-xs text-white/60 text-center md:text-right">
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <div class="flex text-yellow-500">
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <div class="flex text-yellow-500">
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-text-main mb-3">Amenities</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Parking</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Restaurant</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Pet friendly</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Room service</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <section class="flex-1 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar: 15 hotels found</h2>
+                    <button class="text-primary text-sm font-bold hover:underline">Show on map</button>
+                </div>
+                <div
+                    class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
+                    <div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+                        <img alt="Hotel Renaissance Exterior" class="w-full h-full object-cover"
+                            src="images/hotel-renaissance.jpg" />
+                        <button
+                            class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
+                            <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
+                            <div>
+                                <div class="flex items-center gap-1 mb-1">
+                                    <h3 class="text-xl font-bold text-text-main leading-tight">Hotel Renaissance</h3>
+                                    <div class="flex text-yellow-400">
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-primary font-bold hover:underline mb-1">City Center, Chhatrapati
+                                    Sambhajinagar</p>
+                                <p class="text-xs text-text-muted">High-end stay with premium amenities</p>
+                            </div>
+                            <div class="text-right flex flex-col items-end">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <div class="text-right">
+                                        <p class="text-sm font-bold text-text-main">Excellent</p>
+                                        <p class="text-xs text-text-muted">1,248 reviews</p>
+                                    </div>
+                                    <div
+                                        class="w-9 h-9 rounded-md bg-primary text-white flex items-center justify-center font-bold text-sm">
+                                        8.9
+                                    </div>
+                                </div>
+                                <span
+                                    class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Top
+                                    Rated</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-auto flex flex-col sm:flex-row justify-between items-end border-t border-gray-100 pt-3 gap-4">
+                            <div class="w-full sm:w-auto">
+                                <div class="flex items-center gap-1.5 text-xs text-green-700 font-bold mb-1">
+                                    <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    Free Cancellation
+                                </div>
+                                <div class="flex items-center gap-1.5 text-xs text-text-muted">
+                                    <span class="material-symbols-outlined text-[16px]">wifi</span>
+                                    Free Wi-Fi
+                                </div>
+                            </div>
+                            <div class="text-right w-full sm:w-auto">
+                                <p class="text-xs text-text-muted line-through">₹6,500</p>
+                                <div class="flex items-center justify-end gap-1">
+                                    <span class="text-xs text-text-muted">1 night, 2 adults</span>
+                                    <span class="text-2xl font-bold text-text-main">₹4,875</span>
+                                </div>
+                                <p class="text-[10px] text-text-muted mt-0.5">+₹585 taxes and charges</p>
+                                <button
+                                    class="mt-3 w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                    See availability
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
+                    <div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+                        <img alt="Standard Hotel Room" class="w-full h-full object-cover"
+                            src="images/hotel-room-standard.jpg" />
+                        <button
+                            class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
+                            <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
+                            <div>
+                                <div class="flex items-center gap-1 mb-1">
+                                    <h3 class="text-xl font-bold text-text-main leading-tight">Comfort Inn CSN</h3>
+                                    <div class="flex text-yellow-400">
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-primary font-bold hover:underline mb-1">Railway Station Area,
+                                    Chhatrapati Sambhajinagar</p>
+                                <p class="text-xs text-text-muted">Cozy and affordable stay for travelers</p>
+                            </div>
+                            <div class="text-right flex flex-col items-end">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <div class="text-right">
+                                        <p class="text-sm font-bold text-text-main">Very Good</p>
+                                        <p class="text-xs text-text-muted">856 reviews</p>
+                                    </div>
+                                    <div
+                                        class="w-9 h-9 rounded-md bg-primary text-white flex items-center justify-center font-bold text-sm">
+                                        8.2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-auto flex flex-col sm:flex-row justify-between items-end border-t border-gray-100 pt-3 gap-4">
+                            <div class="w-full sm:w-auto">
+                                <div class="flex items-center gap-1.5 text-xs text-green-700 font-bold mb-1">
+                                    <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    No prepayment needed
+                                </div>
+                                <div class="flex items-center gap-1.5 text-xs text-text-muted">
+                                    <span class="material-symbols-outlined text-[16px]">restaurant</span>
+                                    Breakfast Included
+                                </div>
+                            </div>
+                            <div class="text-right w-full sm:w-auto">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span class="text-xs text-text-muted">1 night, 2 adults</span>
+                                    <span class="text-2xl font-bold text-text-main">₹2,200</span>
+                                </div>
+                                <p class="text-[10px] text-text-muted mt-0.5">+₹264 taxes and charges</p>
+                                <button
+                                    class="mt-3 w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                    See availability
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white border border-gray-200 rounded-lg shadow-soft p-4 flex flex-col sm:flex-row gap-4 hover:shadow-card transition-shadow cursor-pointer">
+                    <div class="w-full sm:w-56 h-48 sm:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+                        <img alt="Modern Hotel Room" class="w-full h-full object-cover" src="images/hotel-room-1.jpg" />
+                        <button
+                            class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
+                            <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
+                            <div>
+                                <div class="flex items-center gap-1 mb-1">
+                                    <h3 class="text-xl font-bold text-text-main leading-tight">The Heritage Residency
+                                    </h3>
+                                    <div class="flex text-yellow-400">
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-primary font-bold hover:underline mb-1">Near Bibi Ka Maqbara,
+                                    Chhatrapati Sambhajinagar</p>
+                                <p class="text-xs text-text-muted">Heritage-style architecture with modern comfort</p>
+                            </div>
+                            <div class="text-right flex flex-col items-end">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <div class="text-right">
+                                        <p class="text-sm font-bold text-text-main">Superb</p>
+                                        <p class="text-xs text-text-muted">512 reviews</p>
+                                    </div>
+                                    <div
+                                        class="w-9 h-9 rounded-md bg-primary text-white flex items-center justify-center font-bold text-sm">
+                                        9.1
+                                    </div>
+                                </div>
+                                <span
+                                    class="bg-orange-100 text-orange-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Top
+                                    Rated Location</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-auto flex flex-col sm:flex-row justify-between items-end border-t border-gray-100 pt-3 gap-4">
+                            <div class="w-full sm:w-auto">
+                                <div class="flex items-center gap-1.5 text-xs text-green-700 font-bold mb-1">
+                                    <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    Free cancellation before Feb 10
+                                </div>
+                                <div class="flex items-center gap-1.5 text-xs text-text-muted">
+                                    <span class="material-symbols-outlined text-[16px]">pool</span>
+                                    Swimming Pool
+                                </div>
+                            </div>
+                            <div class="text-right w-full sm:w-auto">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span class="text-xs text-text-muted">1 night, 2 adults</span>
+                                    <span class="text-2xl font-bold text-text-main">₹5,500</span>
+                                </div>
+                                <p class="text-[10px] text-text-muted mt-0.5">+₹660 taxes and charges</p>
+                                <button
+                                    class="mt-3 w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                    See availability
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 filter brightness-0 invert">
+                </div>
+                <div class="text-xs text-white/60 text-center md:text-right">
                     Copyright © 1996–2024 TravelHub. All rights reserved.
                 </div>
-</div>
-</div>
-</footer>
-<script>
-// Currency converter with exchange rates
-const exchangeRates = {
-    USD: 1,
-    EUR: 0.92,
-    INR: 83.12
-};
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Currency converter with exchange rates
+        const exchangeRates = {
+            USD: 1,
+            EUR: 0.92,
+            INR: 83.12
+        };
 
-const symbols = {
-    USD: '$',
-    EUR: '€',
-    INR: '₹'
-};
+        const symbols = {
+            USD: '$',
+            EUR: '€',
+            INR: '₹'
+        };
 
-document.getElementById('currencySelect').addEventListener('change', function(e) {
-    const selectedCurrency = e.target.value;
-    localStorage.setItem('selectedCurrency', selectedCurrency);
-    updatePricesOnPage(selectedCurrency);
-    showNotification(`Currency changed to ${selectedCurrency}`);
-});
+        document.getElementById('currencySelect').addEventListener('change', function (e) {
+            const selectedCurrency = e.target.value;
+            localStorage.setItem('selectedCurrency', selectedCurrency);
+            updatePricesOnPage(selectedCurrency);
+            showNotification(`Currency changed to ${selectedCurrency}`);
+        });
 
-// Load saved currency on page load
-window.addEventListener('load', function() {
-    const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
-    document.getElementById('currencySelect').value = savedCurrency;
-    updatePricesOnPage(savedCurrency);
-});
+        // Load saved currency on page load
+        window.addEventListener('load', function () {
+            const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            document.getElementById('currencySelect').value = savedCurrency;
+            updatePricesOnPage(savedCurrency);
+        });
 
-function updatePricesOnPage(currency) {
-    const rate = exchangeRates[currency];
-    document.querySelectorAll('[data-price-usd]').forEach(element => {
-        const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
-        const convertedPrice = (priceUSD * rate).toFixed(2);
-        element.textContent = `${symbols[currency]}${convertedPrice}`;
-    });
-}
+        function updatePricesOnPage(currency) {
+            const rate = exchangeRates[currency];
+            document.querySelectorAll('[data-price-usd]').forEach(element => {
+                const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
+                const convertedPrice = (priceUSD * rate).toFixed(2);
+                element.textContent = `${symbols[currency]}${convertedPrice}`;
+            });
+        }
 
-function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    setTimeout(() => notification.remove(), 2000);
-}
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 2000);
+        }
 
-// Add animation styles
-const style = document.createElement('style');
-style.textContent = `
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
@@ -605,7 +616,10 @@ style.textContent = `
         overflow: hidden;
     }
 `;
-document.head.appendChild(style);
-</script>
+        document.head.appendChild(style);
+    </script>
 
-</body></html>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
