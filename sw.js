@@ -1,4 +1,4 @@
-const CACHE_NAME = 'travelhub-v2';
+const CACHE_NAME = 'travelhub-v3';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -8,7 +8,7 @@ const ASSETS_TO_CACHE = [
     './restaurant.html',
     './attraction.html',
     './bus.html',
-    './images/travelhub-logo.png',
+    './images/travelhub.png',
     './images/hero_csn.png'
 ];
 
