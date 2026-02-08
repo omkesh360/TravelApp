@@ -1,0 +1,58 @@
+/* Custom Styles for TravelHub Website */
+
+/* Scrollbar hiding */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Smooth transitions on hover for interactive elements */
+button, a, input, select {
+    transition: all 0.3s ease;
+}
+
+/* Button ripple effect */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Circular button styling */
+.circular-btn {
+    position: relative;
+    overflow: visible;
+}
+
+.circular-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    border: 2px solid currentColor;
+    border-radius: 9999px;
+    opacity: 0.3;
+    pointer-events: none;
+}

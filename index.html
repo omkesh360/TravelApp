@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelHub - Find Your Next Adventure</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+<header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center gap-2 cursor-pointer">
+<h1 class="text-2xl font-bold tracking-tight">TravelHub</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<select id="currencySelect" class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+<option value="USD">USD ($)</option>
+<option value="EUR">EUR (€)</option>
+<option value="INR">INR (₹)</option>
+</select>
+<span class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+<div class="hidden md:flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</div>
+<button class="text-white text-sm font-medium px-3 py-2 hover:bg-white/10 rounded transition-colors">List your property</button>
+<div class="flex gap-2">
+<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Register</button>
+<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign in</button>
+</div>
+</div>
+</div>
+<nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group" href="stays.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+<span class="text-sm font-medium">Stays</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="car-rentals.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+<span class="text-sm font-medium">Car Rentals</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bike-rentals.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+<span class="text-sm font-medium">Bike Rentals</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="restaurant.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+<span class="text-sm font-medium">Restaurants</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="attraction.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+<span class="text-sm font-medium">Attractions</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bus.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+<span class="text-sm font-medium">Buses</span>
+</a>
+</nav>
+</div>
+</header>
+<div class="bg-primary text-white pb-16 pt-12 relative">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<h1 class="text-4xl md:text-5xl font-black leading-tight mb-2 tracking-tight">From bikes to bites,<br/>find it all here.</h1>
+<p class="text-lg md:text-xl font-normal text-white/90 mb-10">Unlock savings of 15% or more on your first custom trip.</p>
+</div>
+<div class="max-w-[1140px] mx-auto px-4 md:px-6 absolute left-0 right-0 -bottom-8 md:-bottom-8 z-20">
+<div class="bg-accent p-1 rounded-lg shadow-soft">
+<div class="bg-white rounded p-1 flex flex-col md:flex-row gap-1">
+<div class="flex-1 relative group">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">bed</span>
+</div>
+<input class="w-full pl-10 pr-4 py-3 rounded border-2 border-transparent focus:border-transparent focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors h-12" placeholder="Where are you going?" type="text"/>
+</div>
+<div class="flex-1 relative border-t md:border-t-0 md:border-l border-gray-200">
+<button class="w-full h-full flex items-center gap-3 px-3 py-3 hover:bg-gray-50 rounded transition-colors text-left">
+<span class="material-symbols-outlined text-gray-400">calendar_month</span>
+<div class="flex flex-col justify-center">
+<span class="text-text-main font-medium leading-none text-sm md:text-base">Check-in — Check-out</span>
+</div>
+</button>
+</div>
+<div class="flex-1 relative border-t md:border-t-0 md:border-l border-gray-200">
+<button class="w-full h-full flex items-center gap-3 px-3 py-3 hover:bg-gray-50 rounded transition-colors text-left">
+<span class="material-symbols-outlined text-gray-400">person</span>
+<div class="flex flex-col justify-center">
+<span class="text-text-main font-medium leading-none text-sm md:text-base">2 adults · 0 children · 1 room</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 ml-auto">expand_more</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-lg px-8 py-3 rounded md:w-auto w-full transition-colors flex items-center justify-center">
+                    Search
+                </button>
+</div>
+</div>
+</div>
+</div>
+<main class="flex-grow pt-16 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full space-y-12">
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Trending Transport</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white rounded-lg shadow-soft overflow-hidden flex flex-row h-[200px] cursor-pointer group hover:shadow-card transition-shadow">
+<div class="p-6 flex flex-col justify-between flex-1 z-10 relative bg-white/90 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none">
+<div>
+<h3 class="text-xl font-bold text-text-main mb-1">Economy Cars</h3>
+<p class="text-sm text-text-muted">Flexible cancellation on most cars.</p>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-text-muted mb-1">Deals from</p>
+<p class="text-xl font-bold text-primary">$30 <span class="text-sm font-normal text-text-main">/day</span></p>
+<button class="mt-3 text-sm font-bold text-primary group-hover:underline flex items-center gap-1">
+                            Search cars <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="w-1/2 relative">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="White compact car parked on a scenic road" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2c5NKCj13kTiMED5FIV1OVgrx0xlxAjvaLdXlEuVL8k9A_WLi1wYB4jxl0KsWaXmeJo8EyQ0iQHNy6kus3SFiURL_wQYS0MsJVAk_aGvmBqC-vR0Jci84XNUm5zK3hzVz4DsIbSLk5OyBdXyXY8IQBFCOzEBVUxRWS0vmLoyxuhhhOegxnNvQpLqIzlABxUd7mkNFc2al0c_TbpeGHM9InqZQck5G3qG2ZlLZaYXXTszMqKfFCISRynMI6DQnslaydw-ci7qgRmdB"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent sm:via-transparent"></div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft overflow-hidden flex flex-row h-[200px] cursor-pointer group hover:shadow-card transition-shadow">
+<div class="p-6 flex flex-col justify-between flex-1 z-10 relative bg-white/90 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none">
+<div>
+<h3 class="text-xl font-bold text-text-main mb-1">E-Bikes Nearby</h3>
+<p class="text-sm text-text-muted">Skip the traffic, see the city.</p>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-text-muted mb-1">Rentals from</p>
+<p class="text-xl font-bold text-primary">$12 <span class="text-sm font-normal text-text-main">/hour</span></p>
+<button class="mt-3 text-sm font-bold text-primary group-hover:underline flex items-center gap-1">
+                            Find bikes <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="w-1/2 relative">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Modern electric bicycle parked on a city street" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDWkorHUI7Qr7pmE3K3f_HaeY9t4roNKErrfasI_adIhrxRgz37kpLe2uBkW0gf-uDL6eTA4bpIhoq-WtUltUp2ZQq4r3JdDJbbE7aqr9_gLX6KTbyp-VxOaAnOxhg1uc6OMMSJXLg6vQ19F_frRwk6qn5isxclT67hCVhGXYtcAbnUzxF_J4T8A_yZrWgdxoyz86r1YJ-lySQIMMdSp2EPRS41JNTVyoIj0-QsLj1C5UFra9RWzspA2TpeLYypl3tbPLvxH7g-ktU"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent sm:via-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Taste the City</h2>
+<a class="text-sm font-bold text-primary hover:bg-blue-50 px-2 py-1 rounded transition-colors" href="#">See all restaurants</a>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 pt-2 px-1 -mx-1 no-scrollbar snap-x">
+<div class="flex flex-col items-center gap-2 min-w-[120px] snap-center cursor-pointer group">
+<div class="relative w-28 h-28 rounded-full shadow-md overflow-hidden ring-2 ring-white group-hover:ring-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="Gourmet dish with grilled meat and vegetables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVkitIw_l2tULLpAjHcAKRk3viUVvgKHpcxE3b_9WrMS5T-t-klgfyZY-Zki0n9CxwenyPfbrbLUTfZ_b2X8btbFEOhqXzi9MXp9Qyn-fTtWsqQITbaLUOBGyniBuKxv3vCY5qqa_4xY2KKevzgDvmmbt_q_S868WFpPSu2LtJBhcNwEWxcpz0SgZHmlBECNboIeuY_LoJsqIvXIHjbqOldVnMAWu6QSwvdTcNgYR_27nrT7clqk-DCI_lq4j97zAyYPIYjo3WUZ2m"/>
+<div class="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        4.9
+                    </div>
+</div>
+<div class="text-center">
+<h3 class="text-sm font-bold text-text-main group-hover:text-primary">The Golden Fork</h3>
+<p class="text-xs text-text-muted">Italian</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[120px] snap-center cursor-pointer group">
+<div class="relative w-28 h-28 rounded-full shadow-md overflow-hidden ring-2 ring-white group-hover:ring-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="Plate of fresh sushi rolls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9RfmFJRQoCutv1Bx1tNuhOQwUETYUziqR1jmE8CfXq4VK2U8xI-lLaSFSlB28nPrfas5VtSBkE0IWCQHE30S4zyVr15xJrTqMHKaVN82IdJn9CY4F0G3TkKDsPcIgRpTnJ6nxSHHPvB-Pxf0ZyLfdou86hjgVVpiLY3hAaxB3I5_SQSw_TbLARdGuNuFyXFgYyeJP-DbhnAZUM39Eshk_lsFWO2vLnQdO-E5DkvN8hlgZNiRJl07kUEhJHI6cBke_lTSEp6F5q9CF"/>
+<div class="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        4.7
+                    </div>
+</div>
+<div class="text-center">
+<h3 class="text-sm font-bold text-text-main group-hover:text-primary">Sushi Zen</h3>
+<p class="text-xs text-text-muted">Japanese</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[120px] snap-center cursor-pointer group">
+<div class="relative w-28 h-28 rounded-full shadow-md overflow-hidden ring-2 ring-white group-hover:ring-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="Plated fine dining meal in a dark restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFC2Hp2uzn7q9wX8NZ1qORFfWTvojqQaaXDV4kTNhEE9HOOtdby_RBHs48HRTNBDsY0RRlG7iAe7kCU0NFBb4nMbXzjm_aTLVXKnHihg_3pP9u7DuR4HfL1YeOXkK5pq9xe249IrT1Eb_wSJhXHTf9UTmm24TQkHKDwoRrWqexaNYah53LPA92LQOpytFd1UVb-dKBzJBlWViJRIWqxLs-EHu7rVe-Sp3z6Lmc2XLgwwD8lqSnX7n4vRVid9MbHZZqgp8pV7VQySGC"/>
+<div class="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        4.5
+                    </div>
+</div>
+<div class="text-center">
+<h3 class="text-sm font-bold text-text-main group-hover:text-primary">Le Bistro</h3>
+<p class="text-xs text-text-muted">French</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[120px] snap-center cursor-pointer group">
+<div class="relative w-28 h-28 rounded-full shadow-md overflow-hidden ring-2 ring-white group-hover:ring-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="Freshly baked pizza with basil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6CZRHgKd79JEqe3iMZ63cTfqF6RsVYzMWar3cK9xykkr6U3k25Neiw5QMgGYjXvWCbrhKZTQyWcaVSaAXd4_uwF23wc4Onr5OXchJo-7719jYJeTsSDpDIQCkQBMwNyz1fxGx45Sr0h4oBsqfGrMtiaQ-LBZ530Skbc-9of8zT_q-DvC5GeVaYg4eZ31eGfPrahF3n5IOakb7tTHrJYmmfgtzl5WJs8HBvki4R7KjLmZNyjnegl52VGbsvcvdA6U9cab1I_bfoeLx"/>
+<div class="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        4.8
+                    </div>
+</div>
+<div class="text-center">
+<h3 class="text-sm font-bold text-text-main group-hover:text-primary">Napoli Pizza</h3>
+<p class="text-xs text-text-muted">Italian</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[120px] snap-center cursor-pointer group">
+<div class="relative w-28 h-28 rounded-full shadow-md overflow-hidden ring-2 ring-white group-hover:ring-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="Juicy burger with cheese and lettuce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQV_GLc49FAKWawlNiG3k-xIFQZ5ril7ZonKoLL_XsEqdq1LYmZQHzhJfjvKqRpBO8rEDPSQXpH3m2WlC5D38T0fAN-Y7GiSPo0r21udGIplTncgzJJBBhOLQ6PQlnfmsjtlbSMr8w1zLZcPDOiaSM2Ogsyl67yc0SR0Phm2xJBf_nQkUrJ8aRY8jKUppj5s-7Uil-LOX_kltQN420Jo6PLC0wnSMriA59vvE13L3pTC8PIY1Km0mhkl2uyBpoXTOa4Xvjg4GQGOKD"/>
+<div class="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        4.6
+                    </div>
+</div>
+<div class="text-center">
+<h3 class="text-sm font-bold text-text-main group-hover:text-primary">Burger Joint</h3>
+<p class="text-xs text-text-muted">American</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[120px] snap-center cursor-pointer group">
+<div class="relative w-28 h-28 rounded-full shadow-md overflow-hidden ring-2 ring-white group-hover:ring-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="Healthy bowl with avocado and salmon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjVM9iu2135ECPeMr_fSBg5Gmg_4s9P2eK9bh8NgEfQPPiHXZJZq9j25itjsThgHjIyKzXwnhigdbo7UQGDSAlB9jVMbcO5zYndJHDNJHYLNPldYxN29PCeFBSp0T0FP4g6_-7v9vZOR23RyU3xQuj_T4uCIw_o5-_UwTM63feAeEdml4gmR2DhEyCmfvbMtfzHLtGkxIRU2hHFidkWmcckh5j9Jf6yqWMoD2152v03XyS8IAsPGOXK9rgakGaVlzBrxVjqxGquDxD"/>
+<div class="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        4.8
+                    </div>
+</div>
+<div class="text-center">
+<h3 class="text-sm font-bold text-text-main group-hover:text-primary">Green Bowl</h3>
+<p class="text-xs text-text-muted">Vegan</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Travel Your Way</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="bg-white p-4 rounded-lg shadow-soft border border-gray-100 hover:shadow-card transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<div>
+<h3 class="font-bold text-text-main">NYC <span class="text-gray-400 mx-1">→</span> PHL</h3>
+<p class="text-xs text-text-muted">Direct • Megabus</p>
+</div>
+</div>
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Fastest Route</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-medium text-text-main">2h 15m</p>
+<p class="text-xs text-text-muted">Departs 08:30 AM</p>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-text-main group-hover:text-primary transition-colors">$18.50</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-soft border border-gray-100 hover:shadow-card transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<div>
+<h3 class="font-bold text-text-main">BOS <span class="text-gray-400 mx-1">→</span> NYC</h3>
+<p class="text-xs text-text-muted">1 Stop • Greyhound</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-medium text-text-main">4h 10m</p>
+<p class="text-xs text-text-muted">Departs 10:15 AM</p>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-text-main group-hover:text-primary transition-colors">$24.00</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-soft border border-gray-100 hover:shadow-card transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<div>
+<h3 class="font-bold text-text-main">DC <span class="text-gray-400 mx-1">→</span> NYC</h3>
+<p class="text-xs text-text-muted">Direct • FlixBus</p>
+</div>
+</div>
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Fastest Route</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-medium text-text-main">4h 30m</p>
+<p class="text-xs text-text-muted">Departs 07:00 AM</p>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-text-main group-hover:text-primary transition-colors">$32.00</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Explore Attractions</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-card transition-all flex flex-col">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Louvre Museum pyramid at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOum_jDhUT19TDJMS9Fa4o9wRy9liAV3kKpDbrbZ_aAFpvwr7-727SPhcGmjH_xi0qsZkQVFIZ1hTtKuc5XOIKeZTUa6oChADwzJJ6ZYPBFt2nLSOLct2Td9a1Oc08RHQSOT9kgUmTWrnRP7M-wkm3aweitoHyU48GFWbJPVZF1l6et8WCh5ZGrl3Je4ETzuRI81OWEPaU7TJ-8mUy8LmaDw8q2S7ttZERG2hLKBo2izpBuAR_5wBQEQjZqrcP7uICIrY2BJvo3AwB"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span> 4.8
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="font-bold text-text-main mb-1 line-clamp-1">Louvre Museum Access</h3>
+<p class="text-xs text-text-muted mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Paris, France
+                    </p>
+<div class="mt-auto pt-3 border-t border-gray-100 flex justify-between items-center">
+<span class="text-xs text-text-muted">From</span>
+<span class="font-bold text-primary text-lg">€17</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-card transition-all flex flex-col">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Eiffel Tower view from below" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUMYUWdQbON8yWKHG1-pHyLYt3kDXHE9k8yjSOw5cYZlQjLTukbeizOKNR8da3k12oaH3MaZWe7Y6_OgIhQJvPrtrA4UxLvSTkjQPRDtW5ZN56fXU2jJC_kdETumL5cnSBN9twNkUbW0R1NXWz75OxtmpYGr8tAWJySODfhWgI-rbyJI6q-ihW2moUbp2RRv6YyMKbsSFfDCbFyPWdjGeVURC3zjUH6abKVtVktPpRf2JSGgWIr5x90VodcG4kyl4YhrahfrCiwwl5"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span> 4.9
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="font-bold text-text-main mb-1 line-clamp-1">Eiffel Tower Summit</h3>
+<p class="text-xs text-text-muted mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Paris, France
+                    </p>
+<div class="mt-auto pt-3 border-t border-gray-100 flex justify-between items-center">
+<span class="text-xs text-text-muted">From</span>
+<span class="font-bold text-primary text-lg">€26</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-card transition-all flex flex-col">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Colosseum in Rome during the day" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-sUc6xJa7rNEqg7wv4Sfxz2up7BVXsqYVRmryqp_ikWIK7BfdvwrdEzNKlaXA-of28T4TMQZuU3w7IUMu-rkOQVL43hSOWSrcd43W-brrnBwzGMSlHbydoexiPh0hmoOk3_pDmcE-r8knl5hU9C1Eq9QierF0U2tiW4aIjJO61t9LoersawZirSd7E96dEt6QrIMBA0mDlrOxGzdxwHAFtqN6M8RQScf2UvLISTAEqMUZk8KtZqZbBSn2BKIA1_dWy-wyiFGgEWhC"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span> 4.7
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="font-bold text-text-main mb-1 line-clamp-1">Colosseum &amp; Forum</h3>
+<p class="text-xs text-text-muted mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Rome, Italy
+                    </p>
+<div class="mt-auto pt-3 border-t border-gray-100 flex justify-between items-center">
+<span class="text-xs text-text-muted">From</span>
+<span class="font-bold text-primary text-lg">€22</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden cursor-pointer group hover:shadow-card transition-all flex flex-col">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Statue of Liberty from the water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGXS71TTVwn8IEoXAheEdGIYgQiiQtTIHOHplxdVYjmp4cVOjFSbA3A0HsdiI-JoRPFwyxh2Rj6RnP6ltWF3__d7eGn1NoyTynkJjGEFlri2h4cJxPWzLM78RFeADUqZeA52TkaifsSvKzULudqleWEZVKp-KzUTmUk9BPN-HyrkrO5k-piOgIMcr78Q7CMP7fZ_OkxPF0ewnhoOroy_0a31UviiOMIn-W_bijKZ2DnxpxAA3OC6RFbN1H6bmIhtbdRdwPEjs5T45T"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span> 4.6
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h3 class="font-bold text-text-main mb-1 line-clamp-1">Statue of Liberty Cruise</h3>
+<p class="text-xs text-text-muted mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> New York, USA
+                    </p>
+<div class="mt-auto pt-3 border-t border-gray-100 flex justify-between items-center">
+<span class="text-xs text-text-muted">From</span>
+<span class="font-bold text-primary text-lg">$24</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Quick Bike Rentals</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 p-4 flex flex-col items-center hover:shadow-card transition-all">
+<div class="w-full h-32 bg-gray-50 rounded mb-4 flex items-center justify-center overflow-hidden">
+<img alt="Mountain Bike" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUkgvcVLnszJxOZ93aFw9LiudRthrl8J9IQUn7aG5_5_CyCQhVbiZwDIRuoLjvMmaqK8cIHQKIlYTHGqhn3bigjjmzNxdxxHjoCJdNN-GaOk0Fyg5QRDFRVdoXHM4jN0RyFrs3bgCPAxVOEURjTZr0cAQx2ebOnkPME0QPJ3IBemcWjKYIJyxBpoQTlGwtC1z_w1YkNPbD1z4GlcoEzCRh7LfeqeQ_qEdQHAGpIFhRmW4Bik9zBpSz2C2byXqLCLFXh4o7yVya8vMJ"/>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-1">Mountain Explorer</h3>
+<p class="text-sm text-text-muted mb-3">All-terrain suspension</p>
+<div class="mt-auto w-full flex items-center justify-between border-t pt-3 border-gray-100">
+<span class="font-bold text-primary">$15 <span class="text-xs font-normal text-text-muted">/hr</span></span>
+<button class="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded hover:bg-primary-hover transition-colors">Rent Now</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 p-4 flex flex-col items-center hover:shadow-card transition-all">
+<div class="w-full h-32 bg-gray-50 rounded mb-4 flex items-center justify-center overflow-hidden">
+<img alt="City Bike" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4PkFs946FW29ijNFuT5rbmQphePsVWOmWE7gc93709CrhQOoxVgRXFzVKmR-pCx916GYr4d9b4j9RCGzwWm4HwBNWw7bRpMl5nZbzCUlL5aU6Zh9hNTs_VXNvLb_I6euQxYArG6RWTyJ1SX5cpJ6tI0mPTYUq6hik_8T3cEMGI0z9aKlP24Eb6ZK3JEnlalfN0xKOyFBorb24WzK3_hX_F7UpyoI_6fU9Bxp9Wv8d2oxH-oRbh_sQgqkp2hourKBVMPzRd7TPsv3W"/>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-1">Urban Cruiser</h3>
+<p class="text-sm text-text-muted mb-3">Lightweight &amp; comfy</p>
+<div class="mt-auto w-full flex items-center justify-between border-t pt-3 border-gray-100">
+<span class="font-bold text-primary">$10 <span class="text-xs font-normal text-text-muted">/hr</span></span>
+<button class="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded hover:bg-primary-hover transition-colors">Rent Now</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 p-4 flex flex-col items-center hover:shadow-card transition-all">
+<div class="w-full h-32 bg-gray-50 rounded mb-4 flex items-center justify-center overflow-hidden">
+<img alt="Electric Bike" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHud3-BPdTuhZp7VGPQdl90CazmPNZ6TVbaITeFOhu5dURb_n6OE5WrhM6Goyu-09ayxd62tJ7Fm63a4yXVKfE4UkVq_MxeiqxwYewT86SrCmpkjn9ejtppLqA-Llr66Zt4IqLiESDAaBgauu_p_3d9EYDyC0APucbhxSMWzwCDQi8JPdKdViCouF_kUDt9jwmVmC49uFl2f0hlicoMJVFEdPkDXjak-KUNgbv9PD5BXOZOVuBDJFBxgugSMg29QSlf88yJQbBXKLV"/>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-1">E-Boost Pro</h3>
+<p class="text-sm text-text-muted mb-3">40km range boost</p>
+<div class="mt-auto w-full flex items-center justify-between border-t pt-3 border-gray-100">
+<span class="font-bold text-primary">$20 <span class="text-xs font-normal text-text-muted">/hr</span></span>
+<button class="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded hover:bg-primary-hover transition-colors">Rent Now</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-100 p-4 flex flex-col items-center hover:shadow-card transition-all">
+<div class="w-full h-32 bg-gray-50 rounded mb-4 flex items-center justify-center overflow-hidden">
+<img alt="Scooter" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA81VmXU974tWAS84P5M83UTMOrtal3wp0CZH8plCm63Y0Krbr_PSadDRfJVYYTWZqvZ5cflhmio30WidQxSSZc3ksTXM3XOETct0qFUhLJOhu-8wo1EElZCenlPQByCd9nKAxErdJP-goQNevOz2dG0-6sRjcqj66XTbIaT11_KkK-78OTg-5ZveuW9E-S6RRJgpUhzL8j9WpBtkzmR3TfZdS_vwdQOsLza12hE8LCjhREL6_CIn9bbnt-4i514OqaoThVrhh4jV-Z"/>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-1">City Scooter</h3>
+<p class="text-sm text-text-muted mb-3">Agile &amp; fun ride</p>
+<div class="mt-auto w-full flex items-center justify-between border-t pt-3 border-gray-100">
+<span class="font-bold text-primary">$8 <span class="text-xs font-normal text-text-muted">/hr</span></span>
+<button class="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded hover:bg-primary-hover transition-colors">Rent Now</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Featured Restaurants</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-soft overflow-hidden border border-gray-100 flex flex-col group hover:shadow-card transition-all">
+<div class="h-48 relative overflow-hidden">
+<img alt="Restaurant Interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4OgsIetAE2RtfKBsDp7ISM584n1QXMCLkW-T-MVH0vwu_513TewHa_aSP9eux5folAlRDuC7hUVhoz4qEhBYvy94fHzBb3IiAeVyQs7vyIrxpijsHkE6Ed-2YPkAXBeC8ADySTGSuig7wlVMIGcCQJEl3i0GAepfcB0DJVRf6WfL2NkrkOdiMHIwV77JvnM77Da8HFNiqwPJgnBv0YDQKfzpHBM_NQ1l_jNWs1hGwThmHCMh4EhMggTrBKJGKQ32QrG_0pVzJs_fy"/>
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">4.9 / 5</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<div>
+<h3 class="text-lg font-bold text-text-main">The Azure Patio</h3>
+<p class="text-sm text-text-muted">Mediterranean • $$$</p>
+</div>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-4">Experience authentic coastal flavors with a stunning view of the harbor. Fresh seafood daily.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Outdoor seating</span>
+<span class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Romantic</span>
+</div>
+<button class="mt-auto w-full py-2 border border-primary text-primary font-bold rounded hover:bg-blue-50 transition-colors">Book Table</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft overflow-hidden border border-gray-100 flex flex-col group hover:shadow-card transition-all">
+<div class="h-48 relative overflow-hidden">
+<img alt="Sushi Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJNz8FPJZTFJxmg0q2rMI7dyrHSzGnhKSQ6W5gAujsemEyd5crkRNKDJxgsXoUwKgd3bv66jm-gEbODHCB8R4cMCSeB3Ity8Jswvg-RK1rTOQ2XhOEIwUV401b-5M-ySKK4WtY_3l5jnsx_pU8sn_-hGmVwWk-ITTcD6PQsTE3oOux9cYFHjcDZFgPxGgVKNHi7NBjptde-SZ_isfFNx2zi6FzTsz6E6cYqiBDHO4f0RW1SDToUmdWrVUI0HdrHQ0siQEgWomM7MxT"/>
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">4.7 / 5</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<div>
+<h3 class="text-lg font-bold text-text-main">Tokyo Grill</h3>
+<p class="text-sm text-text-muted">Japanese • $$$$</p>
+</div>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-4">Masterful teppanyaki performances and the freshest sashimi in the city center.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Live Cooking</span>
+<span class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Private Rooms</span>
+</div>
+<button class="mt-auto w-full py-2 border border-primary text-primary font-bold rounded hover:bg-blue-50 transition-colors">Book Table</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft overflow-hidden border border-gray-100 flex flex-col group hover:shadow-card transition-all">
+<div class="h-48 relative overflow-hidden">
+<img alt="Italian Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDapROvUiUucPUVpf88Y2yJzDzue2Gjv0iC1V1WePPW9CMQwqECjNcxNW3o_QhXo9GL9m8g-55JGjHe_GnFzc4Q4KKFHMmu6HK7Kwoqg3K-hAmsB0rau00AAbSOTXm70U7dwI13V8-XPQp50fk1MtHPwpN7gXUdxchRqSd5j87nKj0xxseaXqkVoUstsVt5wzKwe6cCxIbx8QEnUguWdk2OVhZX8_LQ_sijRMEOBOTQHQNOvunp7GzxF6arQUfElIBhT7755e-k-Uhe"/>
+<div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">4.8 / 5</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<div>
+<h3 class="text-lg font-bold text-text-main">La Dolce Vita</h3>
+<p class="text-sm text-text-muted">Italian • $$</p>
+</div>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-4">Family-owned trattoria serving homemade pasta recipes passed down for generations.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Family Friendly</span>
+<span class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Wine Bar</span>
+</div>
+<button class="mt-auto w-full py-2 border border-primary text-primary font-bold rounded hover:bg-blue-50 transition-colors">Book Table</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold text-text-main">Travel Insights</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="group cursor-pointer">
+<div class="rounded-lg overflow-hidden h-56 mb-3 relative">
+<img alt="Tokyo Street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKwfoAprG4IKC3cZ2kQlpvfPyuaYp0AKNC_bi0SFiLF2wx_bs-2uPqfDXnb049ldahrMdU05hvvMxqn1fSByBy2fZcBrxxtiSJ3jHqgAQJGOSpklo8r2pc9zjp4yfK42VV4cfGZ1UTgrmf1qYHqx1kJyjgxZU06mKT0k1OOJKROswp7QTkP7WuzaeGWkWGg5dggSEabJDKfTN2Mnhz-ZQ39mWih9CnBj9n-MiY9ZvRyjaL-2nkPsDyv7KGF8a6lf8Qz8CCuGzlSr6K"/>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="flex items-center gap-2 mb-2 text-xs text-text-muted font-medium">
+<span class="text-primary font-bold">Guides</span>
+<span>•</span>
+<span>5 min read</span>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-2 leading-snug group-hover:text-primary transition-colors">How to get around Tokyo on a bike like a local</h3>
+<p class="text-sm text-text-muted line-clamp-2">Discover the best cycling routes, rental spots, and traffic rules for navigating Japan's bustling capital on two wheels.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="rounded-lg overflow-hidden h-56 mb-3 relative">
+<img alt="Paris Alley" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChpwxISqxrNtPPypCGxZZi3LpzpU4oXp3Mb3Cb2hkFkFfYSAukftNM86VUWJ1PcJ_OuZhxtJM20BoKRye8lFtsQZYxRKYp7IngVvtR1L4Q5Vw-28OnDf3Wd_d8BH3aHc6Fm17jVGTMvp5o2Prl9EF6pZp1aEhPatdw2JS3ZsRDpbn0IKaOO047iYjz7ib07PluZjejnGlh1O3oDg_icTt4lLD0ljJnPCHAwuv7F1NJZzXO5EAAKzw6hbyzoiCu2Ahk_JxIcKda7V_U"/>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="flex items-center gap-2 mb-2 text-xs text-text-muted font-medium">
+<span class="text-primary font-bold">Inspiration</span>
+<span>•</span>
+<span>7 min read</span>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-2 leading-snug group-hover:text-primary transition-colors">Top 5 hidden gems in Paris you won't find in guidebooks</h3>
+<p class="text-sm text-text-muted line-clamp-2">Step away from the Eiffel Tower and explore the secret gardens, covered passages, and cozy cafes loved by Parisians.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="rounded-lg overflow-hidden h-56 mb-3 relative">
+<img alt="Thai Street Food" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLhgWgCf1qxs6iWbXaBqn-45OfJT8Qhnbricwftlhb1vxlOgnNl68CzrwkC3ailHM9ePswin8w_oJKZVe9jGa-ADSLhRYy6CV79pYJmlh2muQyFUagVKV_oibwSd1eXPxz_SA7eRlK_beVIL-5igWDrby0U5hAtAGva1IH3Nk30I3GNysEWN7wQwaQQn36ZZAZl57iastvEwIzcFM0MO_8h6wYZLZ65RPI6kVxeOCIMZa9182YmIYhaawz2GCCCB0g3xuWzdho4cxo"/>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="flex items-center gap-2 mb-2 text-xs text-text-muted font-medium">
+<span class="text-primary font-bold">Food &amp; Drink</span>
+<span>•</span>
+<span>4 min read</span>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-2 leading-snug group-hover:text-primary transition-colors">Must-try street food markets in Bangkok</h3>
+<p class="text-sm text-text-muted line-clamp-2">From spicy Pad Kra Pao to sweet Mango Sticky Rice, here's where to find the most authentic flavors in Bangkok.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+<li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+</ul>
+</div>
+<div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+<li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<h1 class="text-xl font-bold tracking-tight text-white">TravelHub</h1>
+</div>
+<div class="text-xs text-white/60 text-center md:text-right">
+                Copyright © 1996–2024 TravelHub. All rights reserved.
+            </div>
+</div>
+</div>
+</footer>
+<script>
+// Currency converter with exchange rates
+const exchangeRates = {
+    USD: 1,
+    EUR: 0.92,
+    INR: 83.12
+};
+
+const symbols = {
+    USD: '$',
+    EUR: '€',
+    INR: '₹'
+};
+
+document.getElementById('currencySelect').addEventListener('change', function(e) {
+    const selectedCurrency = e.target.value;
+    localStorage.setItem('selectedCurrency', selectedCurrency);
+    updatePricesOnPage(selectedCurrency);
+    showNotification(`Currency changed to ${selectedCurrency}`);
+});
+
+// Load saved currency on page load
+window.addEventListener('load', function() {
+    const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+    document.getElementById('currencySelect').value = savedCurrency;
+    updatePricesOnPage(savedCurrency);
+});
+
+function updatePricesOnPage(currency) {
+    const rate = exchangeRates[currency];
+    document.querySelectorAll('[data-price-usd]').forEach(element => {
+        const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
+        const convertedPrice = (priceUSD * rate).toFixed(2);
+        element.textContent = `${symbols[currency]}${convertedPrice}`;
+    });
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 2000);
+}
+
+// Add animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    /* Smooth transitions on hover for interactive elements */
+    button, a, input, select {
+        transition: all 0.3s ease;
+    }
+    
+    /* Add ripple effect on buttons */
+    button {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+</body></html>

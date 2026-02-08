@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bus Search Results - TravelHub</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+<header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center gap-2 cursor-pointer">
+<h1 class="text-2xl font-bold tracking-tight">TravelHub</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<select id="currencySelect" class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+<option value="USD">USD ($)</option>
+<option value="EUR">EUR (€)</option>
+<option value="INR">INR (₹)</option>
+</select>
+<span class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+<div class="hidden md:flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</div>
+<button class="text-white text-sm font-medium px-3 py-2 hover:bg-white/10 rounded transition-colors">List your property</button>
+<div class="flex gap-2">
+<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Register</button>
+<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign in</button>
+</div>
+</div>
+</div>
+<nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+<a class="flex items-center gap-2 px-4 py-2.5 rounde~e/90 hover:text-white" href="stays.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+<span class="text-sm font-medium">Stays</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="car-rentals.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+<span class="text-sm font-medium">Car Rentals</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bike-rentals.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+<span class="text-sm font-medium">Bike Rentals</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="restaurant.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+<span class="text-sm font-medium">Restaurants</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="attraction.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+<span class="text-sm font-medium">Attractions</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group" href="bus.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+<span class="text-sm font-medium">Buses</span>
+</a>
+</nav>
+</div>
+</header>
+<div class="bg-primary text-white border-t border-white/20 pb-8 pt-6">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="bg-accent p-1 rounded-lg shadow-soft">
+<div class="bg-white rounded p-1 flex flex-col lg:flex-row gap-1">
+<div class="flex-[2] relative group border-b lg:border-b-0 lg:border-r border-gray-200">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">directions_bus</span>
+</div>
+<input class="w-full pl-10 pr-4 py-2 text-text-main font-medium placeholder-text-muted focus:ring-0 border-transparent bg-transparent h-10 md:h-12" type="text" value="New York, NY"/>
+</div>
+<div class="flex-[2] relative group border-b lg:border-b-0 lg:border-r border-gray-200">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">location_on</span>
+</div>
+<input class="w-full pl-10 pr-4 py-2 text-text-main font-medium placeholder-text-muted focus:ring-0 border-transparent bg-transparent h-10 md:h-12" type="text" value="Boston, MA"/>
+</div>
+<div class="flex-1 relative border-b lg:border-b-0 lg:border-r border-gray-200">
+<button class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left">
+<span class="material-symbols-outlined text-gray-400">calendar_month</span>
+<span class="text-text-main font-medium text-sm md:text-base whitespace-nowrap">Fri, 15 Oct</span>
+</button>
+</div>
+<div class="flex-1 relative">
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-sm md:text-base px-6 h-full rounded w-full transition-colors flex items-center justify-center">
+                            Search
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main class="flex-grow py-8 max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-6">
+<aside class="w-full lg:w-[280px] flex-shrink-0 space-y-4">
+<div class="bg-white border border-gray-200 rounded-lg p-2 shadow-sm cursor-pointer hover:shadow-md transition-shadow mb-4 relative overflow-hidden h-24 flex items-center justify-center">
+<div class="absolute inset-0 bg-gray-200 opacity-50">
+<div class="w-full h-full" style="background-image: radial-gradient(#cbd5e1 2px, transparent 2px); background-size: 16px 16px;"></div>
+</div>
+<button class="bg-primary text-white text-sm font-bold px-4 py-2 rounded shadow-sm relative z-10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">map</span> Show on map
+                 </button>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-100">
+<div class="p-4">
+<h3 class="font-bold text-text-main mb-3">Filter by:</h3>
+<div class="mb-5">
+<h4 class="text-sm font-bold text-text-main mb-2">Departure Time</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Morning <span class="text-text-muted text-xs">(06:00 - 12:00)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Afternoon <span class="text-text-muted text-xs">(12:00 - 18:00)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Evening <span class="text-text-muted text-xs">(18:00 - 00:00)</span></span>
+</label>
+</div>
+</div>
+<div class="mb-5">
+<h4 class="text-sm font-bold text-text-main mb-2">Bus Operator</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Megabus</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Greyhound</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">FlixBus</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Peter Pan</span>
+</label>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-text-main mb-2">Bus Type</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">AC Seater</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">AC Sleeper</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Semi-Sleeper</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main group-hover:text-primary">Luxury</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<section class="flex-grow w-full">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-text-main">New York to Boston: 14 buses found</h2>
+<div class="flex items-center gap-2 text-sm">
+<span class="text-text-muted hidden sm:inline">Sort by:</span>
+<select class="form-select border-gray-300 rounded text-sm py-1.5 pl-3 pr-8 focus:ring-primary focus:border-primary">
+<option>Recommended</option>
+<option>Lowest Price</option>
+<option>Duration (Shortest)</option>
+<option>Departure (Earliest)</option>
+</select>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group">
+<div class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center text-white font-black text-xs">MB</div>
+<div>
+<h3 class="font-bold text-text-main leading-tight">Megabus</h3>
+<p class="text-xs text-text-muted">Double Decker • AC Seater</p>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded">
+                                4.2 <span class="material-symbols-outlined text-[12px] fill-current">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="text-left">
+<div class="text-lg font-bold text-text-main">07:30</div>
+<div class="text-xs text-text-muted font-medium">NYC - Port Auth</div>
+</div>
+<div class="flex flex-col items-center px-4 flex-grow">
+<span class="text-xs text-text-muted mb-1">4h 15m</span>
+<div class="w-full h-[1px] bg-gray-300 relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+</div>
+<span class="text-[10px] text-green-600 font-bold mt-1">Direct</span>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-text-main">11:45</div>
+<div class="text-xs text-text-muted font-medium">BOS - South St</div>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-gray-50">
+<div class="flex items-center gap-1 text-text-muted" title="Free Wi-Fi">
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="text-xs">Wi-Fi</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted" title="Power Outlets">
+<span class="material-symbols-outlined text-[18px]">power</span>
+<span class="text-xs">Power</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted" title="Restroom">
+<span class="material-symbols-outlined text-[18px]">wc</span>
+<span class="text-xs">Toilet</span>
+</div>
+</div>
+</div>
+<div class="p-4 sm:w-[180px] bg-gray-50 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
+<div class="text-right sm:text-center">
+<div class="text-xs text-text-muted line-through">$24.00</div>
+<div class="text-2xl font-bold text-text-main">$18.50</div>
+<div class="text-[10px] text-text-muted">per person</div>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-6 py-2.5 rounded w-full sm:w-auto transition-colors flex items-center justify-center gap-1 shadow-sm mt-0 sm:mt-2">
+                            Select Seat <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group">
+<div class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-800 rounded flex items-center justify-center text-white font-black text-xs">GH</div>
+<div>
+<h3 class="font-bold text-text-main leading-tight">Greyhound</h3>
+<p class="text-xs text-text-muted">Standard • AC Semi-Sleeper</p>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded">
+                                4.5 <span class="material-symbols-outlined text-[12px] fill-current">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="text-left">
+<div class="text-lg font-bold text-text-main">09:15</div>
+<div class="text-xs text-text-muted font-medium">NYC - GW Bridge</div>
+</div>
+<div class="flex flex-col items-center px-4 flex-grow">
+<span class="text-xs text-text-muted mb-1">4h 45m</span>
+<div class="w-full h-[1px] bg-gray-300 relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+<div class="absolute left-1/2 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white border border-gray-400"></div> 
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+</div>
+<span class="text-[10px] text-text-muted font-medium mt-1">1 Stop</span>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-text-main">14:00</div>
+<div class="text-xs text-text-muted font-medium">BOS - South St</div>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-gray-50">
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="text-xs">Wi-Fi</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">power</span>
+<span class="text-xs">Power</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">chair</span>
+<span class="text-xs">Reclining Seats</span>
+</div>
+</div>
+</div>
+<div class="p-4 sm:w-[180px] bg-gray-50 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
+<div class="text-right sm:text-center">
+<div class="text-2xl font-bold text-text-main">$22.50</div>
+<div class="text-[10px] text-text-muted">per person</div>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-6 py-2.5 rounded w-full sm:w-auto transition-colors flex items-center justify-center gap-1 shadow-sm mt-0 sm:mt-2">
+                            Select Seat <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-yellow-400/50 ring-1 ring-yellow-400/20 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group relative">
+<div class="absolute top-0 left-0 bg-accent text-primary text-[10px] font-bold px-2 py-0.5 rounded-br z-10 uppercase tracking-wide">Top Rated</div>
+<div class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
+<div class="flex justify-between items-start mt-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-green-500 rounded flex items-center justify-center text-white font-black text-xs">FB</div>
+<div>
+<h3 class="font-bold text-text-main leading-tight">FlixBus</h3>
+<p class="text-xs text-text-muted">Premium • AC Sleeper</p>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded">
+                                4.8 <span class="material-symbols-outlined text-[12px] fill-current">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="text-left">
+<div class="text-lg font-bold text-text-main">13:00</div>
+<div class="text-xs text-text-muted font-medium">NYC - Midtown</div>
+</div>
+<div class="flex flex-col items-center px-4 flex-grow">
+<span class="text-xs text-text-muted mb-1">4h 10m</span>
+<div class="w-full h-[1px] bg-gray-300 relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+</div>
+<span class="text-[10px] text-green-600 font-bold mt-1">Fastest</span>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-text-main">17:10</div>
+<div class="text-xs text-text-muted font-medium">BOS - South St</div>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-gray-50">
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="text-xs">Wi-Fi</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">power</span>
+<span class="text-xs">Power</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+<span class="text-xs">Water Bottle</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">tv</span>
+<span class="text-xs">Movies</span>
+</div>
+</div>
+</div>
+<div class="p-4 sm:w-[180px] bg-yellow-50/30 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
+<div class="text-right sm:text-center">
+<div class="text-2xl font-bold text-text-main">$32.00</div>
+<div class="text-[10px] text-text-muted">per person</div>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-6 py-2.5 rounded w-full sm:w-auto transition-colors flex items-center justify-center gap-1 shadow-sm mt-0 sm:mt-2">
+                            Select Seat <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+<p class="hidden sm:block text-[10px] text-red-600 font-medium mt-1">Only 3 seats left!</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group">
+<div class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-green-700 rounded flex items-center justify-center text-white font-black text-xs">PP</div>
+<div>
+<h3 class="font-bold text-text-main leading-tight">Peter Pan</h3>
+<p class="text-xs text-text-muted">Economy • AC Seater</p>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded">
+                                3.9 <span class="material-symbols-outlined text-[12px] fill-current">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="text-left">
+<div class="text-lg font-bold text-text-main">15:45</div>
+<div class="text-xs text-text-muted font-medium">NYC - Port Auth</div>
+</div>
+<div class="flex flex-col items-center px-4 flex-grow">
+<span class="text-xs text-text-muted mb-1">5h 00m</span>
+<div class="w-full h-[1px] bg-gray-300 relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+<div class="absolute left-1/3 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white border border-gray-400"></div>
+<div class="absolute left-2/3 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white border border-gray-400"></div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+</div>
+<span class="text-[10px] text-text-muted font-medium mt-1">2 Stops</span>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-text-main">20:45</div>
+<div class="text-xs text-text-muted font-medium">BOS - South St</div>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-gray-50">
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">wifi_off</span>
+<span class="text-xs line-through opacity-60">Wi-Fi</span>
+</div>
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">power</span>
+<span class="text-xs">Power</span>
+</div>
+</div>
+</div>
+<div class="p-4 sm:w-[180px] bg-gray-50 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
+<div class="text-right sm:text-center">
+<div class="text-2xl font-bold text-text-main">$15.00</div>
+<div class="text-[10px] text-text-muted">per person</div>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-6 py-2.5 rounded w-full sm:w-auto transition-colors flex items-center justify-center gap-1 shadow-sm mt-0 sm:mt-2">
+                            Select Seat <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="border border-primary text-primary hover:bg-blue-50 font-bold px-6 py-2 rounded transition-colors">Load more results</button>
+</div>
+</section>
+</main>
+<footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+<li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+</ul>
+</div>
+<div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+<li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<h1 class="text-xl font-bold tracking-tight text-white">TravelHub</h1>
+</div>
+<div class="text-xs text-white/60 text-center md:text-right">
+                    Copyright © 1996–2024 TravelHub. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+<script>
+// Currency converter with exchange rates
+const exchangeRates = {
+    USD: 1,
+    EUR: 0.92,
+    INR: 83.12
+};
+
+const symbols = {
+    USD: '$',
+    EUR: '€',
+    INR: '₹'
+};
+
+document.getElementById('currencySelect').addEventListener('change', function(e) {
+    const selectedCurrency = e.target.value;
+    localStorage.setItem('selectedCurrency', selectedCurrency);
+    updatePricesOnPage(selectedCurrency);
+    showNotification(`Currency changed to ${selectedCurrency}`);
+});
+
+// Load saved currency on page load
+window.addEventListener('load', function() {
+    const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+    document.getElementById('currencySelect').value = savedCurrency;
+    updatePricesOnPage(savedCurrency);
+});
+
+function updatePricesOnPage(currency) {
+    const rate = exchangeRates[currency];
+    document.querySelectorAll('[data-price-usd]').forEach(element => {
+        const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
+        const convertedPrice = (priceUSD * rate).toFixed(2);
+        element.textContent = `${symbols[currency]}${convertedPrice}`;
+    });
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 2000);
+}
+
+// Add animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    /* Smooth transitions on hover for interactive elements */
+    button, a, input, select {
+        transition: all 0.3s ease;
+    }
+    
+    /* Add ripple effect on buttons */
+    button {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+</body></html>

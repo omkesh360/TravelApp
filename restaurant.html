@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelHub - Restaurant Search Results</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+<header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center gap-2 cursor-pointer">
+<h1 class="text-2xl font-bold tracking-tight">TravelHub</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<select id="currencySelect" class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+<option value="USD">USD ($)</option>
+<option value="EUR">EUR (€)</option>
+<option value="INR">INR (₹)</option>
+</select>
+<span class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+<div class="hidden md:flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</div>
+<button class="text-white text-sm font-medium px-3 py-2 hover:bg-white/10 rounded transition-colors">List your property</button>
+<div class="flex gap-2">
+<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Register</button>
+<button class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign in</button>
+</div>
+</div>
+</div>
+<nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="stays.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+<span class="text-sm font-medium">Stays</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="car-rentals.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+<span class="text-sm font-medium">Car Rentals</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bike-rentals.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+<span class="text-sm font-medium">Bike Rentals</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group" href="restaurant.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+<span class="text-sm font-medium">Restaurants</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="attraction.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+<span class="text-sm font-medium">Attractions</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white" href="bus.html">
+<span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+<span class="text-sm font-medium">Buses</span>
+</a>
+</nav>
+</div>
+</header>
+<div class="bg-primary pb-8">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="bg-accent p-1 rounded-lg shadow-md">
+<div class="bg-white rounded p-1 flex flex-col md:flex-row gap-1">
+<div class="flex-[1.5] relative group border-b md:border-b-0">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">restaurant</span>
+</div>
+<input class="w-full pl-10 pr-4 py-2 rounded text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors h-10 md:h-12 focus:ring-0 border-0" placeholder="Cuisine or restaurant name" type="text" value="Italian"/>
+</div>
+<div class="flex-1 relative border-l border-gray-200">
+<button class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left h-10 md:h-12">
+<span class="material-symbols-outlined text-gray-400">calendar_month</span>
+<span class="text-text-main font-medium text-sm">Tonight, 19:00</span>
+</button>
+</div>
+<div class="flex-1 relative border-l border-gray-200">
+<button class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left h-10 md:h-12">
+<span class="material-symbols-outlined text-gray-400">group</span>
+<span class="text-text-main font-medium text-sm">2 people</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white font-bold text-base px-6 py-2 rounded md:w-auto w-full transition-colors">
+                        Search
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<main class="flex-grow max-w-[1140px] mx-auto px-4 md:px-6 w-full py-6 flex flex-col lg:flex-row gap-8">
+<aside class="w-full lg:w-1/4 flex-shrink-0 space-y-6">
+<div class="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+<div class="h-32 bg-gray-100 relative group cursor-pointer">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="bg-white/90 backdrop-blur px-3 py-1.5 rounded shadow text-xs font-bold text-primary">Show on map</span>
+</div>
+<img alt="Map preview" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOum_jDhUT19TDJMS9Fa4o9wRy9liAV3kKpDbrbZ_aAFpvwr7-727SPhcGmjH_xi0qsZkQVFIZ1hTtKuc5XOIKeZTUa6oChADwzJJ6ZYPBFt2nLSOLct2Td9a1Oc08RHQSOT9kgUmTWrnRP7M-wkm3aweitoHyU48GFWbJPVZF1l6et8WCh5ZGrl3Je4ETzuRI81OWEPaU7TJ-8mUy8LmaDw8q2S7ttZERG2hLKBo2izpBuAR_5wBQEQjZqrcP7uICIrY2BJvo3AwB"/>
+</div>
+</div>
+<div class="border rounded-lg border-gray-200 p-4 bg-white shadow-sm">
+<h3 class="font-bold text-text-main mb-4">Filter by:</h3>
+<div class="mb-6">
+<h4 class="text-sm font-bold text-text-main mb-2">Cuisine</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">Italian</span>
+<span class="text-xs text-text-muted ml-auto">14</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">Japanese</span>
+<span class="text-xs text-text-muted ml-auto">8</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">French</span>
+<span class="text-xs text-text-muted ml-auto">5</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">American</span>
+<span class="text-xs text-text-muted ml-auto">12</span>
+</label>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-bold text-text-main mb-2">Price Range</h4>
+<div class="flex rounded-md shadow-sm" role="group">
+<button class="flex-1 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-50 focus:z-10 focus:ring-1 focus:ring-primary focus:text-primary" type="button">
+                          $
+                        </button>
+<button class="flex-1 px-3 py-2 text-sm font-medium text-white bg-primary border-t border-b border-primary hover:bg-primary-hover focus:z-10 focus:ring-1 focus:ring-primary focus:text-primary" type="button">
+                          $$
+                        </button>
+<button class="flex-1 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-50 focus:z-10 focus:ring-1 focus:ring-primary focus:text-primary" type="button">
+                          $$$
+                        </button>
+<button class="flex-1 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-50 focus:z-10 focus:ring-1 focus:ring-primary focus:text-primary" type="button">
+                          $$$$
+                        </button>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-bold text-text-main mb-2">Table Size</h4>
+<select class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-primary focus:outline-none focus:ring-primary sm:text-sm">
+<option>2 people</option>
+<option>3 people</option>
+<option>4 people</option>
+<option>5 people</option>
+<option>6+ people</option>
+</select>
+</div>
+<div class="mb-2">
+<h4 class="text-sm font-bold text-text-main mb-2">Availability</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">Early (17:00 - 18:30)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">Prime (18:30 - 20:30)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-text-main">Late (20:30+)</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<section class="flex-1">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-text-main">Rome: 45 restaurants found</h2>
+<div class="flex items-center gap-2">
+<span class="text-sm text-text-main">Sort by:</span>
+<button class="text-sm font-bold text-primary flex items-center gap-1 border border-primary px-3 py-1 rounded-full hover:bg-blue-50">
+                        Top Picks <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-white rounded-lg shadow-card border border-gray-200 p-4 flex flex-col md:flex-row gap-4 group hover:shadow-lg transition-shadow">
+<div class="w-full md:w-60 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+<img alt="Restaurant Interior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDapROvUiUucPUVpf88Y2yJzDzue2Gjv0iC1V1WePPW9CMQwqECjNcxNW3o_QhXo9GL9m8g-55JGjHe_GnFzc4Q4KKFHMmu6HK7Kwoqg3K-hAmsB0rau00AAbSOTXm70U7dwI13V8-XPQp50fk1MtHPwpN7gXUdxchRqSd5j87nKj0xxseaXqkVoUstsVt5wzKwe6cCxIbx8QEnUguWdk2OVhZX8_LQ_sijRMEOBOTQHQNOvunp7GzxF6arQUfElIBhT7755e-k-Uhe"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<div>
+<h3 class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">La Dolce Vita Trattoria</h3>
+<p class="text-xs text-text-muted flex items-center gap-1">
+<span class="text-text-main font-medium underline">Centro Storico</span> • 1.2 km from center
+                                    </p>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-text-main leading-none">Exceptional</p>
+<p class="text-xs text-text-muted mt-0.5">342 reviews</p>
+</div>
+<div class="bg-primary text-white font-bold text-sm w-8 h-8 flex items-center justify-center rounded-t-md rounded-br-md">4.9</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-text-main font-medium mb-3">
+<span>Italian</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>$$</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-green-700 bg-green-50 px-1.5 py-0.5 rounded text-xs">Free cancellation</span>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-3">Authentic Roman cuisine in a cozy, family-run setting. Famous for their Carbonara and homemade Tiramisu.</p>
+</div>
+<div class="mt-auto pt-3 border-t border-gray-100">
+<p class="text-xs font-bold text-text-main mb-2 uppercase tracking-wide text-gray-500">Available times for tonight (2 people):</p>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">18:30</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">19:00</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">19:30</button>
+<button class="px-3 py-1.5 bg-white border border-primary text-primary text-sm font-medium rounded hover:bg-blue-50 transition-colors shadow-sm">+ More</button>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-5 rounded hover:bg-primary-hover transition-colors whitespace-nowrap ml-auto md:ml-0 w-full md:w-auto mt-2 md:mt-0">Book Table</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-card border border-gray-200 p-4 flex flex-col md:flex-row gap-4 group hover:shadow-lg transition-shadow">
+<div class="w-full md:w-60 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+<img alt="Gourmet Dish" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVkitIw_l2tULLpAjHcAKRk3viUVvgKHpcxE3b_9WrMS5T-t-klgfyZY-Zki0n9CxwenyPfbrbLUTfZ_b2X8btbFEOhqXzi9MXp9Qyn-fTtWsqQITbaLUOBGyniBuKxv3vCY5qqa_4xY2KKevzgDvmmbt_q_S868WFpPSu2LtJBhcNwEWxcpz0SgZHmlBECNboIeuY_LoJsqIvXIHjbqOldVnMAWu6QSwvdTcNgYR_27nrT7clqk-DCI_lq4j97zAyYPIYjo3WUZ2m"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded shadow-sm">Michelin Star</div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<div>
+<h3 class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">The Golden Fork</h3>
+<p class="text-xs text-text-muted flex items-center gap-1">
+<span class="text-text-main font-medium underline">Trastevere</span> • 2.5 km from center
+                                    </p>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-text-main leading-none">Superb</p>
+<p class="text-xs text-text-muted mt-0.5">189 reviews</p>
+</div>
+<div class="bg-primary text-white font-bold text-sm w-8 h-8 flex items-center justify-center rounded-t-md rounded-br-md">4.8</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-text-main font-medium mb-3">
+<span>Steakhouse</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>$$$</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-orange-700 bg-orange-50 px-1.5 py-0.5 rounded text-xs">High demand</span>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-3">Experience premium cuts of meat and an extensive wine list in an elegant, modern atmosphere.</p>
+</div>
+<div class="mt-auto pt-3 border-t border-gray-100">
+<p class="text-xs font-bold text-text-main mb-2 uppercase tracking-wide text-gray-500">Available times for tonight (2 people):</p>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">17:45</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">21:30</button>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-5 rounded hover:bg-primary-hover transition-colors whitespace-nowrap ml-auto md:ml-0 w-full md:w-auto mt-2 md:mt-0">Book Table</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-card border border-gray-200 p-4 flex flex-col md:flex-row gap-4 group hover:shadow-lg transition-shadow">
+<div class="w-full md:w-60 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+<img alt="Pizza" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6CZRHgKd79JEqe3iMZ63cTfqF6RsVYzMWar3cK9xykkr6U3k25Neiw5QMgGYjXvWCbrhKZTQyWcaVSaAXd4_uwF23wc4Onr5OXchJo-7719jYJeTsSDpDIQCkQBMwNyz1fxGx45Sr0h4oBsqfGrMtiaQ-LBZ530Skbc-9of8zT_q-DvC5GeVaYg4eZ31eGfPrahF3n5IOakb7tTHrJYmmfgtzl5WJs8HBvki4R7KjLmZNyjnegl52VGbsvcvdA6U9cab1I_bfoeLx"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<div>
+<h3 class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">Napoli Pizza &amp; Cucina</h3>
+<p class="text-xs text-text-muted flex items-center gap-1">
+<span class="text-text-main font-medium underline">Monti</span> • 0.8 km from center
+                                    </p>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-text-main leading-none">Very Good</p>
+<p class="text-xs text-text-muted mt-0.5">520 reviews</p>
+</div>
+<div class="bg-primary text-white font-bold text-sm w-8 h-8 flex items-center justify-center rounded-t-md rounded-br-md">4.5</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-text-main font-medium mb-3">
+<span>Italian</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>$$</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded text-xs">Outdoor Seating</span>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-3">Casual dining spot offering wood-fired pizzas and classic pasta dishes. Great for groups and families.</p>
+</div>
+<div class="mt-auto pt-3 border-t border-gray-100">
+<p class="text-xs font-bold text-text-main mb-2 uppercase tracking-wide text-gray-500">Available times for tonight (2 people):</p>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">18:00</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">18:30</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">19:00</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">19:30</button>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-5 rounded hover:bg-primary-hover transition-colors whitespace-nowrap ml-auto md:ml-0 w-full md:w-auto mt-2 md:mt-0">Book Table</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-card border border-gray-200 p-4 flex flex-col md:flex-row gap-4 group hover:shadow-lg transition-shadow">
+<div class="w-full md:w-60 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+<img alt="Sushi Chef" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJNz8FPJZTFJxmg0q2rMI7dyrHSzGnhKSQ6W5gAujsemEyd5crkRNKDJxgsXoUwKgd3bv66jm-gEbODHCB8R4cMCSeB3Ity8Jswvg-RK1rTOQ2XhOEIwUV401b-5M-ySKK4WtY_3l5jnsx_pU8sn_-hGmVwWk-ITTcD6PQsTE3oOux9cYFHjcDZFgPxGgVKNHi7NBjptde-SZ_isfFNx2zi6FzTsz6E6cYqiBDHO4f0RW1SDToUmdWrVUI0HdrHQ0siQEgWomM7MxT"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<div>
+<h3 class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">Tokyo Grill</h3>
+<p class="text-xs text-text-muted flex items-center gap-1">
+<span class="text-text-main font-medium underline">Prati</span> • 3.0 km from center
+                                    </p>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-text-main leading-none">Fabulous</p>
+<p class="text-xs text-text-muted mt-0.5">120 reviews</p>
+</div>
+<div class="bg-primary text-white font-bold text-sm w-8 h-8 flex items-center justify-center rounded-t-md rounded-br-md">4.7</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-text-main font-medium mb-3">
+<span>Japanese</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>$$$$</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span class="text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded text-xs">Live Cooking</span>
+</div>
+<p class="text-sm text-text-muted line-clamp-2 mb-3">Masterful teppanyaki performances and the freshest sashimi. A unique dining experience for special occasions.</p>
+</div>
+<div class="mt-auto pt-3 border-t border-gray-100">
+<p class="text-xs font-bold text-text-main mb-2 uppercase tracking-wide text-gray-500">Available times for tonight (2 people):</p>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">20:00</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">20:30</button>
+<button class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">21:00</button>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-5 rounded hover:bg-primary-hover transition-colors whitespace-nowrap ml-auto md:ml-0 w-full md:w-auto mt-2 md:mt-0">Book Table</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="border border-primary text-primary font-bold py-2 px-6 rounded hover:bg-blue-50 transition-colors w-full md:w-auto">Show more results</button>
+</div>
+</section>
+</main>
+<footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+<div class="max-w-[1140px] mx-auto px-4 md:px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+<li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+</ul>
+</div>
+<div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+<h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+<li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<h1 class="text-xl font-bold tracking-tight text-white">TravelHub</h1>
+</div>
+<div class="text-xs text-white/60 text-center md:text-right">
+                    Copyright © 1996–2024 TravelHub. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+<script>
+// Currency converter with exchange rates
+const exchangeRates = {
+    USD: 1,
+    EUR: 0.92,
+    INR: 83.12
+};
+
+const symbols = {
+    USD: '$',
+    EUR: '€',
+    INR: '₹'
+};
+
+document.getElementById('currencySelect').addEventListener('change', function(e) {
+    const selectedCurrency = e.target.value;
+    localStorage.setItem('selectedCurrency', selectedCurrency);
+    updatePricesOnPage(selectedCurrency);
+    showNotification(`Currency changed to ${selectedCurrency}`);
+});
+
+// Load saved currency on page load
+window.addEventListener('load', function() {
+    const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+    document.getElementById('currencySelect').value = savedCurrency;
+    updatePricesOnPage(savedCurrency);
+});
+
+function updatePricesOnPage(currency) {
+    const rate = exchangeRates[currency];
+    document.querySelectorAll('[data-price-usd]').forEach(element => {
+        const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
+        const convertedPrice = (priceUSD * rate).toFixed(2);
+        element.textContent = `${symbols[currency]}${convertedPrice}`;
+    });
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 2000);
+}
+
+// Add animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    /* Smooth transitions on hover for interactive elements */
+    button, a, input, select {
+        transition: all 0.3s ease;
+    }
+    
+    /* Add ripple effect on buttons */
+    button {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+</body></html>
