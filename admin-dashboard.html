@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TravelHub Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .material-icons {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased h-screen overflow-hidden">
+    <div class="flex h-full w-full">
+        <!-- Sidebar -->
+        <aside
+            class="hidden md:flex w-64 flex-col border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-background-dark">
+            <div class="flex h-20 items-center px-6 border-b border-gray-200 dark:border-gray-800">
+                <a href="index.html" class="flex items-center gap-2 text-primary">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-10">
+                </a>
+            </div>
+            <div class="flex-1 overflow-y-auto px-3 py-4">
+                <nav class="flex flex-col gap-1">
+                    <a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <span class="font-medium">Bookings</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined">group</span>
+                        <span class="font-medium">Users</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined">storefront</span>
+                        <span class="font-medium">Vendors</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined">payments</span>
+                        <span class="font-medium">Financial Reports</span>
+                    </a>
+                    <div class="my-2 border-t border-gray-200 dark:border-gray-800"></div>
+                    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span class="font-medium">Settings</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined">help</span>
+                        <span class="font-medium">Support</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="border-t border-gray-200 p-4 dark:border-gray-800">
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 overflow-hidden rounded-full bg-slate-200">
+                        <img alt="Admin Profile Picture" class="h-full w-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuATrxYGD3ulCVs3oCDuL0BlogMFgJa37krlgCxPUKxipPdj_qhQFm8wTtwy41cx0tW-yJUPtBQ95Epi_xZxCl2FycccgiUkxuIZy7sd-SeAp7T7RpGffSYBuwovBIiu9V-z6PbPN_db8u9sSxYqn8PL6tJ0pgD85w8r17QqZqrJKcfYSfV2DWufbs6aM0p_QYX8nP9RbIfUHeGjFRGK8r1vmt2lhEjbzbvKq9ypDPKlwdsXfoMbBF2VOIPBnU_-ORofyMuAyy5zZ_sf" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-slate-900 dark:text-white">Admin User</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400">Super Admin</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex h-full flex-1 flex-col overflow-hidden bg-background-light dark:bg-background-dark">
+            <!-- Top Header -->
+            <header
+                class="flex h-20 items-center justify-between border-b border-gray-200 bg-white px-4 dark:border-gray-800 dark:bg-background-dark md:px-8 sticky top-0 z-30">
+                <div class="flex items-center gap-4">
+                    <button
+                        class="md:hidden text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <div class="relative hidden w-64 md:block">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                        <input
+                            class="h-10 w-full rounded-lg border-none bg-slate-100 pl-10 text-sm text-slate-900 focus:ring-2 focus:ring-primary dark:bg-slate-800 dark:text-white dark:placeholder-slate-400"
+                            placeholder="Search..." type="text" />
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="relative flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span
+                            class="absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-red-500 border-2 border-white dark:border-background-dark"></span>
+                    </button>
+                    <button
+                        class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+                        <span class="material-symbols-outlined">settings</span>
+                    </button>
+                    <a href="index.html" class="ml-2 text-sm font-medium text-primary hover:text-primary-hover">Exit to
+                        Site</a>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-8">
+                <div class="mx-auto max-w-7xl">
+                    <!-- Header Section -->
+                    <div class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                        <div>
+                            <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard Overview</h1>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Welcome back, here's what's happening
+                                with your platform today.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">
+                                <span class="material-symbols-outlined text-[20px]">cloud_download</span>
+                                Export
+                            </button>
+                            <button
+                                class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-hover">
+                                <span class="material-symbols-outlined text-[20px]">add</span>
+                                Add Booking
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Grid -->
+                    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+                        <div
+                            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Bookings
+                                    </p>
+                                    <h3 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">1,245</h3>
+                                </div>
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-primary dark:bg-blue-900/20">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center text-sm">
+                                <span class="flex items-center font-medium text-green-600 dark:text-green-400">
+                                    <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                    12%
+                                </span>
+                                <span class="ml-2 text-slate-500 dark:text-slate-400">from last month</span>
+                            </div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Active Users</p>
+                                    <h3 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">8,502</h3>
+                                </div>
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-full bg-purple-50 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400">
+                                    <span class="material-symbols-outlined">group</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center text-sm">
+                                <span class="flex items-center font-medium text-green-600 dark:text-green-400">
+                                    <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                    5%
+                                </span>
+                                <span class="ml-2 text-slate-500 dark:text-slate-400">from last month</span>
+                            </div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Revenue</p>
+                                    <h3 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">$142,300</h3>
+                                </div>
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400">
+                                    <span class="material-symbols-outlined">attach_money</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center text-sm">
+                                <span class="flex items-center font-medium text-green-600 dark:text-green-400">
+                                    <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                    8.2%
+                                </span>
+                                <span class="ml-2 text-slate-500 dark:text-slate-400">from last month</span>
+                            </div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Vendor Requests
+                                    </p>
+                                    <h3 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">12</h3>
+                                </div>
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400">
+                                    <span class="material-symbols-outlined">storefront</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center text-sm">
+                                <span class="flex items-center font-medium text-amber-600 dark:text-amber-400">
+                                    <span class="material-symbols-outlined text-sm mr-1">pending</span>
+                                    Pending
+                                </span>
+                                <span class="ml-2 text-slate-500 dark:text-slate-400">requires action</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="grid gap-8 lg:grid-cols-3 mb-8">
+                        <!-- Revenue Trends Chart -->
+                        <div
+                            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-slate-900 lg:col-span-2">
+                            <div class="mb-6 flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Monthly Revenue Trends
+                                    </h3>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400">Revenue performance over the
+                                        last 12 months</p>
+                                </div>
+                                <div class="flex items-center gap-2 rounded-lg bg-slate-100 p-1 dark:bg-slate-800">
+                                    <button
+                                        class="rounded-md bg-white px-3 py-1 text-xs font-medium text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white">12M</button>
+                                    <button
+                                        class="rounded-md px-3 py-1 text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">6M</button>
+                                    <button
+                                        class="rounded-md px-3 py-1 text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">30D</button>
+                                </div>
+                            </div>
+                            <div class="relative h-64 w-full">
+                                <!-- Simulated Chart Area -->
+                                <svg class="h-full w-full overflow-visible" preserveAspectRatio="none"
+                                    viewBox="0 0 100 50">
+                                    <!-- Grid Lines -->
+                                    <line class="text-slate-100 dark:text-slate-800" stroke="currentColor"
+                                        stroke-width="0.5" x1="0" x2="100" y1="10" y2="10"></line>
+                                    <line class="text-slate-100 dark:text-slate-800" stroke="currentColor"
+                                        stroke-width="0.5" x1="0" x2="100" y1="20" y2="20"></line>
+                                    <line class="text-slate-100 dark:text-slate-800" stroke="currentColor"
+                                        stroke-width="0.5" x1="0" x2="100" y1="30" y2="30"></line>
+                                    <line class="text-slate-100 dark:text-slate-800" stroke="currentColor"
+                                        stroke-width="0.5" x1="0" x2="100" y1="40" y2="40"></line>
+                                    <!-- Gradient Area -->
+                                    <defs>
+                                        <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#003580" stop-opacity="0.2"></stop>
+                                            <stop offset="100%" stop-color="#003580" stop-opacity="0"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <path
+                                        d="M0 40 L0 35 L10 32 L20 38 L30 25 L40 28 L50 20 L60 22 L70 15 L80 10 L90 12 L100 5 L100 50 L0 50 Z"
+                                        fill="url(#chartGradient)"></path>
+                                    <!-- Line -->
+                                    <path
+                                        d="M0 35 L10 32 L20 38 L30 25 L40 28 L50 20 L60 22 L70 15 L80 10 L90 12 L100 5"
+                                        fill="none" stroke="#003580" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="0.8"></path>
+                                </svg>
+                                <!-- X Axis Labels -->
+                                <div class="flex justify-between text-xs text-slate-400 mt-2">
+                                    <span>Jan</span>
+                                    <span>Feb</span>
+                                    <span>Mar</span>
+                                    <span>Apr</span>
+                                    <span>May</span>
+                                    <span>Jun</span>
+                                    <span>Jul</span>
+                                    <span>Aug</span>
+                                    <span>Sep</span>
+                                    <span>Oct</span>
+                                    <span>Nov</span>
+                                    <span>Dec</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Revenue By Service Type Pie Chart -->
+                        <div
+                            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+                            <h3 class="mb-6 text-lg font-bold text-slate-900 dark:text-white">Revenue by Service</h3>
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="relative h-48 w-48">
+                                    <svg class="h-full w-full rotate-[-90deg]" viewBox="0 0 36 36">
+                                        <!-- Background Circle -->
+                                        <path class="text-slate-100 dark:text-slate-800"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            fill="none" stroke="currentColor" stroke-width="3.8"></path>
+                                        <!-- Stays (Blue) - 60% -->
+                                        <path class="text-primary"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            fill="none" stroke="currentColor" stroke-dasharray="60, 100"
+                                            stroke-width="3.8"></path>
+                                        <!-- Bikes (Teal) - 25% -->
+                                        <path class="text-teal-400"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            fill="none" stroke="currentColor" stroke-dasharray="25, 100"
+                                            stroke-dashoffset="-60" stroke-width="3.8"></path>
+                                        <!-- Cars (Purple) - 15% -->
+                                        <path class="text-purple-500"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            fill="none" stroke="currentColor" stroke-dasharray="15, 100"
+                                            stroke-dashoffset="-85" stroke-width="3.8"></path>
+                                    </svg>
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                        <span class="text-3xl font-bold text-slate-900 dark:text-white">Total</span>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400">Services</span>
+                                    </div>
+                                </div>
+                                <div class="mt-8 w-full space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="h-3 w-3 rounded-full bg-primary"></div>
+                                            <span
+                                                class="text-sm font-medium text-slate-700 dark:text-slate-300">Stays</span>
+                                        </div>
+                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">60%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="h-3 w-3 rounded-full bg-teal-400"></div>
+                                            <span
+                                                class="text-sm font-medium text-slate-700 dark:text-slate-300">Bikes</span>
+                                        </div>
+                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">25%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="h-3 w-3 rounded-full bg-purple-500"></div>
+                                            <span
+                                                class="text-sm font-medium text-slate-700 dark:text-slate-300">Cars</span>
+                                        </div>
+                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">15%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions Table -->
+                    <div
+                        class="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-slate-900 overflow-hidden">
+                        <div
+                            class="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Recent Transactions</h3>
+                            <a class="text-sm font-medium text-primary hover:text-primary-hover" href="#">View All</a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+                                    <tr>
+                                        <th class="px-6 py-3 font-medium">Transaction ID</th>
+                                        <th class="px-6 py-3 font-medium">User</th>
+                                        <th class="px-6 py-3 font-medium">Service</th>
+                                        <th class="px-6 py-3 font-medium">Date</th>
+                                        <th class="px-6 py-3 font-medium">Amount</th>
+                                        <th class="px-6 py-3 font-medium">Status</th>
+                                        <th class="px-6 py-3 font-medium text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#TRX-001</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
+                                                    <img alt="User Avatar" class="h-full w-full object-cover"
+                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn8ffccoZuAK0sLDIots4kIIPQF26ESORAxX3HgbfmgmXOX3XeQCuQ8bvwezt6p4Y4ldtTkJc9TMCJLiPDgxZExv7VGzC8n8SCrzfHK_a-s_c0bp_6g6j6noUfYTL1uZV0D_Z-Vx17pMECNkSDnzl0x10YULSzuYRbjBkEG-GwtdZo58tV4vjasowfKQGkDIPXnQhgu2DEjDjLUBrnHP91ihHnq0DhiT_e8Y1_GaVp_t4VyWVpoLWb_KiUzX550J_KYNQffW8e5_Pw" />
+                                                </div>
+                                                <div class="font-medium text-slate-900 dark:text-white">John Doe</div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Bike Rental</td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 2023</td>
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">$45.00</td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/30 dark:text-green-400">Completed</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#TRX-002</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
+                                                    <img alt="User Avatar" class="h-full w-full object-cover"
+                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG5d0VcOcF5VLtcVMKXfhEDvEtX_ZhYTww4DyAiZTMID-nH45qj5Ki_b5pBCdia355XPbjuRaNe5VxrOnej5IGHpe5ssN1ZV81Qf1NU2WGK6jOfZgirXgnlqZniz295KxQzAkf2cQFMs59jJ_eGom93VSqDyzHXRw7l03nWe-TwzMvhpcWXWLavAxO1pJ_K5wi4l-3R_7QyH31DkpjJSBDXJVfksQcQ5zScp8sVRpaaR6yt8oMaZ6ouET4_nSfERQmHEYAFSPSsaYU" />
+                                                </div>
+                                                <div class="font-medium text-slate-900 dark:text-white">Sarah Smith
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Luxury Stay</td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 2023</td>
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">$450.00</td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-600/20 dark:bg-amber-900/30 dark:text-amber-400">Pending</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#TRX-003</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
+                                                    <img alt="User Avatar" class="h-full w-full object-cover"
+                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhKmDZLHRYTis31J50FHzpJ-keGRTXYv2xH--zdyFs4kgkQEbfQM-oAyoJvOYnEMRD5jrqSbDJ8ORVjTN66l54C5EuKT3VF2ieTBg38ybIUPsceQLClidud3Bgs_jRitjb3njG0Ye3qs_bD_mMe9PGOuizbSNA7TxszGCp2vjW4frXawdGfKWH4athwOO3GkX5rhQhWDclioQPgDxiLVkvdTlR5gxhPB39UEtwD9RQ42gS-FdEkESGxBFkSbaVI8foa7YkNyj0hUSH" />
+                                                </div>
+                                                <div class="font-medium text-slate-900 dark:text-white">Michael Brown
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Car Rental</td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Oct 23, 2023</td>
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">$120.00</td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/30 dark:text-green-400">Completed</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#TRX-004</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
+                                                    <img alt="User Avatar" class="h-full w-full object-cover"
+                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHXH5M8z2UtuDT9kob4FuZZbzcNMC1FrEzWJK8M868g3bZJf7wLGHybHICsN9AjawbZQNwCQmc4F_z4goCPLsM9dvTljdTJf5rN9GTfhfEWbeEIEq9M7HItLRmUYJ5qq4kBv46ca1QRIjnxXWfXafI_q34dCszRsTNYk6GwRUjI3T_yUFef3L5gI9R05ilRVwM7NRfu7ouqMudQmdz3aQeLFM2HGGJJiVDh3kHVskos5W3GRBS5TLqxleDuPa14suhjSq9ZSgpTH01" />
+                                                </div>
+                                                <div class="font-medium text-slate-900 dark:text-white">Emily Davis
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Bike Rental</td>
+                                        <td class="px-6 py-4 text-slate-500 dark:text-slate-400">Oct 22, 2023</td>
+                                        <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">$30.00</td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20 dark:bg-red-900/30 dark:text-red-400">Cancelled</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</body>
+
+</html>

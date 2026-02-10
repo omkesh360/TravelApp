@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TravelHub Vendor Dashboard</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display">
+    <div class="flex h-screen w-full overflow-hidden">
+        <!-- Sidebar -->
+        <aside
+            class="hidden w-64 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 md:flex">
+            <div class="flex h-16 items-center border-b border-slate-200 px-6 dark:border-slate-800">
+                <a href="index.html" class="flex items-center gap-2 text-primary">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-10">
+                </a>
+            </div>
+            <div class="flex flex-1 flex-col overflow-y-auto py-4">
+                <nav class="flex-1 space-y-1 px-3">
+                    <a class="group flex items-center rounded-lg bg-primary/10 px-3 py-2.5 text-sm font-medium text-primary"
+                        href="#">
+                        <span class="material-symbols-outlined mr-3 filled">dashboard</span>
+                        Dashboard
+                    </a>
+                    <a class="group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined mr-3">list_alt</span>
+                        Listings
+                    </a>
+                    <a class="group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined mr-3">calendar_month</span>
+                        Calendar
+                    </a>
+                    <a class="group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                        href="#">
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined mr-3">inbox</span>
+                            Inbox
+                        </div>
+                        <span
+                            class="inline-flex items-center justify-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-bold text-red-600">3</span>
+                    </a>
+                    <a class="group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined mr-3">star</span>
+                        Reviews
+                    </a>
+                    <a class="group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined mr-3">attach_money</span>
+                        Earnings
+                    </a>
+                </nav>
+                <div class="mt-auto px-3">
+                    <a class="group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                        href="#">
+                        <span class="material-symbols-outlined mr-3">settings</span>
+                        Settings
+                    </a>
+                    <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+                    <div class="flex items-center gap-3 px-3 py-2">
+                        <div class="h-10 w-10 overflow-hidden rounded-full bg-slate-200"
+                            data-alt="Profile picture of a smiling man with glasses"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAABHcS3SDrbxKUVaWeA-Wb1mQDTCSEsPP2YzAHqk6uXtjXeJ3cwF6A62ChEc6HJNG8WZsgn8UQHUgacVijf5TXl2qtzILZarrCmuZSeDaynWuZqaZNDwmGJ1TOEbw00Hr5D7Dv8Ep_54i0EYI1CSR7z3s4IGDmgkR8Jgug6zEbYmoaMadWdJ2mn6WW_14Re0JHUw6_zyRNzEiuIbBnEq4l-pzy_rpTFNQ4o9rISqooqQCnJLXzhBlFInFCbjkgTI734BMq_YNk-3pH'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-slate-900 dark:text-white">Tom Cook</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Partner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex flex-1 flex-col overflow-hidden">
+            <!-- Sticky Header -->
+            <header
+                class="sticky top-0 z-20 flex h-16 flex-shrink-0 items-center justify-between border-b border-slate-200 bg-white/80 px-6 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/80">
+                <div class="flex items-center gap-4">
+                    <button
+                        class="text-slate-500 hover:text-slate-700 md:hidden dark:text-slate-400 dark:hover:text-slate-200">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <div class="hidden md:flex flex-col">
+                        <h1 class="text-xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Welcome back, manage your properties and
+                            bookings.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- Property Selector Dropdown -->
+                    <div class="relative hidden sm:block">
+                        <div
+                            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">domain</span>
+                        </div>
+                        <select
+                            class="block w-full rounded-lg border-0 bg-slate-100 py-2 pl-10 pr-10 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-primary dark:bg-slate-800 dark:text-white sm:w-64">
+                            <option>Downtown Hotel &amp; Spa</option>
+                            <option>Seaside Bike Rentals</option>
+                            <option>Mountain View Cabin</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-slate-500">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">expand_more</span>
+                        </div>
+                    </div>
+                    <button
+                        class="relative rounded-full bg-slate-100 p-2 text-slate-500 hover:text-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:text-slate-200">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span
+                            class="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-slate-900"></span>
+                    </button>
+                    <button
+                        class="hidden rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-blue-700 md:block">
+                        Add Listing
+                    </button>
+                    <a href="index.html" class="ml-2 text-sm font-medium text-primary hover:text-primary-hover">Exit to
+                        Site</a>
+                </div>
+            </header>
+
+            <!-- Scrollable Content -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-8">
+                <div class="mx-auto max-w-7xl space-y-8">
+                    <!-- Mobile Only Title -->
+                    <div class="md:hidden">
+                        <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Manage your properties and bookings.</p>
+                        <div class="mt-4 relative">
+                            <div
+                                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">domain</span>
+                            </div>
+                            <select
+                                class="block w-full rounded-lg border-slate-300 bg-white py-2 pl-10 pr-10 text-sm focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white">
+                                <option>Downtown Hotel &amp; Spa</option>
+                                <option>Seaside Bike Rentals</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <!-- Card 1 -->
+                        <div
+                            class="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                            <dt
+                                class="flex items-center gap-2 truncate text-sm font-medium text-slate-500 dark:text-slate-400">
+                                <span
+                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-primary dark:bg-blue-900/30">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">luggage</span>
+                                </span>
+                                Today's Check-ins
+                            </dt>
+                            <dd class="mt-4 flex items-baseline gap-2">
+                                <span class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">12</span>
+                                <span class="text-sm font-medium text-green-600 dark:text-green-400 flex items-center">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">arrow_upward</span>
+                                    2
+                                </span>
+                                <span class="text-sm text-slate-400">vs yesterday</span>
+                            </dd>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div
+                            class="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                            <dt
+                                class="flex items-center gap-2 truncate text-sm font-medium text-slate-500 dark:text-slate-400">
+                                <span
+                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                    <span class="material-symbols-outlined filled" style="font-size: 18px;">star</span>
+                                </span>
+                                Average Rating
+                            </dt>
+                            <dd class="mt-4 flex items-baseline gap-2">
+                                <span
+                                    class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">4.8</span>
+                                <span class="text-sm text-slate-400">/ 5.0</span>
+                                <span class="ml-auto text-xs font-medium text-slate-500">120 reviews</span>
+                            </dd>
+                            <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800">
+                                <div class="h-1.5 rounded-full bg-yellow-400" style="width: 96%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                            <dt
+                                class="flex items-center gap-2 truncate text-sm font-medium text-slate-500 dark:text-slate-400">
+                                <span
+                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">payments</span>
+                                </span>
+                                Monthly Earnings
+                            </dt>
+                            <dd class="mt-4 flex items-baseline gap-2">
+                                <span
+                                    class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">$4,250</span>
+                                <span class="text-sm font-medium text-green-600 dark:text-green-400 flex items-center">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">trending_up</span>
+                                    5%
+                                </span>
+                                <span class="text-sm text-slate-400">vs last month</span>
+                            </dd>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                        <!-- Main Feed (Reservation List) -->
+                        <div class="col-span-1 lg:col-span-2">
+                            <div
+                                class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                <div
+                                    class="flex items-center justify-between border-b border-slate-200 p-6 dark:border-slate-800">
+                                    <div>
+                                        <h2 class="text-lg font-bold text-slate-900 dark:text-white">Reservation Feed
+                                        </h2>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">Today's incoming guests
+                                        </p>
+                                    </div>
+                                    <button
+                                        class="text-sm font-medium text-primary hover:text-blue-700 dark:text-blue-400">View
+                                        all</button>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-sm">
+                                        <thead
+                                            class="bg-slate-50 text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
+                                            <tr>
+                                                <th class="px-6 py-3 font-medium" scope="col">Guest</th>
+                                                <th class="px-6 py-3 font-medium" scope="col">Service / Room</th>
+                                                <th class="px-6 py-3 font-medium" scope="col">Time</th>
+                                                <th class="px-6 py-3 font-medium" scope="col">Status</th>
+                                                <th class="px-6 py-3 font-medium text-right" scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                            <!-- Row 1 -->
+                                            <tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30">
+                                                <td class="px-6 py-4">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="h-9 w-9 overflow-hidden rounded-full bg-slate-200"
+                                                            data-alt="Portrait of Alice Smith"
+                                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDs06LOmjw7s7Sf6vVHGmTlUL9_gt_apQaSfaOR_HeW9fuhec88Uu-2zxufkszFPDOb8J2Sup-sq_5nTsmwimyZWLXzcrmUlxBs5Dl9bAscc-4cunnI34oVNMIE2zShwVlYc1SrDqIeFdqTtxOUlejNwZXBhWiTLK7vHWZeNrRV2PDW5SOvlkHWS2XMBEMRD0bfI56KfDK07tN5E-b_35z_vO2Sa7DWpKzC0v30LOBVdJTkvTKVhf5zRl91Sgw8WiVKiusEqGNoDy4A'); background-size: cover; background-position: center;">
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-medium text-slate-900 dark:text-white">
+                                                                Alice
+                                                                Smith</div>
+                                                            <div class="text-xs text-slate-500">Booking #8321</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">Room 304 -
+                                                    Deluxe King</td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">14:00</td>
+                                                <td class="px-6 py-4">
+                                                    <span
+                                                        class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                        Confirmed
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 text-right">
+                                                    <button
+                                                        class="rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                                                        Check-in
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <!-- Row 2 -->
+                                            <tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30">
+                                                <td class="px-6 py-4">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="h-9 w-9 overflow-hidden rounded-full bg-slate-200"
+                                                            data-alt="Portrait of Michael Brown"
+                                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtEvXBSOkzYLfZOy6U_B5leCy0p_D4fann1mJZG14Y-UNze6H58VxM-Vi1J6XSMg16jfBRu-USS0FTbsdu6B9itB8LjLVV3XCZJU27vN_WgnJ2wCkPmo-6-YP-lJXCw7Ld442koSSTP8OLovvrlCLB5GXJcji9xa8ZaiIGmxOgnG07jYoy32Li8cC1nbEF7N18pXAyTJFKN-3oswlUtCAUoVNiIKGTJBYQ9Xhb5wwlciGhvLNQyvUl5SheabiUdZouhk152B6Fn0ZI'); background-size: cover; background-position: center;">
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-medium text-slate-900 dark:text-white">
+                                                                Michael Brown</div>
+                                                            <div class="text-xs text-slate-500">Booking #8325</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">Mountain Bike
+                                                    Rental (2x)</td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">14:30</td>
+                                                <td class="px-6 py-4">
+                                                    <span
+                                                        class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                                        Pending
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 text-right">
+                                                    <button
+                                                        class="rounded-lg bg-white border border-slate-300 px-3 py-1.5 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700">
+                                                        Review
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <!-- Row 3 -->
+                                            <tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30">
+                                                <td class="px-6 py-4">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="h-9 w-9 overflow-hidden rounded-full bg-slate-200"
+                                                            data-alt="Portrait of Sarah Jones"
+                                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4ovmammkYBZzsQGsZuYFC55jl_S2Ip3XERljvKstpNTNcRW0hUC2WaSq0Lkz73mUKQg9ZG1J-OO8tSjpag019eevrhsvy3rtZRZ2UUNo7Ww8PyyLnXGQgbRlhgPp-Omn8QNDR0nY3pgAtVm43zTSRcxb5uaxk6vu3QeVlDFPc3tdUhNl9sX6XaFyvDZTJUozPI7tO1xKKAWt-qmXzyYP8w5VamE5xwbpvj8pyWf15EUk7kkEVpZYBdxNxKOVnwdqGnMkNPEWqhaxT'); background-size: cover; background-position: center;">
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-medium text-slate-900 dark:text-white">
+                                                                Sarah
+                                                                Jones</div>
+                                                            <div class="text-xs text-slate-500">Booking #8328</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">Suite 101 -
+                                                    Ocean View</td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">15:00</td>
+                                                <td class="px-6 py-4">
+                                                    <span
+                                                        class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                        Confirmed
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 text-right">
+                                                    <button
+                                                        class="rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                                                        Check-in
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <!-- Row 4 -->
+                                            <tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30">
+                                                <td class="px-6 py-4">
+                                                    <div class="flex items-center gap-3">
+                                                        <div
+                                                            class="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-200">
+                                                            <span class="text-xs font-bold">DR</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-medium text-slate-900 dark:text-white">
+                                                                David
+                                                                Ross</div>
+                                                            <div class="text-xs text-slate-500">Booking #8330</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">Room 205 -
+                                                    Standard</td>
+                                                <td class="px-6 py-4 text-slate-700 dark:text-slate-300">16:15</td>
+                                                <td class="px-6 py-4">
+                                                    <span
+                                                        class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-400">
+                                                        Arriving Late
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 text-right">
+                                                    <button
+                                                        class="rounded-lg bg-white border border-slate-300 px-3 py-1.5 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700">
+                                                        Details
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="border-t border-slate-200 p-4 dark:border-slate-800">
+                                    <nav aria-label="Pagination" class="flex items-center justify-between">
+                                        <div class="hidden sm:block">
+                                            <p class="text-sm text-slate-500 dark:text-slate-400">
+                                                Showing <span class="font-medium">1</span> to <span
+                                                    class="font-medium">4</span> of <span class="font-medium">12</span>
+                                                results
+                                            </p>
+                                        </div>
+                                        <div class="flex flex-1 justify-between sm:justify-end">
+                                            <button
+                                                class="relative inline-flex items-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">Previous</button>
+                                            <button
+                                                class="relative ml-3 inline-flex items-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">Next</button>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Quick Stats / Calendar / Notifications -->
+                        <div class="space-y-8">
+                            <!-- Mini Calendar Widget -->
+                            <div
+                                class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                <h3 class="font-bold text-slate-900 dark:text-white">October 2023</h3>
+                                <div
+                                    class="mt-4 grid grid-cols-7 gap-1 text-center text-xs text-slate-500 dark:text-slate-400">
+                                    <div>M</div>
+                                    <div>T</div>
+                                    <div>W</div>
+                                    <div>T</div>
+                                    <div>F</div>
+                                    <div>S</div>
+                                    <div>S</div>
+                                </div>
+                                <div class="mt-2 grid grid-cols-7 gap-1 text-sm">
+                                    <div class="py-1 text-slate-300">28</div>
+                                    <div class="py-1 text-slate-300">29</div>
+                                    <div class="py-1 text-slate-300">30</div>
+                                    <div
+                                        class="rounded-full py-1 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+                                        1</div>
+                                    <div
+                                        class="rounded-full py-1 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+                                        2</div>
+                                    <div
+                                        class="rounded-full py-1 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+                                        3</div>
+                                    <div
+                                        class="rounded-full py-1 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+                                        4</div>
+                                    <div class="rounded-full bg-primary py-1 font-semibold text-white shadow-sm">5
+                                    </div>
+                                    <div
+                                        class="rounded-full py-1 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+                                        6</div>
+                                    <div
+                                        class="rounded-full py-1 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+                                        7</div>
+                                    <!-- ... -->
+                                </div>
+                                <div class="mt-4 space-y-3">
+                                    <div
+                                        class="flex items-center gap-3 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/50">
+                                        <div class="h-2 w-2 rounded-full bg-blue-500"></div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-slate-900 dark:text-white">Housekeeping
+                                                Inspection</p>
+                                            <p class="text-xs text-slate-500">11:00 AM - Room 304</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-3 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/50">
+                                        <div class="h-2 w-2 rounded-full bg-orange-500"></div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-slate-900 dark:text-white">Bike Fleet
+                                                Maintenance</p>
+                                            <p class="text-xs text-slate-500">02:00 PM - Garage</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recent Reviews -->
+                            <div
+                                class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="font-bold text-slate-900 dark:text-white">Recent Reviews</h3>
+                                    <a class="text-xs font-medium text-primary hover:text-blue-700" href="#">View
+                                        all</a>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="border-b border-slate-100 pb-4 dark:border-slate-800">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-2">
+                                                <div class="h-6 w-6 rounded-full bg-slate-200"
+                                                    data-alt="Reviewer Avatar"
+                                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6mTXzQ9XWoiTiq8vKypEoWglGK2UJO6dQro7N6ZuYmJWnaUy8kJH9F8u4BK1f2iJFGPB5XwaswrD_kmTNhlCUb2CgjI8kdlujSFq8zCNXWggx_NSi1WDYyZcrLHnXIQJeZRbuyo-aOboTy4oNadUcIbSM-nd5KxoikjGaCPp8ja8uqbntMzIUN5aTifVoSOlRhdZuaNFCe_ne7TUpjodWhm6NmfdpkdSChi83coHc4TIRdBd2CZeXgMkNEn4qcGSko35xo6yoLcT-'); background-size: cover;">
+                                                </div>
+                                                <span class="text-sm font-medium text-slate-900 dark:text-white">Emily
+                                                    D.</span>
+                                            </div>
+                                            <div class="flex text-yellow-400">
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                            </div>
+                                        </div>
+                                        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">"Great
+                                            location! The bikes were in excellent condition and the staff was very
+                                            helpful."</p>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-2">
+                                                <div class="h-6 w-6 rounded-full bg-slate-200"
+                                                    data-alt="Reviewer Avatar 2"
+                                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC1rNUWLOSfhdXVMD9LnSds14EgZItL6Z1Hxnd3p3QlTH9AYvh_OQEgI3S1mz8_UgtBxPlKa4XgDT2jYuX9sX7-RlBAU_iAdayqVJWtb8xVigxvXhvbnI4LLAfY1tKqkdK4a29rJ2ZAhHOHwFEW64byTNDB82yxLcM1ErH_G6SXV0ANaoML41i338Q-eIp1xheNgEz_sQnyK1O94dSsdn0BjqnR3KSRcwSkbaONJc9GKeBp8PjQkfcbLR6gMtffA6vXPjpqp_06v7K3'); background-size: cover;">
+                                                </div>
+                                                <span class="text-sm font-medium text-slate-900 dark:text-white">Mark
+                                                    T.</span>
+                                            </div>
+                                            <div class="flex text-yellow-400">
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined filled"
+                                                    style="font-size: 16px;">star</span>
+                                                <span class="material-symbols-outlined"
+                                                    style="font-size: 16px;">star</span>
+                                            </div>
+                                        </div>
+                                        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">"Decent
+                                            stay, but check-in was a bit slow."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</body>
+
+</html>

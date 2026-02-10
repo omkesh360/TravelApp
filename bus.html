@@ -13,38 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#003580",
-                        "primary-hover": "#002357",
-                        "accent": "#febb02",
-                        "background-light": "#f5f7f8",
-                        "background-dark": "#0f1723",
-                        "text-main": "#1a1a1a",
-                        "text-muted": "#6b7280",
-                    },
-                    fontFamily: {
-                        "display": ["Be Vietnam Pro", "sans-serif"],
-                        "sans": ["Be Vietnam Pro", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                    },
-                    boxShadow: {
-                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
-                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
-                    }
-                },
-            },
-        }
-    </script>
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body
@@ -53,7 +22,7 @@
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
             <div class="flex items-center justify-between py-4">
                 <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="images/travelhub.png" alt="TravelHub" class="h-12 md:h-[60px]">
+                    <img src="images/travelhub.png" alt="TravelHub" class="input-standard md:h-[60px]">
                 </a>
                 <div class="flex items-center gap-4">
                     <div class="relative hidden sm:block">
@@ -70,41 +39,61 @@
                         <span class="material-symbols-outlined text-[24px]">help_outline</span>
                     </div>
 
-                    <div class="flex gap-2">
-                        <button
-                            class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</button>
-                        <button
-                            class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign
-                            in</button>
+                    <div id="auth-buttons" class="flex gap-2">
+                        <a href="register.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
+                        <a href="login.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
+                            in</a>
+                    </div>
+                    <div id="user-profile" class="hidden flex items-center gap-4">
+                        <div class="flex items-center gap-2 cursor-pointer relative group">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                <span class="material-symbols-outlined text-sm">person</span>
+                            </div>
+                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+
+                            <div
+                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                <a href="user-dashboard.html"
+                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <button id="logout-btn"
+                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                    Out</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
-                <a class="flex items-center gap-2 px-4 py-2.5 rounde~e/90 hover:text-white" href="stays.html">
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="stays.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
                     <span class="text-sm font-medium">Stays</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="car-rentals.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
                     <span class="text-sm font-medium">Car Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bike-rentals.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
                     <span class="text-sm font-medium">Bike Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="restaurant.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
                     <span class="text-sm font-medium">Restaurants</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="attraction.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
                     <span class="text-sm font-medium">Attractions</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
                     href="bus.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
                     <span class="text-sm font-medium">Buses</span>
@@ -127,7 +116,7 @@
                             <span class="material-symbols-outlined text-gray-400">directions_bus</span>
                         </div>
                         <input
-                            class="w-full pl-10 pr-4 py-2 text-text-main font-medium placeholder-text-muted focus:ring-0 border-transparent bg-transparent h-10 md:h-12"
+                            class="w-full pl-10 pr-4 py-2 text-text-main font-medium placeholder-text-muted focus:ring-0 border-transparent bg-transparent h-10 md:input-standard"
                             type="text" value="Pune, MH" />
                     </div>
                     <div class="flex-[2] relative group border-b lg:border-b-0 lg:border-r border-gray-200">
@@ -135,7 +124,7 @@
                             <span class="material-symbols-outlined text-gray-400">location_on</span>
                         </div>
                         <input
-                            class="w-full pl-10 pr-4 py-2 text-text-main font-medium placeholder-text-muted focus:ring-0 border-transparent bg-transparent h-10 md:h-12"
+                            class="w-full pl-10 pr-4 py-2 text-text-main font-medium placeholder-text-muted focus:ring-0 border-transparent bg-transparent h-10 md:input-standard"
                             type="text" value="Chhatrapati Sambhajinagar" />
                     </div>
                     <div class="flex-1 relative border-b lg:border-b-0 lg:border-r border-gray-200">
@@ -148,7 +137,7 @@
                     </div>
                     <div class="flex-1 relative">
                         <button
-                            class="bg-primary hover:bg-primary-hover text-white font-bold text-sm md:text-base px-6 py-3 rounded md:w-auto w-full transition-colors flex items-center justify-center h-12">
+                            class="bg-primary hover:bg-primary-hover text-white font-bold text-sm md:text-base px-6 py-3 rounded md:w-auto w-full transition-colors flex items-center justify-center input-standard">
                             Search
                         </button>
                     </div>
@@ -156,20 +145,9 @@
             </div>
         </div>
     </div>
-    <main class="flex-grow py-8 max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-6">
+    <main class="flex-grow pt-16 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-6">
         <aside class="w-full lg:w-[280px] flex-shrink-0 space-y-4">
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-2 shadow-sm cursor-pointer hover:shadow-md transition-shadow mb-4 relative overflow-hidden h-24 flex items-center justify-center">
-                <div class="absolute inset-0 bg-gray-200 opacity-50">
-                    <div class="w-full h-full"
-                        style="background-image: radial-gradient(#cbd5e1 2px, transparent 2px); background-size: 16px 16px;">
-                    </div>
-                </div>
-                <button
-                    class="bg-primary text-white text-sm font-bold px-4 py-2 rounded shadow-sm relative z-10 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-[18px]">map</span> Show on map
-                </button>
-            </div>
+
             <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-100">
                 <div class="p-4">
                     <h3 class="font-bold text-text-main mb-3">Filter by:</h3>
@@ -253,7 +231,7 @@
             </div>
         </aside>
         <section class="flex-grow w-full">
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar to Pune: 12 buses found</h2>
                 <div class="flex items-center gap-4">
                     <span class="text-xs text-text-muted font-medium">Sort by: <span
@@ -262,15 +240,14 @@
                 </div>
             </div>
             <div class="space-y-4">
-                <div
-                    class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group">
+                <a href="bus-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group block">
                     <div
                         class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
                         <div class="flex flex-col gap-6">
                             <div class="flex justify-between items-start">
                                 <div class="flex items-center gap-3">
                                     <img alt="MSRTC Shivneri"
-                                        class="w-12 h-12 object-cover rounded shadow-sm border border-gray-100"
+                                        class="w-12 input-standard object-cover rounded shadow-sm border border-gray-100"
                                         src="images/msrtc-shivneri.jpg" />
                                     <div>
                                         <h4 class="font-bold text-text-main">MSRTC Shivneri</h4>
@@ -326,7 +303,7 @@
                                 <span class="text-xs">Power</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div
                         class="p-4 sm:w-[180px] bg-gray-50 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
                         <div class="text-right sm:text-center">
@@ -340,15 +317,14 @@
                     </div>
                 </div>
 
-                <div
-                    class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group">
+                <a href="bus-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group block">
                     <div
                         class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
                         <div class="flex flex-col gap-6">
                             <div class="flex justify-between items-start">
                                 <div class="flex items-center gap-3">
                                     <div
-                                        class="w-12 h-12 bg-gray-800 rounded flex items-center justify-center text-white font-black text-sm">
+                                        class="w-12 input-standard bg-gray-800 rounded flex items-center justify-center text-white font-black text-sm">
                                         ST</div>
                                     <div>
                                         <h4 class="font-bold text-text-main">Saini Travels</h4>
@@ -401,7 +377,7 @@
                                 <span class="text-xs">Charging</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div
                         class="p-4 sm:w-[180px] bg-gray-50 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
                         <div class="text-right sm:text-center">
@@ -415,15 +391,14 @@
                     </div>
                 </div>
 
-                <div
-                    class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group">
+                <a href="bus-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-200 p-0 flex flex-col sm:flex-row overflow-hidden hover:shadow-card transition-shadow group block">
                     <div
                         class="p-5 flex-grow border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-between gap-4">
                         <div class="flex flex-col gap-6">
                             <div class="flex justify-between items-start">
                                 <div class="flex items-center gap-3">
                                     <div
-                                        class="w-12 h-12 bg-red-600 rounded flex items-center justify-center text-white font-black text-sm">
+                                        class="w-12 input-standard bg-red-600 rounded flex items-center justify-center text-white font-black text-sm">
                                         KT</div>
                                     <div>
                                         <h4 class="font-bold text-text-main">Khurana Travels</h4>
@@ -476,7 +451,7 @@
                                 <span class="text-xs">Water</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div
                         class="p-4 sm:w-[180px] bg-gray-50 flex flex-row sm:flex-col justify-between sm:justify-center items-center gap-2 sm:border-l border-gray-100">
                         <div class="text-right sm:text-center">
@@ -549,7 +524,7 @@
             </div>
             <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-2">
-                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 filter brightness-0 invert">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="input-standard filter brightness-0 invert">
                 </div>
                 <div class="text-xs text-white/60 text-center md:text-right">
                     Copyright © 1996–2024 TravelHub. All rights reserved.
@@ -558,73 +533,36 @@
         </div>
     </footer>
     <script>
-        // Currency converter with exchange rates
-        const exchangeRates = {
-            USD: 1,
-            EUR: 0.92,
-            INR: 83.12
-        };
-
-        const symbols = {
-            USD: '$',
-            EUR: '€',
-            INR: '₹'
-        };
-
-        document.getElementById('currencySelect').addEventListener('change', function (e) {
-            const selectedCurrency = e.target.value;
-            localStorage.setItem('selectedCurrency', selectedCurrency);
-            updatePricesOnPage(selectedCurrency);
-            showNotification(`Currency changed to ${selectedCurrency}`);
-        });
-
-        // Load saved currency on page load
-        window.addEventListener('load', function () {
-            const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
-            document.getElementById('currencySelect').value = savedCurrency;
-            updatePricesOnPage(savedCurrency);
-        });
-
-        function updatePricesOnPage(currency) {
-            const rate = exchangeRates[currency];
-            document.querySelectorAll('[data-price-usd]').forEach(element => {
-                const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
-                const convertedPrice = (priceUSD * rate).toFixed(2);
-                element.textContent = `${symbols[currency]}${convertedPrice}`;
-            });
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
         }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 2000);
-        }
-
-        // Add animation styles
-        const style = document.createElement('style');
-        style.textContent = `
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in {
-        animation: fadeIn 0.3s ease-in-out;
-    }
-    
-    /* Smooth transitions on hover for interactive elements */
-    button, a, input, select {
-        transition: all 0.3s ease;
-    }
-    
-    /* Add ripple effect on buttons */
-    button {
-        position: relative;
-        overflow: hidden;
-    }
-`;
-        document.head.appendChild(style);
     </script>
 
     <script src="js/app.js"></script>

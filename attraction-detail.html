@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Attraction Detail - TravelHub</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .material-icons {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col transition-colors duration-200">
+    <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-12 md:h-[60px]">
+                </a>
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden sm:block">
+                        <select id="currencySelect"
+                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="INR">INR (₹)</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
+                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
+                    </div>
+
+                    <div id="auth-buttons" class="flex gap-2">
+                        <a href="register.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
+                        <a href="login.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
+                            in</a>
+                    </div>
+                    <div id="user-profile" class="hidden flex items-center gap-4">
+                        <div class="flex items-center gap-2 cursor-pointer relative group">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                <span class="material-symbols-outlined text-sm">person</span>
+                            </div>
+                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+
+                            <div
+                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                <a href="user-dashboard.html"
+                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <button id="logout-btn"
+                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                    Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="stays.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+                    <span class="text-sm font-medium">Stays</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="car-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+                    <span class="text-sm font-medium">Car Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bike-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+                    <span class="text-sm font-medium">Bike Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="restaurant.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+                    <span class="text-sm font-medium">Restaurants</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                    href="attraction.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+                    <span class="text-sm font-medium">Attractions</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bus.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+                    <span class="text-sm font-medium">Buses</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <div class="relative h-[400px] md:h-[500px] w-full bg-gray-900 overflow-hidden group">
+            <img alt="Eiffel Tower at sunset with warm sky"
+                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                data-alt="Eiffel Tower sunset view" data-location="Paris, France"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWIwnia8va14WWlxXmPzfgK3zTXnQN9ZnAc8YCRDr-fU5q71PYKjTxrVX8X5Jw-yPqbGlr4KCbzYrLeT2YMdtXTJC5E2WjnfyI6JcX8N2SF9ZzLCp88HZ-q4kliDdO4vAb5-roYItU71E_DBns9s7e5XtfJeNCuix94QczB1eUq1LUblA71nGNgK8kgfSo5e46xeFpHKnxxbWuYbp1buxqypNE-6AbfZKoGfrdGTjIwOlb3lAVbVvE6yMk3qPcEnBdfY_H72lMHfft" />
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/40 to-transparent">
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 max-w-[1140px] mx-auto px-4 md:px-6 pb-8 md:pb-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded text-xs font-bold bg-yellow-400 text-yellow-900 uppercase tracking-wide">Bestseller</span>
+                            <span class="flex items-center text-gray-200 text-sm">
+                                <span class="material-symbols-outlined text-base mr-1">location_on</span>
+                                Paris, France
+                            </span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold text-white mb-2 leading-tight">Skip-the-Line: Eiffel
+                            Tower Summit Tour</h1>
+                        <div class="flex items-center gap-4 text-white/90">
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
+                                <span class="font-bold">4.8</span>
+                                <span class="text-sm opacity-80">(1,240 Reviews)</span>
+                            </div>
+                            <span class="w-1 h-1 rounded-full bg-white/50"></span>
+                            <span class="text-sm opacity-80">Duration: 2.5 Hours</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button
+                            class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/20 transition-all text-sm font-medium">
+                            <span class="material-symbols-outlined text-lg">share</span> Share
+                        </button>
+                        <button
+                            class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/20 transition-all text-sm font-medium">
+                            <span class="material-symbols-outlined text-lg">favorite_border</span> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Content Layout -->
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6 py-8 md:py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
+                <!-- Left Column: Details -->
+                <div class="lg:col-span-2 space-y-10">
+                    <!-- Highlights -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-text-main">Experience Highlights</h2>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div
+                                class="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                                <div class="bg-green-100 p-1.5 rounded-full flex-shrink-0 text-green-600">
+                                    <span class="material-symbols-outlined text-xl">check</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-text-main text-sm">Priority Access</h3>
+                                    <p class="text-sm text-text-muted mt-1">Skip the long ticket lines and save valuable
+                                        time.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                                <div class="bg-green-100 p-1.5 rounded-full flex-shrink-0 text-green-600">
+                                    <span class="material-symbols-outlined text-xl">check</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-text-main text-sm">Professional Guide</h3>
+                                    <p class="text-sm text-text-muted mt-1">Learn history from an expert local guide.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                                <div class="bg-green-100 p-1.5 rounded-full flex-shrink-0 text-green-600">
+                                    <span class="material-symbols-outlined text-xl">check</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-text-main text-sm">Summit Access</h3>
+                                    <p class="text-sm text-text-muted mt-1">Reach the very top floor for panoramic
+                                        views.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                                <div class="bg-green-100 p-1.5 rounded-full flex-shrink-0 text-green-600">
+                                    <span class="material-symbols-outlined text-xl">check</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-text-main text-sm">Small Group</h3>
+                                    <p class="text-sm text-text-muted mt-1">Limited to 20 people for a personalized
+                                        experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Description -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-4 text-text-main">What to expect</h2>
+                        <div class="prose prose-blue max-w-none text-text-muted">
+                            <p class="leading-relaxed mb-4">
+                                Experience the Iron Lady like never before. Meet your guide near the Eiffel Tower and
+                                bypass the notoriously long queues to the second floor. As you ascend, listen to
+                                fascinating stories about the tower’s construction and Gustave Eiffel’s vision that
+                                changed the Paris skyline forever.
+                            </p>
+                            <p class="leading-relaxed mb-4">
+                                From the second floor, you'll enjoy breathtaking 360-degree views of the Louvre, Notre
+                                Dame, Montmartre, and the winding Seine River. Your guide will point out landmarks and
+                                share hidden gems visible from this vantage point.
+                            </p>
+                            <div class="relative">
+                                <p class="leading-relaxed">
+                                    Finally, continue your journey to the summit—the highest observation deck in Europe.
+                                    Toast with a glass of champagne (optional) and see Gustave Eiffel’s restored office.
+                                    This is the quintessential Paris experience.
+                                </p>
+                            </div>
+                            <button
+                                class="mt-4 text-primary font-semibold hover:underline flex items-center gap-1 group">
+                                Read More
+                                <span
+                                    class="material-symbols-outlined text-sm transition-transform group-hover:translate-y-0.5">expand_more</span>
+                            </button>
+                        </div>
+                    </section>
+                    <!-- Photo Gallery Grid -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-text-main">Gallery</h2>
+                        <div class="grid grid-cols-4 grid-rows-2 gap-3 h-80 rounded-2xl overflow-hidden">
+                            <div class="col-span-2 row-span-2 relative">
+                                <img alt="Detail of Eiffel Tower ironwork structure"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUjNYqamNfJYd0opZ54jZ1dJAqG57TepfABjJHUWBraiprxDrWlchk9mtqjDLKQguIGZd2h-HnmsPicEIvxTwJiS-7BCVRy0SkmSvRcnual2lxwGtFeldnrumTpJ3rgsb6e_YtUo_p9ocg3o_wVoppJPdHanmFPKtv7LWPVrrLXjxB9ikHE3FclIo9xA1oiVDjjvOs3oP43G0qvvKJXz94hrB7V14zvGMOFzHUK70MGGHSb7yr92U2GfA02aS6fW1nezP2cQnlPfuD" />
+                            </div>
+                            <div class="col-span-1 row-span-1 relative">
+                                <img alt="View of Paris skyline from above"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-oxWZSZ77Oj2wo77mYv1JbjVsJZS-CupNosRG9QiVuw11oAyYiyrUdIGieqz3J53kJf1GG-1OOo6Pu_nqK-EUETnzkuHCir14h2mQ3Fpyo0jUngh1v0-J8EztJQFjEGWiUlbtWmvXKACL-qcOs8WxWahuuo-zvDy9umc_p_fHAAYNte0S2Qa7WDjEMp7ZTrvXM0McHiWGvJGju9zy-iN-UCbS7U93om3jFlqg97JnHM1Sntrzp06Fj9j0cuXo0eRHIndGWXfmd9-N" />
+                            </div>
+                            <div class="col-span-1 row-span-1 relative">
+                                <img alt="Eiffel Tower lit up at night"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBspyn45xdOn70rK1aS2OzLAbsZanmKAlxjc4q7yMXN3Nsq6Qdv8hr_sp_Yr9g3d_cC0gCFKoaGzTbUP-GH7rlEPmgf3p_ITz5UTbTjmrhSCJg3Q4V0A_KoUYbsLA3BaFaa4KZUQvQVT1C5Wcug7CfaQEkMiUIoEVrYYKW05EFJ-ct7EUJWESp5iwkBBKycVTC7u6a1_1N4ZpVk4GEmAfPyJu8qk9xpefhjR_Js11_zDAUlUDa65otYixOjJ0DXv8jPztqsmWRjRwI8" />
+                            </div>
+                            <div class="col-span-2 row-span-1 relative">
+                                <img alt="Couple enjoying view from summit"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnyZ4mrwDvpKdAGV6SR98Pg_B8NHOM3g8FAKEEFB-vkiJf8mvjr6nXVL1e2jlXiOS4uwJrb-g-SMZOpw7g3lMPkTp2fHxTZIUHVsTcuVsRCMS0JQIHUNp2YQyZLGxOIkrf3zLIRgUyxB8GVz4poD2geRTsKm08t0ojWyhuT19vzsowd_z_1oQQqyw526PtaB-oXJnAxlk88Um9WY6K8WvFJFDsyV3TJ2j2FmH3RuBabOPKObvoEDX4qfJfSJ4RzVxjFVivCIDq7QNI" />
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Reviews -->
+                    <section>
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold text-text-main">Customer Reviews</h2>
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl font-bold text-text-main">4.8</span>
+                                <div class="flex text-yellow-400 text-lg">
+                                    <span class="material-symbols-outlined">star</span>
+                                    <span class="material-symbols-outlined">star</span>
+                                    <span class="material-symbols-outlined">star</span>
+                                    <span class="material-symbols-outlined">star</span>
+                                    <span class="material-symbols-outlined">star_half</span>
+                                </div>
+                                <span class="text-text-muted text-sm">(1,240)</span>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <!-- Review Card 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary font-bold">
+                                            JD</div>
+                                        <div>
+                                            <h4 class="font-bold text-text-main text-sm">John Doe</h4>
+                                            <span class="text-xs text-text-muted">October 12, 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-muted text-sm leading-relaxed">
+                                    Absolutely worth the price! The guide, Marie, was knowledgeable and funny. Skipping
+                                    the line saved us at least 2 hours. The view from the summit is unforgettable.
+                                </p>
+                            </div>
+                            <!-- Review Card 2 -->
+                            <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <img alt="Sarah Smith" class="w-10 h-10 rounded-full object-cover"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIhkIX6oSFmlj7uJF5xNTQ6sf_y3XcGVxArFgPg3PGZ4FuteFakl8aoQpKp3kYbAzHYURUdAB-FXzI2MAzilJXIpS4ybYkxDVUo-9xOfSY59gC1UbVRv8VKVmxpJ67ZGgk4boU0C1lTShpQPdy6hZpC4xUwDgKOz67V-m3xNkzc5hK3h1O5j0sp5L7D7vU3Ep2FlFyKoG6I29Jj9exSQEZuN3HVOE_ajdCF_rFEG_MVO2MK_UbsEZEC6-oUNRPlXUiRdkumXNY1vms" />
+                                        <div>
+                                            <h4 class="font-bold text-text-main text-sm">Sarah Smith</h4>
+                                            <span class="text-xs text-text-muted">September 28, 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined">star</span>
+                                        <span class="material-symbols-outlined text-gray-300">star</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-muted text-sm leading-relaxed">
+                                    Great tour, though it was a bit windy at the top so bring a jacket. The meeting
+                                    point was easy to find. Highly recommended for first timers in Paris.
+                                </p>
+                            </div>
+                            <button
+                                class="w-full py-3 text-center text-primary font-medium hover:bg-primary-light/50 rounded-lg transition-colors border border-dashed border-primary/30">
+                                Load more reviews
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <!-- Right Column: Booking Widget (Sticky) -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24 space-y-4">
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+                            <!-- Price Header -->
+                            <div class="bg-primary/5 p-6 border-b border-gray-100">
+                                <p class="text-sm text-text-muted mb-1">Price starts from</p>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-3xl font-bold text-primary">$45.00</span>
+                                    <span class="text-text-muted text-sm">/ person</span>
+                                </div>
+                                <div
+                                    class="mt-3 flex items-center gap-2 text-xs text-green-600 font-medium bg-green-50 px-2 py-1 rounded w-fit">
+                                    <span class="material-symbols-outlined text-sm">check_circle</span>
+                                    Free cancellation up to 24h
+                                </div>
+                            </div>
+                            <div class="p-6 space-y-6">
+                                <!-- Date Selection -->
+                                <div>
+                                    <label class="block text-sm font-bold text-text-main mb-2">Select Date</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="material-symbols-outlined text-gray-400">calendar_today</span>
+                                        </div>
+                                        <input
+                                            class="block w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-sm text-text-main focus:ring-primary focus:border-primary transition-colors cursor-pointer"
+                                            type="date" value="2023-11-15" />
+                                    </div>
+                                    <!-- Mini Calendar Visual (Simplified) -->
+                                    <div class="mt-3 grid grid-cols-7 gap-1 text-center text-xs">
+                                        <div class="text-gray-400 py-1">Mon</div>
+                                        <div class="text-gray-400 py-1">Tue</div>
+                                        <div class="text-gray-400 py-1">Wed</div>
+                                        <div class="text-gray-400 py-1">Thu</div>
+                                        <div class="text-gray-400 py-1">Fri</div>
+                                        <div class="text-gray-400 py-1">Sat</div>
+                                        <div class="text-gray-400 py-1">Sun</div>
+                                        <!-- Days -->
+                                        <button class="p-2 rounded hover:bg-gray-100 text-gray-400">12</button>
+                                        <button class="p-2 rounded hover:bg-gray-100 text-gray-400">13</button>
+                                        <button class="p-2 rounded hover:bg-gray-100 text-gray-400">14</button>
+                                        <button
+                                            class="p-2 rounded bg-primary text-white font-bold shadow-md">15</button>
+                                        <button class="p-2 rounded hover:bg-gray-100 text-text-main">16</button>
+                                        <button class="p-2 rounded hover:bg-gray-100 text-text-main">17</button>
+                                        <button class="p-2 rounded hover:bg-gray-100 text-text-main">18</button>
+                                    </div>
+                                </div>
+                                <!-- Ticket Type Selection -->
+                                <div>
+                                    <label class="block text-sm font-bold text-text-main mb-3">Select Tickets</label>
+                                    <div class="space-y-4">
+                                        <!-- Adult -->
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <div class="font-medium text-sm text-text-main">Adult (18+)</div>
+                                                <div class="text-xs text-text-muted">$45.00</div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <button
+                                                    class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors">
+                                                    <span class="material-symbols-outlined text-base">remove</span>
+                                                </button>
+                                                <span class="w-4 text-center text-sm font-semibold">2</span>
+                                                <button
+                                                    class="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                                    <span class="material-symbols-outlined text-base">add</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Child -->
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <div class="font-medium text-sm text-text-main">Child (4-17)</div>
+                                                <div class="text-xs text-text-muted">$35.00</div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <button
+                                                    class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors">
+                                                    <span class="material-symbols-outlined text-base">remove</span>
+                                                </button>
+                                                <span class="w-4 text-center text-sm font-semibold">0</span>
+                                                <button
+                                                    class="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                                    <span class="material-symbols-outlined text-base">add</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Senior -->
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <div class="font-medium text-sm text-text-main">Senior (65+)</div>
+                                                <div class="text-xs text-text-muted">$40.00</div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <button
+                                                    class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors">
+                                                    <span class="material-symbols-outlined text-base">remove</span>
+                                                </button>
+                                                <span class="w-4 text-center text-sm font-semibold">0</span>
+                                                <button
+                                                    class="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                                    <span class="material-symbols-outlined text-base">add</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Time Slot Selection -->
+                                <div>
+                                    <label class="block text-sm font-bold text-text-main mb-2">Available Times</label>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button
+                                            class="py-2 px-1 text-xs rounded border border-gray-200 text-text-muted hover:border-primary hover:text-primary transition-colors">09:00
+                                            AM</button>
+                                        <button
+                                            class="py-2 px-1 text-xs rounded border border-primary bg-primary/10 text-primary font-bold shadow-sm ring-1 ring-primary/20">10:30
+                                            AM</button>
+                                        <button
+                                            class="py-2 px-1 text-xs rounded border border-gray-200 text-text-muted hover:border-primary hover:text-primary transition-colors">12:00
+                                            PM</button>
+                                        <button
+                                            class="py-2 px-1 text-xs rounded border border-gray-200 text-gray-400 cursor-not-allowed bg-gray-50 line-through">02:00
+                                            PM</button>
+                                        <button
+                                            class="py-2 px-1 text-xs rounded border border-gray-200 text-text-muted hover:border-primary hover:text-primary transition-colors">03:30
+                                            PM</button>
+                                        <button
+                                            class="py-2 px-1 text-xs rounded border border-gray-200 text-text-muted hover:border-primary hover:text-primary transition-colors">05:00
+                                            PM</button>
+                                    </div>
+                                </div>
+                                <!-- Total and CTA -->
+                                <div class="pt-4 border-t border-gray-100">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <span class="text-text-muted font-medium">Total Price</span>
+                                        <span class="text-2xl font-bold text-text-main">$90.00</span>
+                                    </div>
+                                    <button
+                                        class="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-lg font-bold text-lg shadow-lg shadow-primary/30 transition-all active:scale-[0.98]">
+                                        Book Now
+                                    </button>
+                                    <div class="text-center mt-3">
+                                        <span class="text-xs text-gray-400">No booking fees. Secure payment.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Help Card -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                            <div class="bg-primary/10 p-2 rounded-full text-primary">
+                                <span class="material-symbols-outlined">support_agent</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-text-main">Need help booking?</p>
+                                <p class="text-xs text-text-muted">Call our expert team 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 filter brightness-0 invert">
+                </div>
+                <div class="text-xs text-white/60 text-center md:text-right">
+                    Copyright © 1996–2024 TravelHub. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

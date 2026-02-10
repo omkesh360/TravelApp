@@ -13,38 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#003580",
-                        "primary-hover": "#002357",
-                        "accent": "#febb02",
-                        "background-light": "#f5f7f8",
-                        "background-dark": "#0f1723",
-                        "text-main": "#1a1a1a",
-                        "text-muted": "#6b7280",
-                    },
-                    fontFamily: {
-                        "display": ["Be Vietnam Pro", "sans-serif"],
-                        "sans": ["Be Vietnam Pro", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                    },
-                    boxShadow: {
-                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
-                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
-                    }
-                },
-            },
-        }
-    </script>
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body
@@ -53,7 +22,7 @@
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
             <div class="flex items-center justify-between py-4">
                 <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="images/travelhub.png" alt="TravelHub" class="h-12 md:h-[60px]">
+                    <img src="images/travelhub.png" alt="TravelHub" class="input-standard md:h-[60px]">
                 </a>
                 <div class="flex items-center gap-4">
                     <div class="relative hidden sm:block">
@@ -70,42 +39,61 @@
                         <span class="material-symbols-outlined text-[24px]">help_outline</span>
                     </div>
 
-                    <div class="flex gap-2">
-                        <button
-                            class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</button>
-                        <button
-                            class="bg-white text-primary text-sm font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors">Sign
-                            in</button>
+                    <div id="auth-buttons" class="flex gap-2">
+                        <a href="register.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
+                        <a href="login.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
+                            in</a>
+                    </div>
+                    <div id="user-profile" class="hidden flex items-center gap-4">
+                        <div class="flex items-center gap-2 cursor-pointer relative group">
+                            <a href="car-rental-detail.html"
+                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                <span class="material-symbols-outlined text-sm">person</span>
+                            </a>
+                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+
+                            <a href="car-rental-detail.html"
+                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                <a href="user-dashboard.html"
+                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <button id="logout-btn"
+                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                    Out</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="stays.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
                     <span class="text-sm font-medium">Stays</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
                     href="car-rentals.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
                     <span class="text-sm font-medium">Car Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bike-rentals.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
                     <span class="text-sm font-medium">Bike Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="restaurant.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
                     <span class="text-sm font-medium">Restaurants</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="attraction.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
                     <span class="text-sm font-medium">Attractions</span>
                 </a>
-                <a class="flex items-center gap-2 px-4 py-2.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bus.html">
                     <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
                     <span class="text-sm font-medium">Buses</span>
@@ -128,7 +116,7 @@
                             <span class="material-symbols-outlined text-gray-400">search</span>
                         </div>
                         <input
-                            class="w-full pl-10 pr-4 py-3 rounded border-2 border-transparent focus:border-transparent focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors h-12"
+                            class="w-full pl-10 pr-4 py-3 rounded border-2 border-transparent focus:border-transparent focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors input-standard"
                             placeholder="Pick-up location" type="text" value="Chhatrapati Sambhajinagar, India" />
                     </div>
                     <div class="flex-1 relative border-t lg:border-t-0 lg:border-l border-gray-200">
@@ -154,17 +142,9 @@
             </div>
         </div>
     </div>
-    <main class="flex-grow pt-8 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-6">
+    <main class="flex-grow pt-16 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-6">
         <aside class="w-full lg:w-1/4 lg:min-w-[280px] space-y-4">
-            <div class="rounded-lg overflow-hidden h-32 relative border border-gray-200 cursor-pointer group">
-                <div class="absolute inset-0 bg-blue-50 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-primary text-4xl opacity-50">map</span>
-                </div>
-                <div
-                    class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white text-primary text-xs font-bold px-3 py-1.5 rounded shadow-md group-hover:bg-primary group-hover:text-white transition-colors">
-                    Show on map
-                </div>
-            </div>
+
             <div class="bg-white rounded border border-gray-200 shadow-sm overflow-hidden">
                 <div class="p-4 border-b border-gray-100">
                     <h3 class="font-bold text-text-main">Filter by</h3>
@@ -266,23 +246,23 @@
                     </select>
                 </div>
             </div>
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group cursor-pointer">
-                <div class="md:w-60 shrink-0 flex flex-col gap-2">
-                    <div
+            <a href="car-rental-detail.html"
+                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block">
+                <div class="md:w-72 shrink-0 flex flex-col gap-2">
+                    <a href="car-rental-detail.html"
                         class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
                         <img alt="Honda City"
                             class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             src="images/honda-city.jpg" />
-                    </div>
+                    </a>
                     <div class="flex items-center justify-between px-1">
                         <div class="flex items-center gap-1">
                             <span class="text-xs font-bold text-text-main">Excellent</span>
                             <span class="text-[10px] text-text-muted">450 reviews</span>
                         </div>
-                        <div
+                        <a href="car-rental-detail.html"
                             class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            8.8</div>
+                            8.8</a>
                     </div>
                 </div>
                 <div class="flex-grow flex flex-col">
@@ -311,8 +291,8 @@
                             <span class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> A/C
                         </div>
                     </div>
-                    <div
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 border-t border-gray-100 gap-4">
+                    <a href="car-rental-detail.html"
+                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
                         <div class="space-y-1 w-full sm:w-auto">
                             <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
                                 <span class="material-symbols-outlined text-[18px]">check</span> Free cancellation
@@ -327,26 +307,23 @@
                             <button
                                 class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group cursor-pointer mt-4">
-                <div class="md:w-60 shrink-0 flex flex-col gap-2">
-                    <div
+            </a>
+            <a href="car-rental-detail.html"
+                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
+                <div class="md:w-72 shrink-0 flex flex-col gap-2">
+                    <a href="car-rental-detail.html"
                         class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
                         <img alt="Toyota Fortuner"
                             class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             src="images/toyota-fortuner.jpg" />
-                    </div>
+                    </a>
                     <div class="flex items-center justify-between px-1">
-                        <div class="flex items-center gap-1">
-                            <span class="text-xs font-bold text-text-main">Exceptional</span>
-                            <span class="text-[10px] text-text-muted">210 reviews</span>
-                        </div>
-                        <div
+                        <span class="text-[10px] text-text-muted">210 reviews</span>
+                        <a href="car-rental-detail.html"
                             class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            9.2</div>
+                            9.2</a>
                     </div>
                 </div>
                 <div class="flex-grow flex flex-col">
@@ -377,8 +354,8 @@
                             <span class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> Dual A/C
                         </div>
                     </div>
-                    <div
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 border-t border-gray-100 gap-4">
+                    <a href="car-rental-detail.html"
+                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
                         <div class="space-y-1 w-full sm:w-auto">
                             <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
                                 <span class="material-symbols-outlined text-[18px]">check</span> All-wheel drive
@@ -394,26 +371,26 @@
                             <button
                                 class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group cursor-pointer mt-4">
-                <div class="md:w-60 shrink-0 flex flex-col gap-2">
-                    <div
+            </a>
+            <a href="car-rental-detail.html"
+                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
+                <div class="md:w-72 shrink-0 flex flex-col gap-2">
+                    <a href="car-rental-detail.html"
                         class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
                         <img alt="Mahindra Scorpio"
                             class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             src="images/mahindra-scorpio.jpg" />
-                    </div>
+                    </a>
                     <div class="flex items-center justify-between px-1">
                         <div class="flex items-center gap-1">
                             <span class="text-xs font-bold text-text-main">Very Good</span>
                             <span class="text-[10px] text-text-muted">320 reviews</span>
                         </div>
-                        <div
+                        <a href="car-rental-detail.html"
                             class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            8.4</div>
+                            8.4</a>
                     </div>
                 </div>
                 <div class="flex-grow flex flex-col">
@@ -440,26 +417,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Toyota Corolla Result -->
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group cursor-pointer mt-4">
-                <div class="md:w-60 shrink-0 flex flex-col gap-2">
-                    <div
+            <a href="car-rental-detail.html"
+                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
+                <div class="md:w-72 shrink-0 flex flex-col gap-2">
+                    <a href="car-rental-detail.html"
                         class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
                         <img alt="Toyota Corolla"
                             class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             src="images/honda-city.jpg" /> <!-- Using Honda City as fallback if corolla missing -->
-                    </div>
+                    </a>
                     <div class="flex items-center justify-between px-1">
                         <div class="flex items-center gap-1">
                             <span class="text-xs font-bold text-text-main">Very Good</span>
                             <span class="text-[10px] text-text-muted">45 reviews</span>
                         </div>
-                        <div
+                        <a href="car-rental-detail.html"
                             class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            8.2</div>
+                            8.2</a>
                     </div>
                 </div>
                 <div class="flex-grow flex flex-col">
@@ -490,8 +467,8 @@
                             conditioning
                         </div>
                     </div>
-                    <div
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 border-t border-gray-100 gap-4">
+                    <a href="car-rental-detail.html"
+                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
                         <div class="space-y-1 w-full sm:w-auto">
                             <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
                                 <span class="material-symbols-outlined text-[18px]">check</span> Free cancellation
@@ -503,20 +480,20 @@
                             <button
                                 class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
+            </a>
 
             <!-- Jeep Renegade Result -->
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group cursor-pointer mt-4">
-                <div class="md:w-60 shrink-0 flex flex-col gap-2">
-                    <div
+            <a href="car-rental-detail.html"
+                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
+                <div class="md:w-72 shrink-0 flex flex-col gap-2">
+                    <a href="car-rental-detail.html"
                         class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
                         <img alt="Jeep Renegade"
                             class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             src="images/mahindra-scorpio.jpg" /> <!-- Using Scorpio as fallback -->
-                    </div>
+                    </a>
                 </div>
                 <div class="flex-grow flex flex-col">
                     <div class="flex justify-between items-start mb-2">
@@ -546,28 +523,28 @@
                             conditioning
                         </div>
                     </div>
-                    <div
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 border-t border-gray-100 gap-4">
+                    <a href="car-rental-detail.html"
+                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
                         <div class="text-right w-full sm:w-auto">
                             <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
                             <p class="text-2xl font-bold text-text-main">₹4,500</p>
                             <button
                                 class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
+            </a>
 
             <!-- BMW 3 Series Result -->
-            <div
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group cursor-pointer mt-4">
-                <div class="md:w-60 shrink-0 flex flex-col gap-2">
-                    <div
+            <a href="car-rental-detail.html"
+                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
+                <div class="md:w-72 shrink-0 flex flex-col gap-2">
+                    <a href="car-rental-detail.html"
                         class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
                         <img alt="BMW 3 Series"
                             class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             src="images/toyota-fortuner.jpg" /> <!-- Using Fortuner as fallback -->
-                    </div>
+                    </a>
                 </div>
                 <div class="flex-grow flex flex-col">
                     <div class="flex justify-between items-start mb-2">
@@ -597,17 +574,17 @@
                             mileage
                         </div>
                     </div>
-                    <div
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 border-t border-gray-100 gap-4">
+                    <a href="car-rental-detail.html"
+                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
                         <div class="text-right w-full sm:w-auto">
                             <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
                             <p class="text-2xl font-bold text-text-main">₹12,000</p>
                             <button
                                 class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
+            </a>
     </main>
     <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
@@ -661,7 +638,7 @@
             </div>
             <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-2">
-                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 filter brightness-0 invert">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="input-standard filter brightness-0 invert">
                 </div>
                 <div class="text-xs text-white/60 text-center md:text-right">
                     Copyright © 1996–2024 TravelHub. All rights reserved.
@@ -670,75 +647,36 @@
         </div>
     </footer>
     <script>
-        // Currency converter with exchange rates
-        const exchangeRates = {
-            USD: 1,
-            EUR: 0.92,
-            INR: 83.12
-        };
-
-        const symbols = {
-            USD: '$',
-            EUR: '€',
-            INR: '₹'
-        };
-
-        document.getElementById('currencySelect').addEventListener('change', function (e) {
-            const selectedCurrency = e.target.value;
-            localStorage.setItem('selectedCurrency', selectedCurrency);
-            updatePricesOnPage(selectedCurrency);
-            showNotification(`Currency changed to ${selectedCurrency}`);
-        });
-
-        // Load saved currency on page load
-        window.addEventListener('load', function () {
-            const savedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
-            document.getElementById('currencySelect').value = savedCurrency;
-            updatePricesOnPage(savedCurrency);
-        });
-
-        function updatePricesOnPage(currency) {
-            const rate = exchangeRates[currency];
-            document.querySelectorAll('[data-price-usd]').forEach(element => {
-                const priceUSD = parseFloat(element.getAttribute('data-price-usd'));
-                const convertedPrice = (priceUSD * rate).toFixed(2);
-                element.textContent = `${symbols[currency]}${convertedPrice}`;
-            });
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
         }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg animate-fade-in';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 2000);
-        }
-
-        // Add animation styles
-        const style = document.createElement('style');
-        style.textContent = `
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in {
-        animation: fadeIn 0.3s ease-in-out;
-    }
-    
-    /* Smooth transitions on hover for interactive elements */
-    button, a, input, select {
-        transition: all 0.3s ease;
-    }
-    
-    /* Add ripple effect on buttons */
-    button {
-        position: relative;
-        overflow: hidden;
-    }
-`;
-        document.head.appendChild(style);
-        // Initialize price converter
-        updatePricesOnPage(localStorage.getItem('selectedCurrency') || 'INR');
     </script>
     <script src="js/app.js"></script>
 </body>

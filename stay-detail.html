@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Stay Property Detail - TravelHub</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .material-icons {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: repeat(2, 200px);
+            gap: 0.5rem;
+        }
+
+        .gallery-item:first-child {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+    <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-12 md:h-[60px]">
+                </a>
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden sm:block">
+                        <select id="currencySelect"
+                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="INR">INR (₹)</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
+                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
+                    </div>
+
+                    <div id="auth-buttons" class="flex gap-2">
+                        <a href="register.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
+                        <a href="login.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
+                            in</a>
+                    </div>
+                    <div id="user-profile" class="hidden flex items-center gap-4">
+                        <div class="flex items-center gap-2 cursor-pointer relative group">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                <span class="material-symbols-outlined text-sm">person</span>
+                            </div>
+                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+
+                            <div
+                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                <a href="user-dashboard.html"
+                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <button id="logout-btn"
+                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                    Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                    href="stays.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+                    <span class="text-sm font-medium">Stays</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="car-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+                    <span class="text-sm font-medium">Car Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bike-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+                    <span class="text-sm font-medium">Bike Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="restaurant.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+                    <span class="text-sm font-medium">Restaurants</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="attraction.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+                    <span class="text-sm font-medium">Attractions</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bus.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+                    <span class="text-sm font-medium">Buses</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-[1140px] mx-auto px-4 md:px-6 py-6 w-full">
+        <!-- Breadcrumbs & Header -->
+        <nav aria-label="Breadcrumb" class="flex mb-4 text-sm text-text-muted">
+            <ol class="flex items-center space-x-2">
+                <li><a class="hover:text-primary hover:underline" href="index.html">Home</a></li>
+                <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+                <li><a class="hover:text-primary hover:underline" href="#">United Kingdom</a></li>
+                <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+                <li><a class="hover:text-primary hover:underline" href="#">London</a></li>
+                <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+                <li aria-current="page" class="text-text-main font-medium">The Grand London Hotel</li>
+            </ol>
+        </nav>
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span
+                        class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider dark:bg-gray-700 dark:text-gray-300">Hotel</span>
+                    <div class="flex text-accent">
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                </div>
+                <h1 class="text-3xl font-bold text-text-main mb-2">The Grand London Hotel</h1>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                    <span class="material-symbols-outlined text-primary text-lg">location_on</span>
+                    <span>Westminster Borough, London, United Kingdom</span>
+
+                    <span class="w-1 h-1 bg-gray-400 rounded-full mx-1"></span>
+                    <span>Subway Access</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-end gap-3">
+                <div class="flex gap-2">
+                    <button class="p-2 text-primary hover:bg-blue-50 rounded-full transition-colors">
+                        <span class="material-symbols-outlined">favorite_border</span>
+                    </button>
+                    <button class="p-2 text-primary hover:bg-blue-50 rounded-full transition-colors">
+                        <span class="material-symbols-outlined">share</span>
+                    </button>
+                    <button
+                        class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded font-semibold transition-colors">
+                        Reserve
+                    </button>
+                </div>
+                <div class="text-right hidden md:block">
+                    <p class="text-xs text-text-muted">Price Match Guarantee</p>
+                </div>
+            </div>
+        </div>
+        <!-- Image Gallery -->
+        <div class="grid grid-cols-4 grid-rows-2 gap-2 h-96 mb-8 rounded-xl overflow-hidden">
+            <div class="col-span-2 row-span-2 relative group cursor-pointer">
+                <img alt="Luxurious hotel exterior with pool at night"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqv-2oPtLtaSfsYPKnJ4CFz_jBbC2JocJopDQK5mP0frUKPFumaT3uBPSMaFjN5NuD9owrbUfj6gqRVaPADZLS_5etdFUZinHraBUcB8MYDFJMfmtcLIEUNQjk72bQEM3cflRzWqUqg45KKzCn3vqG2pr4e2LmsKUanFqWYshg7YNAPFqZ8mgXctuXkyAbUL-i_8ucJK5UMn4LsGU0W2RGjUAgx9Sb_fzz0lEZi7T3qyCnZVxAUXysgUb7ZNiHpj1gnRhVMi3vQMgn" />
+            </div>
+            <div class="col-span-1 row-span-1 relative group cursor-pointer">
+                <img alt="Modern hotel lobby with elegant seating"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKoi6dFjZahwEXvOiKtDMjeJ4W-MYCNFz-KMLgKgctlSqu6mERCxtyIvdM4dG10SLGNLRwrFfhh-ngP23pGtJMkNWeec2CzAyQ-rWcolPNkgnpVTuCIweTfNwJ3QhLcCsCQKAHsArF4ToWpDdrVL7PDgMDLFOnBRBw4AFCZBcoaP_LyY0RyDQEwO528IdUu9abuxcsYhg8k6aJLzkESv2zBdSAHtbYkUVGl7W7mrT8W7u1hpvdO73zzXi0kua1zcg2Tn34l8Ej8aLg" />
+            </div>
+            <div class="col-span-1 row-span-1 relative group cursor-pointer">
+                <img alt="Spacious hotel bedroom with king size bed"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYyuDkrczKAW6wMnNxCdBdNHhbZ089AMczJrgHCYqo4wgPD118F02RtHDQdn-Fc8crcR_9_9t1sZwbZDolvXRL7aJqh_02K5R5H5yGjt7h0FblnwrZnkw-cQJazuDk7dOq18AovQY05RRAKBuitnkRR3NVOP-8X7OjVNDBW_u7P2Cs6aMMs5-F1-DcAK9CEwNowhIoU5SJH2lG4-5R9v-pA8ozYyPTy6TTZz86p6f0ikV1yAhDf2-SQ2uXw2E3pDqOPCbON_yST3LK" />
+            </div>
+            <div class="col-span-1 row-span-1 relative group cursor-pointer">
+                <img alt="Marble bathroom with luxury amenities"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK66d3R6Zbvf0AnVH0SG4kcI4PVrjNEHJozdsSU2BS1UXd4osetwMsWFsPtAt0TyFzLGCJ2qEJ998ADe7vOOn1FE1j1_AAPMk9vOJfvOpv8KO07uGfqkb4tNDJgCpu0ooAJWT3qX7vvgnBcJSZmM8lR5hTkJDfifmRc-yek1epme9hflkqBjNZLzxUSez8VSxasuD4jhQ2DQJhZE9iEe_ksqtpCWhvdT5a-K-MIaaS7h8evfAHIQv3jrKixeM6JjH3y2cEaShOjtJp" />
+            </div>
+            <div class="col-span-1 row-span-1 relative group cursor-pointer overflow-hidden">
+                <img alt="Hotel resort pool area with lounge chairs"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKF7WVG0WSisbe5abrauLwRfJqDfrdEQIMLm11SegUfejma7Zw9ovw_twvsrIzfYnh28eYO-9iQv3aun4KyAEJdQv0fbNaMOs2ghfLMZX3RN-PnlLDHhGvp-v-_gwBHKjMW662cm_QWrqUup9llD_-gh4daMVWyNX7Sry-6fDDwr0qXrUepgoy-vrmg4katsweqVT7RNDv2_wOol_lMUmycWffJRRhzx4KZdUq1gTAcEdJhCFr_mZfFDErpGkNMRHW8Gq2MlkVJRJW" />
+                <div
+                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white font-semibold flex items-center gap-1">
+                        <span class="material-symbols-outlined">photo_library</span> See all 45 photos
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Description & Facilities -->
+            <div class="lg:col-span-2">
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-text-main mb-4">Stay in the heart of London</h2>
+                    <p class="text-text-muted leading-relaxed mb-4">
+                        Experience world-class service at The Grand London Hotel. Located just 400 meters from the city
+                        center, this property offers luxurious air-conditioned rooms with free WiFi. Guests can enjoy
+                        the on-site spa, fitness center, and a rooftop bar with panoramic views of the skyline.
+                    </p>
+                    <p class="text-text-muted leading-relaxed">
+                        Couples particularly like the location — they rated it <strong>9.6</strong> for a two-person
+                        trip.
+                    </p>
+                </div>
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-text-main mb-4">Most popular facilities</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <div
+                            class="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded-lg text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">wifi</span> Free WiFi
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded-lg text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">pool</span> Swimming Pool
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded-lg text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">spa</span> Spa &amp; Wellness
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded-lg text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">local_parking</span> Private Parking
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded-lg text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">restaurant</span> Restaurant
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-2 rounded-lg text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">ac_unit</span> Air Conditioning
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Highlight Card & Map -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Highlights Box -->
+                <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                    <h3 class="font-bold text-text-main mb-3">Property Highlights</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">favorite</span>
+                            <div>
+                                <p class="font-semibold text-sm text-text-main">Top Location: Highly rated by recent
+                                    guests (9.6)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">bed</span>
+                            <div>
+                                <p class="font-semibold text-sm text-text-main">Want a great night's sleep?</p>
+                                <p class="text-xs text-text-muted">This hotel was highly rated for its very comfy beds.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">local_dining</span>
+                            <div>
+                                <p class="font-semibold text-sm text-text-main">Breakfast Info</p>
+                                <p class="text-xs text-text-muted">Continental, Full English/Irish, Vegetarian,
+                                    Gluten-free</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full mt-5 bg-primary hover:bg-primary-hover text-white py-2.5 rounded font-semibold transition-colors shadow-sm">
+                        Reserve your stay
+                    </button>
+                </div>
+                <!-- Mini Map -->
+                <div class="relative h-40 rounded-xl overflow-hidden border border-gray-200">
+                    <img alt="Map view of London city streets" class="w-full h-full object-cover opacity-70"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgXVH08m-NbcjCsWeHpw_uC7GfDXYZSKitNu2zP2SPsaQhU2lfIS5XJ3M2GpbuJyxpfnBFpkOnonjWbUcIPgiaxlvwOR401yl_ZGdBe71gIUXY5h8ys7zjGc6cNm6v2neWGkYOScUoJZdpSI-m6yueHFPZcbSlmgr7qNZ9tCX4ZgtBZYFFz7CV3JxQQgCUTXHBrck5ok8yD3kX1jTUa-EX_5bKlvB8KT8DfwWGNGUGJiDA6isS3Z_JAaX5oK9QGJahbrY3S-omZdpz" />
+
+                </div>
+            </div>
+        </div>
+        <!-- Availability Table -->
+        <div class="mt-8 mb-12">
+            <h2 class="text-xl font-bold text-text-main mb-4">Availability</h2>
+            <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-primary text-white text-sm">
+                            <th class="p-4 font-semibold w-1/3">Room Type</th>
+                            <th class="p-4 font-semibold w-24 text-center">Sleeps</th>
+                            <th class="p-4 font-semibold w-1/4">Price for 2 nights</th>
+                            <th class="p-4 font-semibold w-1/4">Your choices</th>
+                            <th class="p-4 font-semibold w-32">Select</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 bg-white">
+                        <!-- Row 1 -->
+                        <tr>
+                            <td class="p-4 align-top">
+                                <a class="text-primary font-bold hover:underline text-lg block mb-1" href="#">Superior
+                                    Double Room</a>
+                                <p class="text-sm text-text-muted mb-2">1 extra-large double bed</p>
+                                <div class="flex gap-2 text-xs text-green-600 font-medium">
+                                    <span class="flex items-center gap-1"><span
+                                            class="material-symbols-outlined text-[14px]">check</span> Free WiFi</span>
+                                    <span class="flex items-center gap-1"><span
+                                            class="material-symbols-outlined text-[14px]">check</span> Air
+                                        conditioning</span>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top text-center">
+                                <span class="material-symbols-outlined text-text-muted">person</span>
+                                <span class="material-symbols-outlined text-text-muted">person</span>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div class="text-xl font-bold text-text-main">$345</div>
+                                <div class="text-xs text-text-muted mt-1">Includes taxes and fees</div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div class="flex items-center gap-1 text-green-600 font-bold text-sm mb-1">
+                                    <span class="material-symbols-outlined text-sm">coffee</span> Breakfast included
+                                </div>
+                                <div class="flex items-center gap-1 text-green-600 font-bold text-sm">
+                                    <span class="material-symbols-outlined text-sm">check</span> Free cancellation
+                                </div>
+                                <p class="text-xs text-text-muted mt-1">You can cancel later, so lock in this great
+                                    price today.</p>
+                            </td>
+                            <td class="p-4 align-top">
+                                <select
+                                    class="w-full rounded border-gray-300 bg-white text-text-main py-2 pl-3 pr-8 focus:ring-primary focus:border-primary text-sm">
+                                    <option value="0">0</option>
+                                    <option selected="" value="1">1 (345 $)</option>
+                                    <option value="2">2 (690 $)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr>
+                            <td class="p-4 align-top">
+                                <a class="text-primary font-bold hover:underline text-lg block mb-1" href="#">Deluxe
+                                    Suite with City View</a>
+                                <p class="text-sm text-text-muted mb-2">1 extra-large double bed</p>
+                                <span
+                                    class="inline-block bg-red-100 text-red-700 text-xs px-2 py-0.5 rounded font-bold mb-2">Only
+                                    2 rooms left!</span>
+                                <div class="flex gap-2 text-xs text-green-600 font-medium">
+                                    <span class="flex items-center gap-1"><span
+                                            class="material-symbols-outlined text-[14px]">check</span> Free WiFi</span>
+                                    <span class="flex items-center gap-1"><span
+                                            class="material-symbols-outlined text-[14px]">check</span> 35m²</span>
+                                    <span class="flex items-center gap-1"><span
+                                            class="material-symbols-outlined text-[14px]">check</span> City view</span>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top text-center">
+                                <span class="material-symbols-outlined text-text-muted">person</span>
+                                <span class="material-symbols-outlined text-text-muted">person</span>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div class="text-xl font-bold text-text-main">$520</div>
+                                <div class="text-xs text-text-muted mt-1">Includes taxes and fees</div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div class="flex items-center gap-1 text-text-main font-bold text-sm mb-1">
+                                    <span class="material-symbols-outlined text-sm">coffee_maker</span> No meals
+                                    included
+                                </div>
+                                <div class="flex items-center gap-1 text-text-main font-bold text-sm">
+                                    <span class="material-symbols-outlined text-sm">do_not_disturb</span> Non-refundable
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <select
+                                    class="w-full rounded border-gray-300 bg-white text-text-main py-2 pl-3 pr-8 focus:ring-primary focus:border-primary text-sm">
+                                    <option selected="" value="0">0</option>
+                                    <option value="1">1 (520 $)</option>
+                                    <option value="2">2 (1040 $)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="bg-blue-50 p-4 flex justify-end items-center gap-4">
+                    <div class="text-right">
+                        <span class="block text-sm text-text-muted">Total Price:</span>
+                        <span class="block text-2xl font-bold text-primary">$345</span>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded text-lg font-bold shadow-md transition-colors">
+                        I'll Reserve
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Guest Reviews -->
+        <div class="border-t border-gray-200 pt-8 mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-text-main">Guest Reviews</h2>
+                <button class="text-primary font-medium hover:underline">Read all reviews</button>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Score Card -->
+                <div class="w-full md:w-64 flex-shrink-0">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div
+                            class="bg-primary text-white text-xl font-bold w-12 h-12 flex items-center justify-center rounded-lg rounded-tr-none">
+                            8.8
+                        </div>
+                        <div>
+                            <div class="font-bold text-lg text-text-main">Fabulous</div>
+                            <div class="text-sm text-text-muted">1,240 reviews</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mt-4 text-sm">
+                        <div class="flex justify-between text-text-muted"><span>Cleanliness</span> <span
+                                class="font-semibold">9.0</span></div>
+                        <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between text-text-muted pt-1"><span>Location</span> <span
+                                class="font-semibold">9.6</span></div>
+                        <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full" style="width: 96%"></div>
+                        </div>
+                        <div class="flex justify-between text-text-muted pt-1"><span>Staff</span> <span
+                                class="font-semibold">8.9</span></div>
+                        <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full" style="width: 89%"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review List -->
+                <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Review 1 -->
+                    <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-sm">
+                                    SJ</div>
+                                <div>
+                                    <div class="font-bold text-sm text-text-main">Sarah Jenkins</div>
+                                    <div class="text-xs text-text-muted flex items-center gap-1">
+                                        <img alt="USA flag" class="w-4 h-auto"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAASmaGllLMDXrlzhY8omvwA9Ior8ZqztSV1cQuwvUQxuqtozFsoKgejLn8poRcNzS6Fk7MiM_mL8g3t4CHAAom6SYns5lKnvifBHRoUmt5EY3gEfus5JhP5LnoE8MbBNlEAZJa7ffTEXLPQKP-eHmvIKuvDRXBJGgJTlMLqMWAdMILC0znQrEcv2nCsNZtF3ACcPQG5VgvpfjOB3zR2yl6YBMTMzYiVwNDN8-gMOZACrj3-1-6qAqiKd8c9kfWRsvIIqN-W6zc6vNU" />
+                                        USA
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-text-muted">Reviewed: Oct 12, 2023</div>
+                        </div>
+                        <h4 class="font-bold text-sm text-text-main mb-2">"Exceptional stay in London!"</h4>
+                        <p class="text-sm text-text-muted leading-relaxed mb-3">
+                            The staff were incredibly helpful and friendly. The room was spacious and clean, and the
+                            location was perfect for sightseeing.
+                        </p>
+                        <div class="flex items-center gap-1 text-xs text-green-600 font-medium">
+                            <span class="material-symbols-outlined text-sm">sentiment_satisfied_alt</span> Liked:
+                            Location, Staff
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm">
+                                    MR</div>
+                                <div>
+                                    <div class="font-bold text-sm text-text-main">Michael Ross</div>
+                                    <div class="text-xs text-text-muted flex items-center gap-1">
+                                        <img alt="Australia flag" class="w-4 h-auto"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaSDHTYCgHGvL4pmSry7bjqQNMP7VAR2x2pS7n_xNvF6QHYgz6ElE7mAIetUDpa3Z8hJfi_fuOMAzmIWLuwlQ2YKo_l2ZY1cxNHHOHokCCQ4H_5RjyxoKx6ZegJaob_9d40psiVzC3f8UaLChHzzozp_hLZScg6TO2uY4tnHA0P-jlCAZolGPRj0qSfB9Q0CqCRcMqzM3StaCGyr7GLxzSBqTUNDWtE2kQFthJy8wOOLBLPZsfkQHe39VrWKFDfV9NYpW961kqpgor" />
+                                        Australia
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-text-muted">Reviewed: Sep 28, 2023</div>
+                        </div>
+                        <h4 class="font-bold text-sm text-text-main mb-2">"Great value for money"</h4>
+                        <p class="text-sm text-text-muted leading-relaxed mb-3">
+                            Breakfast was delicious with plenty of options. The bed was super comfortable. Only downside
+                            was the street noise a bit early in the morning.
+                        </p>
+                        <div class="flex items-center gap-1 text-xs text-green-600 font-medium">
+                            <span class="material-symbols-outlined text-sm">sentiment_satisfied_alt</span> Liked:
+                            Breakfast, Bed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 filter brightness-0 invert">
+                </div>
+                <div class="text-xs text-white/60 text-center md:text-right">
+                    Copyright © 1996–2024 TravelHub. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

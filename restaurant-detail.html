@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Restaurant Booking Detail - TravelHub</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .material-icons {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+    <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-12 md:h-[60px]">
+                </a>
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden sm:block">
+                        <select id="currencySelect"
+                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="INR">INR (₹)</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
+                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
+                    </div>
+
+                    <div id="auth-buttons" class="flex gap-2">
+                        <a href="register.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
+                        <a href="login.html"
+                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
+                            in</a>
+                    </div>
+                    <div id="user-profile" class="hidden flex items-center gap-4">
+                        <div class="flex items-center gap-2 cursor-pointer relative group">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                <span class="material-symbols-outlined text-sm">person</span>
+                            </div>
+                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+
+                            <div
+                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                <a href="user-dashboard.html"
+                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <button id="logout-btn"
+                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                    Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="stays.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
+                    <span class="text-sm font-medium">Stays</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="car-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+                    <span class="text-sm font-medium">Car Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bike-rentals.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
+                    <span class="text-sm font-medium">Bike Rentals</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                    href="restaurant.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
+                    <span class="text-sm font-medium">Restaurants</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="attraction.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
+                    <span class="text-sm font-medium">Attractions</span>
+                </a>
+                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                    href="bus.html">
+                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
+                    <span class="text-sm font-medium">Buses</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-[1140px] mx-auto px-4 md:px-6 py-8 w-full">
+        <!-- Breadcrumbs & Actions -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <nav class="flex text-sm text-text-muted">
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                <span class="mx-2">/</span>
+                <a class="hover:text-primary transition-colors" href="#">Italy</a>
+                <span class="mx-2">/</span>
+                <a class="hover:text-primary transition-colors" href="#">Milan</a>
+                <span class="mx-2">/</span>
+                <span class="text-text-main font-medium">La Trattoria Milano</span>
+            </nav>
+            <div class="flex space-x-3">
+                <button
+                    class="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-base">favorite_border</span>
+                    <span>Save</span>
+                </button>
+                <button
+                    class="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
+                    <span class="material-symbols-outlined text-base">share</span>
+                    <span>Share</span>
+                </button>
+            </div>
+        </div>
+        <!-- Title Section -->
+        <div class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-text-main mb-2">La Trattoria Milano</h1>
+            <div class="flex flex-wrap items-center gap-4 text-sm">
+                <div class="flex items-center text-accent">
+                    <span class="material-symbols-outlined text-lg">star</span>
+                    <span class="material-symbols-outlined text-lg">star</span>
+                    <span class="material-symbols-outlined text-lg">star</span>
+                    <span class="material-symbols-outlined text-lg">star</span>
+                    <span class="material-symbols-outlined text-lg text-gray-300">star</span>
+                    <span class="ml-2 font-bold text-text-main">4.8</span>
+                    <span class="ml-1 text-text-muted">(124 reviews)</span>
+                </div>
+                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                <span class="text-gray-700">Italian Cuisine</span>
+                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                <span class="text-gray-700">$$</span>
+                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                <div class="flex items-center text-text-muted">
+                    <span class="material-symbols-outlined text-base mr-1">location_on</span>
+                    Via Dante, 14, Milan
+                </div>
+            </div>
+        </div>
+        <!-- Photo Gallery -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 h-96 md:h-[500px]">
+            <!-- Main Large Image -->
+            <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-xl">
+                <img alt="Restaurant interior with warm lighting"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKj7sSfqpMChBLIBQTYs1qgqn8McfbBAgrOZKdssOlWI5iETIee3XQsyiIU7_v2V05LfDrzXjbYeAweIa8wJAlp6tdsw9u1qrBg3urrLosUySlGDSzl-Gnf8a1ACuVcdiXlTLFt0C9sPmEJV6h-X7f9UZmByhreB2o1-58Fj6ypBw-XibYA29itroM4kcjJwBrcQWDjW1wCXsMNNdJ4SdStc92hyZ8Y_18pcqoQRxdvlBbs0S-4pBMknJWmnEDncu5DMoDjg7lvPiC" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </div>
+            </div>
+            <!-- Smaller Images -->
+            <div class="relative group overflow-hidden rounded-xl">
+                <img alt="Chef preparing pasta dish"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC65rubyKvt5ULQXQSqsFbjgfgySlqfMAGqIgTmIcu3wPozobjrXqrzh1Q-tbgYpcHs2s7criGkAmHoWKzuknPqwbLDhSg3Wz9kJ8uWhcZM1yBpEsSOSt73Cv51Qya8uMAb6yEchQXGp_6begP_l9b_xn8EdAfWDflUIYFTNgGZLBMDo8Q6WZ5sWlYwhoZaWwY31e3_zKE8hEOAu_R9kB2o6oVhb5Q7e8r1sp0VoXsl_y-LsRKwLvES5N5z944BjOnHHDeKcMzWNOQ" />
+            </div>
+            <div class="relative group overflow-hidden rounded-xl">
+                <img alt="Platter of authentic Italian appetizers"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsYEo-GpigBBTbPiJ-OlJ1Skvs-REhblKUBoTNAf6Y2oxJmP1M5JFjvCZb4gee0jBS3Zdsnc_EyHywqFD_LFFL9Hdo2xfN8Q8munACsqhkpNggICAEvpFc7b2ca1a5U5ouqk0g0jHZwy2j_KyiYg4EmvFn1SgvS2fzlwjWyDXQKTPhsUKH-CFMsmB-DDjI_dXu2p6hLx38u9WHSWrL13g8h_MpNGG9MKTZR0a1c_6vdP6yNAdsPLGXJbvzis2dLIrBDqixbWq2raEB" />
+            </div>
+            <div class="relative group overflow-hidden rounded-xl">
+                <img alt="Detail of a dessert tiramisu"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-0pe98XnfdkX9_wKS0vgWDUyAIhQnZkHNjCPKGBwrZ1_JdcMTSD4_ZzMm5eKVhPSqrWN3z874EklNwkPs-RcEUXV5Bl1Gq9QVr-GNgCvifM4sQRTRbTn7TjMQY91ZYEJERHUNoKp1bt9UnbmXwtVnY7SHMNWiz_seHvHo6PxyLRqq7TcZwPWRlFStdaZVpD5rdDNSwR5oYHcj8FADA89mVAg6em1BLLKn5vG4_OHIpWLe4MdENS2Z0Y97EtcOFlv_6xDFoaxJgm3N" />
+            </div>
+            <div class="relative group overflow-hidden rounded-xl">
+                <img alt="Dining table set for two"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjIoGB3PHws1EH-YQrXD93E8BYLKhoEGhH-WpgUaAKxzHEr3z3fLOH0keWMLg-C0o5WugpCz8W4KDJP679z3Oa47AM9Z5ntUjlfX2m_419Zdx3XpvidtDt2Ozs1FVJEMxuV2fIpEEhbBb1vlm5nV8lyM_QRGCvLVpnB18SL_sL5jgTZqYrorDvHzGPSqs4_KGOxcQJD52jj46WeOfn0OlmDT6fk9qbDblxzWImS-SXpAArs7x9aIfxb0pfpaywm8Mf3Q_wNsTrsYxv" />
+                <div
+                    class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                    <span class="text-white font-medium flex items-center gap-2">
+                        <span class="material-symbols-outlined">grid_view</span> See all photos
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Details -->
+            <div class="lg:col-span-2 space-y-10">
+                <!-- About Section -->
+                <section>
+                    <h2 class="text-2xl font-bold text-text-main mb-4">About La Trattoria</h2>
+                    <p class="text-text-muted leading-relaxed mb-4">
+                        Experience authentic Milanese dining in the heart of the city. La Trattoria Milano brings
+                        generations of family recipes to your table, featuring hand-made pasta, locally sourced
+                        ingredients, and an extensive wine list curated by our expert sommelier. Whether you are looking
+                        for a romantic dinner or a family gathering, our warm atmosphere welcomes you.
+                    </p>
+                    <p class="text-text-muted leading-relaxed">
+                        Our signature dishes include the traditional Osso Buco and the vibrant Saffron Risotto. We pride
+                        ourselves on offering a true taste of Northern Italy.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                            <span class="material-symbols-outlined text-sm mr-1">check</span> Outdoor Seating
+                        </span>
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                            <span class="material-symbols-outlined text-sm mr-1">check</span> Free Wi-Fi
+                        </span>
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                            <span class="material-symbols-outlined text-sm mr-1">check</span> Wheelchair Accessible
+                        </span>
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                            <span class="material-symbols-outlined text-sm mr-1">check</span> Full Bar
+                        </span>
+                    </div>
+                </section>
+                <hr class="border-gray-200" />
+                <!-- Menu Highlights -->
+                <section>
+                    <div class="flex justify-between items-end mb-6">
+                        <h2 class="text-2xl font-bold text-text-main">Menu Highlights</h2>
+                        <a class="text-primary font-medium hover:underline flex items-center text-sm" href="#">
+                            View full menu <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Menu Item 1 -->
+                        <div
+                            class="flex items-start space-x-4 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                            <img alt="Osso Buco dish" class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhGKJNFZHD-EOcpcnOaysDjHayI5aOSvLnfAJqwrh2k7Oj_JHSp3mK4nIcYsBsRpnfOyy4RjvsntmTpFXPFKLCK2kMEYBqqpDYhZEs7MKwXutYGvhNdmW8iITIofrbw7HNkIyMlQRWsWyuJ6wLrAqgvjAjpDAhbxXvGJak0Z8xX_3zh2QsWz_E4K3Vy0rEtm6Zrrda8q-5LwLeyt6ULMETvo3Xu65jJc6RV-JLw2LSeYtapeybOGEfePiNvzCwdDjmlgLCs7ZVELLn" />
+                            <div>
+                                <h3 class="font-bold text-text-main">Osso Buco</h3>
+                                <p class="text-sm text-text-muted mt-1 line-clamp-2">Braised veal shanks cooked with
+                                    vegetables, white wine and broth.</p>
+                                <span class="block mt-2 font-semibold text-primary">$32.00</span>
+                            </div>
+                        </div>
+                        <!-- Menu Item 2 -->
+                        <div
+                            class="flex items-start space-x-4 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                            <img alt="Saffron Risotto" class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ000jpmJulbl_oxTVjjwBCFfZXZWlCdjo-YYyCM8TgFGTTiXnQr6sBc_TkVaWippFUNS6tPM1tnM9i-jdUtiA9udJeUF5GUbuKQR5gFxPjdejPPIOpqnV8x4gsh95bxFXVdMmKOX-sojHJbeQE2Y5heGYPz3doM2MfUnSyKRicxL2AV3lMEFkIYXiyewmqaFY-3vcmwqXBATCdIxcxODwfPZYZ49jDlXE8roFvD_k-KircbUFvbyIsqtkn_gQAxpRRX9vc5lSleQh" />
+                            <div>
+                                <h3 class="font-bold text-text-main">Saffron Risotto</h3>
+                                <p class="text-sm text-text-muted mt-1 line-clamp-2">Creamy arborio rice infused with
+                                    saffron and parmesan cheese.</p>
+                                <span class="block mt-2 font-semibold text-primary">$24.00</span>
+                            </div>
+                        </div>
+                        <!-- Menu Item 3 -->
+                        <div
+                            class="flex items-start space-x-4 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                            <img alt="Tiramisu Slice" class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA62yroR_GYttkLJCra0dtB_mH82I-8Em1fOHXAr-sDoP0PGCyKU1pVzE9QrEINRMablG-N264QkFCVYRpUXP7KIqV3bsqrEr3dFNAwWC3xu06tz8swZAy0_FXDQY4AbmIV64Gb9ipQyymWz5x7aUfAMx6bLjL5V_SDmRd08LJHWRN0gNbOXel7YAr3gKbSOTRH2369DouiL8sRFiEpbcCqNks2LLAcwKILuP8cmpVNPY7Z94BFNJ33R0ZYWgFnYWDfVXUNe0iLgQ8l" />
+                            <div>
+                                <h3 class="font-bold text-text-main">Classic Tiramisu</h3>
+                                <p class="text-sm text-text-muted mt-1 line-clamp-2">Layers of coffee-soaked ladyfingers
+                                    and mascarpone cream.</p>
+                                <span class="block mt-2 font-semibold text-primary">$12.00</span>
+                            </div>
+                        </div>
+                        <!-- Menu Item 4 -->
+                        <div
+                            class="flex items-start space-x-4 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                            <img alt="Caprese Salad" class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqtvclEyeT7gou1tG--0qArmCnAEM2ANK4KLCuKiFPe9ZdibkMMwO_FTkGtJ9fjdmHv__pyF2VX9dCQ4H2AprK2IdZeQVmYKrRpS2Mp9F5dc4dv2OR3vaw4Yzyh5YsaCKlzFSEG5Cj0qZ_Tw1vKvF0QUXWlDNgmJoMeokFpqnOsbBuoGQO-zrF3xL4uqrl7Z5PDJ1Wqqr147E1yZM6k45eAvFOFvAK6zyekTJIt452gyBCFk85FmtgNt8NDC66jg84WE6pwO912kmf" />
+                            <div>
+                                <h3 class="font-bold text-text-main">Caprese Salad</h3>
+                                <p class="text-sm text-text-muted mt-1 line-clamp-2">Fresh buffalo mozzarella, tomatoes,
+                                    and sweet basil.</p>
+                                <span class="block mt-2 font-semibold text-primary">$16.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <hr class="border-gray-200" />
+                <!-- Location & Hours -->
+                <section>
+                    <h2 class="text-2xl font-bold text-text-main mb-6">Location &amp; Hours</h2>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <!-- Info -->
+                        <div class="w-full md:w-1/3 space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-text-main mb-2 flex items-center">
+                                    <span class="material-symbols-outlined text-gray-400 mr-2">location_on</span>
+                                    Address
+                                </h3>
+                                <p class="text-text-muted pl-8">
+                                    Via Dante, 14<br />
+                                    20121 Milano MI, Italy
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-text-main mb-2 flex items-center">
+                                    <span class="material-symbols-outlined text-gray-400 mr-2">schedule</span> Opening
+                                    Hours
+                                </h3>
+                                <ul class="text-text-muted text-sm space-y-1 pl-8">
+                                    <li class="flex justify-between"><span>Mon - Thu</span> <span>11:00 AM - 10:00
+                                            PM</span></li>
+                                    <li class="flex justify-between font-medium text-text-main"><span>Fri - Sat</span>
+                                        <span>11:00 AM - 11:00 PM</span>
+                                    </li>
+                                    <li class="flex justify-between"><span>Sunday</span> <span>12:00 PM - 10:00
+                                            PM</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-text-main mb-2 flex items-center">
+                                    <span class="material-symbols-outlined text-gray-400 mr-2">call</span> Contact
+                                </h3>
+                                <p class="text-primary hover:underline pl-8 cursor-pointer">+39 02 1234 5678</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Right Column: Sticky Booking Widget -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24 bg-white rounded-xl shadow-xl border border-gray-100 p-6">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-bold text-text-main">Make a Reservation</h3>
+                        <p class="text-sm text-text-muted mt-1">Book your table instantly</p>
+                    </div>
+                    <form class="space-y-4" onsubmit="event.preventDefault();">
+                        <!-- Party Size -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Party
+                                Size</label>
+                            <div class="relative">
+                                <select
+                                    class="w-full bg-gray-50 border-gray-200 rounded-lg py-2.5 pl-10 pr-4 text-text-main focus:ring-primary focus:border-primary appearance-none cursor-pointer">
+                                    <option>2 People</option>
+                                    <option>3 People</option>
+                                    <option>4 People</option>
+                                    <option>5 People</option>
+                                    <option>6+ People</option>
+                                </select>
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400">group</span>
+                                <span
+                                    class="material-symbols-outlined absolute right-3 top-2.5 text-gray-400 pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        <!-- Date -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Date</label>
+                            <div class="relative">
+                                <input
+                                    class="w-full bg-gray-50 border-gray-200 rounded-lg py-2.5 pl-10 pr-4 text-text-main focus:ring-primary focus:border-primary placeholder-gray-400"
+                                    type="date" value="2023-10-27" />
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400">calendar_today</span>
+                            </div>
+                        </div>
+                        <!-- Time Slots -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-text-muted uppercase tracking-wider mb-2">Select
+                                Time</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button
+                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
+                                    type="button">6:00 PM</button>
+                                <button
+                                    class="py-2 text-sm font-medium bg-primary text-white border border-primary rounded shadow-md"
+                                    type="button">6:30 PM</button>
+                                <button
+                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
+                                    type="button">7:00 PM</button>
+                                <button
+                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
+                                    type="button">7:30 PM</button>
+                                <button
+                                    class="py-2 text-sm font-medium border border-gray-200 rounded bg-gray-100 text-gray-400 cursor-not-allowed"
+                                    type="button">8:00 PM</button>
+                                <button
+                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
+                                    type="button">8:30 PM</button>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <button
+                            class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 mt-6 flex items-center justify-center space-x-2"
+                            type="submit">
+                            <span>Reserve Table</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                        <p class="text-xs text-center text-text-muted mt-2">
+                            You won't be charged yet.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="h-12 filter brightness-0 invert">
+                </div>
+                <div class="text-xs text-white/60 text-center md:text-right">
+                    Copyright © 1996–2024 TravelHub. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
