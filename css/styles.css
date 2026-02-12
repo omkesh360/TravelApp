@@ -123,17 +123,34 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+.page-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
 }
 
 /* ============================================
@@ -220,6 +237,18 @@ button {
 /* ============================================
    DESKTOP CARD POLISH
    ============================================ */
+
+.sidebar-filter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+}
+
+.sidebar-filter-item input {
+    margin: 0;
+}
 
 @media (min-width: 1024px) {
     .desktop-card-image {

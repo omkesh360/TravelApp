@@ -17,91 +17,230 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in overflow-hidden">
+    <!-- Smooth Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-700">
+        <div class="relative flex flex-col items-center gap-4">
+            <div class="w-24 h-24 md:w-32 md:h-32 relative">
+                <!-- White Logo (Initial) -->
+                <img src="images/travelhub.png" alt="Loading..."
+                    class="w-full h-full object-contain grayscale opacity-20 absolute inset-0">
+                <!-- Colorful Logo (Animation) -->
+                <img src="images/travelhub.png" alt="Loading..."
+                    class="w-full h-full object-contain animate-pulse-logo absolute inset-0">
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="h-1 w-48 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary animate-progress-bar"></div>
+                </div>
+                <span class="text-xs font-bold text-primary mt-3 tracking-[0.2em] uppercase">Loading Adventure</span>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes pulse-logo {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.95);
+                filter: grayscale(100%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+                filter: grayscale(0%);
+            }
+        }
+
+        .animate-pulse-logo {
+            animation: pulse-logo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes progress-bar {
+            0% {
+                width: 0%;
+                transition-timing-function: cubic-bezier(0.1, 0, 0.45, 1);
+            }
+
+            30% {
+                width: 40%;
+                transition-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        .animate-progress-bar {
+            animation: progress-bar 2.5s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            const body = document.body;
+
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    body.classList.remove('overflow-hidden');
+                }, 700);
+            }, 1000); // Minimum display time for smooth experience
+        });
+    </script>
     <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <!-- Contact Top Bar -->
+        <div class="bg-primary-dark border-b border-white/5 py-1.5">
+            <div
+                class="max-w-[1140px] mx-auto px-4 md:px-6 flex justify-between items-center text-[13px] font-medium opacity-90">
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="tel:+918600968888" class="flex items-center gap-1 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">call</span>
+                        +91 86009 68888
+                    </a>
+                </div>
+
+                <div class="hidden md:flex flex-1 mx-8 overflow-hidden">
+                    <div class="animate-marquee whitespace-nowrap text-white/90 text-[12px]">
+                        <span class="mx-4">✨ Best places to visit in Sambhajinagar</span>
+                        <span class="mx-4">🚀 20% OFF on your first hotel booking</span>
+                        <span class="mx-4">🌟 Exclusive weekend deals for Car Rentals</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="mx-4" aria-hidden="true">✨ Best places to visit in Sambhajinagar</span>
+                        <span class="mx-4" aria-hidden="true">🚀 20% OFF on your first hotel booking</span>
+                        <span class="mx-4" aria-hidden="true">🌟 Exclusive weekend deals for Car Rentals</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="https://wa.me/918600968888" target="_blank"
+                        class="flex items-center gap-1 hover:text-white transition-colors">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                            class="w-4 h-4">
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between py-4">
-                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="images/travelhub.png" alt="TravelHub" class="input-standard md:h-[60px]">
+            <div class="flex items-center justify-between py-1.5 h-14 md:h-16">
+                <!-- Logo Left Side -->
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer shrink-0">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-8 md:h-[42px]">
                 </a>
-                <div class="flex items-center gap-4">
-                    <div class="relative hidden sm:block">
-                        <select id="currencySelect"
-                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
-                            <option value="USD">USD ($)</option>
-                            <option value="EUR">EUR (€)</option>
-                            <option value="INR">INR (₹)</option>
-                        </select>
-                        <span
-                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
-                    </div>
-                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
-                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
-                    </div>
 
-                    <div id="auth-buttons" class="flex gap-2">
-                        <a href="register.html"
-                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
-                        <a href="login.html"
-                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
-                            in</a>
-                    </div>
-                    <div id="user-profile" class="hidden flex items-center gap-4">
-                        <div class="flex items-center gap-2 cursor-pointer relative group">
-                            <a href="car-rental-detail.html"
-                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
-                                <span class="material-symbols-outlined text-sm">person</span>
-                            </a>
-                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+                <!-- Navigation and Auth Right Side -->
+                <div class="flex items-center gap-4 overflow-hidden">
+                    <nav class="hidden lg:flex items-center gap-1">
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="stays.html">
+                            <span class="material-symbols-outlined text-[20px]">bed</span>
+                            <span class="text-[13px] font-medium">Stays</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
+                            href="car-rentals.html">
+                            <span class="material-symbols-outlined text-[20px]">directions_car</span>
+                            <span class="text-[13px] font-medium">Car Rentals</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="bike-rentals.html">
+                            <span class="material-symbols-outlined text-[20px]">pedal_bike</span>
+                            <span class="text-[13px] font-medium">Bike Rentals</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="restaurant.html">
+                            <span class="material-symbols-outlined text-[20px]">restaurant</span>
+                            <span class="text-[13px] font-medium">Restaurants</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="attraction.html">
+                            <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                            <span class="text-[13px] font-medium">Attractions</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="bus.html">
+                            <span class="material-symbols-outlined text-[20px]">directions_bus</span>
+                            <span class="text-[13px] font-medium">Buses</span>
+                        </a>
+                    </nav>
 
-                            <a href="car-rental-detail.html"
-                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
-                                <a href="user-dashboard.html"
-                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
-                                <div class="border-t border-gray-100 my-1"></div>
-                                <button id="logout-btn"
-                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
-                                    Out</button>
-                            </a>
+                    <div class="flex items-center gap-2 shrink-0 ml-2 lg:border-l border-white/10 lg:pl-4">
+                        <div id="auth-buttons" class="flex gap-2">
+                            <a href="register.html"
+                                class="text-white text-[13px] font-bold px-3 py-1.5 rounded hover:bg-white/10 transition-colors hidden sm:block">Register</a>
+                            <a href="login.html"
+                                class="bg-white text-primary text-[13px] font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors shadow-sm">Sign
+                                in</a>
+                        </div>
+                        <div id="user-profile" class="hidden">
+                            <div class="flex items-center gap-2 cursor-pointer relative group">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                    <span class="material-symbols-outlined text-sm">person</span>
+                                </div>
+                                <div
+                                    class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                    <a href="user-dashboard.html"
+                                        class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                    <div class="border-t border-gray-100 my-1"></div>
+                                    <button id="logout-btn"
+                                        class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                        Out</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+            <!-- Mobile Navigation (Visible only on smaller screens) -->
+            <nav class="lg:hidden flex gap-1 sm:gap-2 pb-5 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="stays.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
-                    <span class="text-sm font-medium">Stays</span>
+                    <span class="material-symbols-outlined text-[18px]">bed</span>
+                    <span class="text-[12px] font-medium">Stays</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
                     href="car-rentals.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
-                    <span class="text-sm font-medium">Car Rentals</span>
+                    <span class="material-symbols-outlined text-[18px]">directions_car</span>
+                    <span class="text-[12px] font-medium">Car Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bike-rentals.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
-                    <span class="text-sm font-medium">Bike Rentals</span>
+                    <span class="material-symbols-outlined text-[18px]">pedal_bike</span>
+                    <span class="text-[12px] font-medium">Bike Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="restaurant.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
-                    <span class="text-sm font-medium">Restaurants</span>
+                    <span class="material-symbols-outlined text-[18px]">restaurant</span>
+                    <span class="text-[12px] font-medium">Restaurants</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="attraction.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
-                    <span class="text-sm font-medium">Attractions</span>
+                    <span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+                    <span class="text-[12px] font-medium">Attractions</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bus.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
-                    <span class="text-sm font-medium">Buses</span>
+                    <span class="material-symbols-outlined text-[18px]">directions_bus</span>
+                    <span class="text-[12px] font-medium">Buses</span>
                 </a>
             </nav>
         </div>
     </header>
-    <div class="bg-primary text-white pb-16 pt-12 relative z-40">
+    <div class="relative bg-primary text-white pb-16 pt-12 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/car-rental-hero.png" alt="Car Rental Background"
+                class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+        </div>
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
             <h1 class="text-4xl md:text-5xl font-black leading-tight mb-2 tracking-tight">Experience the Majesty
                 of<br />Chhatrapati Sambhajinagar.</h1>
@@ -109,482 +248,297 @@
                 Maharashtra's historic capital.</p>
         </div>
         <div class="max-w-[1140px] mx-auto px-4 md:px-6 absolute left-0 right-0 -bottom-8 z-20">
-            <div class="bg-accent p-1 rounded-lg shadow-soft">
-                <div class="bg-white rounded p-1 flex flex-col lg:flex-row gap-1">
-                    <div class="flex-1 relative group">
+            <div class="bg-white/10 backdrop-blur-md p-1.5 rounded-xl shadow-2xl border border-white/20">
+                <div class="bg-white rounded-lg p-1.5 flex flex-col md:flex-row gap-2 items-stretch shadow-inner">
+                    <div class="flex-[1.5] relative group">
                         <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                            <span class="material-symbols-outlined text-gray-400">search</span>
+                            <span class="material-symbols-outlined text-primary/60 text-[20px]">search</span>
                         </div>
                         <input
-                            class="w-full pl-10 pr-4 py-3 rounded border-2 border-transparent focus:border-transparent focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors input-standard"
+                            class="w-full pl-10 pr-4 h-[48px] rounded border-0 focus:ring-2 focus:ring-primary/20 text-text-main placeholder-text-muted font-medium bg-gray-50/50 hover:bg-gray-100/50 focus:bg-white transition-all text-sm"
                             placeholder="Pick-up location" type="text" value="Chhatrapati Sambhajinagar, India" />
                     </div>
-                    <div class="flex-1 relative border-t lg:border-t-0 lg:border-l border-gray-200">
+                    <div class="flex-1 relative border-t md:border-t-0 md:border-l border-gray-100">
                         <button
-                            class="w-full h-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded transition-colors text-left">
-                            <span class="material-symbols-outlined text-gray-400">calendar_month</span>
-                            <div class="flex flex-col justify-center">
-                                <span class="text-text-main font-medium leading-none text-sm">Thu, Nov 14</span>
-                                <span class="text-text-muted text-xs">10:00 AM</span>
-                            </div>
-                            <span class="mx-2 text-gray-300">→</span>
-                            <div class="flex flex-col justify-center">
-                                <span class="text-text-main font-medium leading-none text-sm">Sun, Nov 17</span>
-                                <span class="text-text-muted text-xs">10:00 AM</span>
+                            class="w-full h-full flex items-center gap-3 px-3 min-h-[48px] hover:bg-gray-50/50 transition-all text-left group">
+                            <span class="material-symbols-outlined text-primary/60 text-[20px]">calendar_month</span>
+                            <div class="flex flex-col">
+                                <span
+                                    class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Dates</span>
+                                <span class="text-text-main text-[13px] font-bold leading-tight">Thu, Nov 14 — Sun, Nov
+                                    17</span>
                             </div>
                         </button>
                     </div>
                     <button
-                        class="bg-primary hover:bg-primary-hover text-white font-bold text-base px-8 py-2 rounded lg:w-auto w-full transition-colors flex items-center justify-center">
-                        Search
+                        class="bg-primary hover:bg-primary-hover text-white font-bold text-sm h-[48px] px-8 rounded-lg transition-all flex items-center justify-center shadow-lg hover:shadow-primary/30 active:scale-95">
+                        SEARCH
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <main class="flex-grow pt-16 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-6">
-        <aside class="w-full lg:w-1/4 lg:min-w-[280px] space-y-4">
+    <main class="max-w-[1140px] mx-auto px-4 md:px-6 pt-16 pb-12 w-full flex-grow">
+        <div class="flex flex-col md:flex-row gap-6">
+            <aside class="w-full md:w-[280px] flex-shrink-0 space-y-4">
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="p-4 border-b border-gray-200 bg-gray-50">
+                        <h3 class="font-bold text-text-main">Filter by:</h3>
+                    </div>
+                    <!-- Car categories -->
+                    <div class="p-4 border-b border-gray-200">
+                        <h4 class="font-bold text-sm mb-3">Car category</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                    class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Small</span>
+                                <span class="text-xs text-text-muted ml-auto">14</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                    class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Medium</span>
+                                <span class="text-xs text-text-muted ml-auto">8</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                    class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Large</span>
+                                <span class="text-xs text-text-muted ml-auto">5</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                    class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">SUV</span>
+                                <span class="text-xs text-text-muted ml-auto">12</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Car specifications -->
+                    <div class="p-4 border-b border-gray-200">
+                        <h4 class="font-bold text-sm mb-3">Car specifications</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                    class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Air conditioning</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                    class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
+                                    type="checkbox" />
+                                <span class="text-sm text-text-main group-hover:text-primary">Automatic</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
 
-            <div class="bg-white rounded border border-gray-200 shadow-sm overflow-hidden">
-                <div class="p-4 border-b border-gray-100">
-                    <h3 class="font-bold text-text-main">Filter by</h3>
-                </div>
-                <div class="p-4 border-b border-gray-100">
-                    <h4 class="font-bold text-sm text-text-main mb-3">Car category</h4>
-                    <div class="space-y-2">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Small</span>
-                            <span class="text-xs text-text-muted ml-auto">14</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Medium</span>
-                            <span class="text-xs text-text-muted ml-auto">8</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Large</span>
-                            <span class="text-xs text-text-muted ml-auto">5</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">SUV</span>
-                            <span class="text-xs text-text-muted ml-auto">12</span>
-                        </label>
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar: 24 active rentals</h2>
+                    <div class="flex items-center gap-2">
+                        <button
+                            class="flex items-center gap-1 text-sm font-bold border border-gray-300 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors">
+                            Sort by: Recommended <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                        </button>
                     </div>
                 </div>
-                <div class="p-4 border-b border-gray-100">
-                    <h4 class="font-bold text-sm text-text-main mb-3">Car specifications</h4>
-                    <div class="space-y-2">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Air conditioning</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Automatic</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">4+ doors</span>
-                        </label>
-                    </div>
+
+                <div class="space-y-4">
+                    <!-- Honda City -->
+                    <a href="car-rental-detail.html"
+                        class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 hover:shadow-soft transition-shadow block">
+                        <div class="md:w-72 flex-shrink-0 flex flex-col gap-2">
+                            <div
+                                class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
+                                <img alt="Honda City" class="w-full h-full object-contain"
+                                    src="images/honda-city.jpg" />
+                            </div>
+                            <div class="flex items-center justify-between px-1">
+                                <div class="flex items-center gap-1">
+                                    <span class="text-xs font-bold text-text-main">Excellent</span>
+                                    <span class="text-[10px] text-text-muted">450 reviews</span>
+                                </div>
+                                <div
+                                    class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg">
+                                    8.8</div>
+                            </div>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Honda City (or
+                                        similar)</h3>
+                                    <p class="text-xs text-text-muted flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">location_on</span> CIDCO &
+                                        Airport
+                                    </p>
+                                </div>
+                                <div class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Compact
+                                </div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">person</span> 5
+                                    seats</div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">work</span> 2 bags
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
+                                    Automatic</div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> A/C
+                                </div>
+                            </div>
+                            <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-4">
+                                <div>
+                                    <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
+                                    <p class="text-2xl font-bold text-primary">₹2,500</p>
+                                </div>
+                                <button
+                                    class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">Select</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Toyota Fortuner -->
+                    <a href="car-rental-detail.html"
+                        class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 hover:shadow-soft transition-shadow block">
+                        <div class="md:w-72 flex-shrink-0 flex flex-col gap-2">
+                            <div
+                                class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
+                                <img alt="Toyota Fortuner" class="w-full h-full object-contain"
+                                    src="images/toyota-fortuner.jpg" />
+                            </div>
+                            <div class="flex items-center justify-between px-1">
+                                <div class="flex items-center gap-1">
+                                    <span class="text-xs font-bold text-text-main">Exceptional</span>
+                                    <span class="text-[10px] text-text-muted">210 reviews</span>
+                                </div>
+                                <div
+                                    class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg">
+                                    9.2</div>
+                            </div>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Toyota Fortuner (or
+                                        similar)</h3>
+                                    <p class="text-xs text-text-muted flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">location_on</span> Station
+                                        Road Hub
+                                    </p>
+                                </div>
+                                <div class="bg-orange-50 text-orange-700 text-[10px] font-bold px-2 py-1 rounded">Luxury
+                                    SUV</div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">person</span> 7
+                                    seats</div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">work</span> 4 bags
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
+                                    Manual/Auto</div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span>
+                                    Dual A/C</div>
+                            </div>
+                            <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-4">
+                                <div>
+                                    <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
+                                    <p class="text-2xl font-bold text-primary">₹8,000</p>
+                                </div>
+                                <button
+                                    class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">Select</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Mahindra Scorpio -->
+                    <a href="car-rental-detail.html"
+                        class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 hover:shadow-soft transition-shadow block">
+                        <div class="md:w-72 flex-shrink-0 flex flex-col gap-2">
+                            <div
+                                class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
+                                <img alt="Mahindra Scorpio" class="w-full h-full object-contain"
+                                    src="images/mahindra-scorpio.jpg" />
+                            </div>
+                            <div class="flex items-center justify-between px-1">
+                                <div class="flex items-center gap-1">
+                                    <span class="text-xs font-bold text-text-main">Very Good</span>
+                                    <span class="text-[10px] text-text-muted">320 reviews</span>
+                                </div>
+                                <div
+                                    class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg">
+                                    8.4</div>
+                            </div>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Mahindra Scorpio (or
+                                        similar)</h3>
+                                    <p class="text-xs text-text-muted flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">location_on</span> City
+                                        Center Branch
+                                    </p>
+                                </div>
+                                <div class="bg-blue-50 text-blue-700 text-[10px] font-bold px-2 py-1 rounded">SUV</div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">person</span> 7
+                                    seats</div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">work</span> 3 bags
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-text-main"><span
+                                        class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
+                                    Manual</div>
+                            </div>
+                            <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-4">
+                                <div>
+                                    <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
+                                    <p class="text-2xl font-bold text-primary">₹3,500</p>
+                                </div>
+                                <button
+                                    class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">Select</button>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="p-4">
-                    <h4 class="font-bold text-sm text-text-main mb-3">Rental company</h4>
-                    <div class="space-y-2">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Alamo</span>
-                            <span class="text-xs text-text-muted ml-auto">₹1,500+</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Sixt</span>
-                            <span class="text-xs text-text-muted ml-auto">₹1,200+</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="rounded border-gray-300 text-primary focus:ring-primary w-5 h-5 cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-text-main group-hover:text-primary">Hertz</span>
-                            <span class="text-xs text-text-muted ml-auto">₹1,800+</span>
-                        </label>
-                    </div>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="flex items-center gap-1">
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-gray-400 cursor-not-allowed">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded border border-primary bg-primary text-white font-bold">1</button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">2</button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </nav>
                 </div>
             </div>
-        </aside>
-        <div class="flex-1 space-y-4">
-            <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
-                <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar: 24 active rentals</h2>
-                <div class="flex items-center gap-2 mt-2 sm:mt-0">
-                    <span class="text-sm text-text-muted">Sort by:</span>
-                    <select
-                        class="text-sm font-bold bg-transparent border-none focus:ring-0 cursor-pointer text-primary p-0">
-                        <option>Recommended</option>
-                        <option>Price (lowest)</option>
-                        <option>Customer rating</option>
-                    </select>
-                </div>
-            </div>
-            <a href="car-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block">
-                <div class="md:w-72 shrink-0 flex flex-col gap-2">
-                    <a href="car-rental-detail.html"
-                        class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
-                        <img alt="Honda City"
-                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            src="images/honda-city.jpg" />
-                    </a>
-                    <div class="flex items-center justify-between px-1">
-                        <div class="flex items-center gap-1">
-                            <span class="text-xs font-bold text-text-main">Excellent</span>
-                            <span class="text-[10px] text-text-muted">450 reviews</span>
-                        </div>
-                        <a href="car-rental-detail.html"
-                            class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            8.8</a>
-                    </div>
-                </div>
-                <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Honda City (or similar)</h3>
-                            <p class="text-xs text-text-muted flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> Available at
-                                CIDCO &amp; Airport
-                            </p>
-                        </div>
-                        <div class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Compact</div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">person</span> 5 seats
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">work</span> 2 bags
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
-                            Automatic
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> A/C
-                        </div>
-                    </div>
-                    <a href="car-rental-detail.html"
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
-                        <div class="space-y-1 w-full sm:w-auto">
-                            <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
-                                <span class="material-symbols-outlined text-[18px]">check</span> Free cancellation
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
-                                <span class="material-symbols-outlined text-[18px]">check</span> Unlimited mileage
-                            </div>
-                        </div>
-                        <div class="text-right w-full sm:w-auto">
-                            <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
-                            <p class="text-2xl font-bold text-text-main">₹2,500</p>
-                            <button
-                                class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
-                        </div>
-                    </a>
-                </div>
-            </a>
-            <a href="car-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
-                <div class="md:w-72 shrink-0 flex flex-col gap-2">
-                    <a href="car-rental-detail.html"
-                        class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
-                        <img alt="Toyota Fortuner"
-                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            src="images/toyota-fortuner.jpg" />
-                    </a>
-                    <div class="flex items-center justify-between px-1">
-                        <span class="text-[10px] text-text-muted">210 reviews</span>
-                        <a href="car-rental-detail.html"
-                            class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            9.2</a>
-                    </div>
-                </div>
-                <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Toyota Fortuner (or similar)
-                            </h3>
-                            <p class="text-xs text-text-muted flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> Premium Hub,
-                                Station Road
-                            </p>
-                        </div>
-                        <div class="bg-orange-50 text-orange-700 text-[10px] font-bold px-2 py-1 rounded">Luxury SUV
-                        </div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">person</span> 7 seats
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">work</span> 4 bags
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
-                            Manual/Auto
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> Dual A/C
-                        </div>
-                    </div>
-                    <a href="car-rental-detail.html"
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
-                        <div class="space-y-1 w-full sm:w-auto">
-                            <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
-                                <span class="material-symbols-outlined text-[18px]">check</span> All-wheel drive
-                            </div>
-                            <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
-                                <span class="material-symbols-outlined text-[18px]">check</span> Chauffeur option
-                                available
-                            </div>
-                        </div>
-                        <div class="text-right w-full sm:w-auto">
-                            <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
-                            <p class="text-2xl font-bold text-text-main">₹8,000</p>
-                            <button
-                                class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
-                        </div>
-                    </a>
-                </div>
-            </a>
-            <a href="car-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
-                <div class="md:w-72 shrink-0 flex flex-col gap-2">
-                    <a href="car-rental-detail.html"
-                        class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
-                        <img alt="Mahindra Scorpio"
-                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            src="images/mahindra-scorpio.jpg" />
-                    </a>
-                    <div class="flex items-center justify-between px-1">
-                        <div class="flex items-center gap-1">
-                            <span class="text-xs font-bold text-text-main">Very Good</span>
-                            <span class="text-[10px] text-text-muted">320 reviews</span>
-                        </div>
-                        <a href="car-rental-detail.html"
-                            class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            8.4</a>
-                    </div>
-                </div>
-                <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Mahindra Scorpio (or
-                                similar)</h3>
-                            <p class="text-xs text-text-muted flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> City Center Main
-                                Branch
-                            </p>
-                        </div>
-                        <div class="bg-blue-50 text-blue-700 text-[10px] font-bold px-2 py-1 rounded">SUV</div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">person</span> 7 seats
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">work</span> 3 bags
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">settings</span> Manual
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Toyota Corolla Result -->
-            <a href="car-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
-                <div class="md:w-72 shrink-0 flex flex-col gap-2">
-                    <a href="car-rental-detail.html"
-                        class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
-                        <img alt="Toyota Corolla"
-                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            src="images/honda-city.jpg" /> <!-- Using Honda City as fallback if corolla missing -->
-                    </a>
-                    <div class="flex items-center justify-between px-1">
-                        <div class="flex items-center gap-1">
-                            <span class="text-xs font-bold text-text-main">Very Good</span>
-                            <span class="text-[10px] text-text-muted">45 reviews</span>
-                        </div>
-                        <a href="car-rental-detail.html"
-                            class="bg-primary text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-lg shadow-sm">
-                            8.2</a>
-                    </div>
-                </div>
-                <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Toyota Corolla (or similar)
-                            </h3>
-                            <p class="text-xs text-text-muted flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> Available at
-                                Station & Nirala Bazar
-                            </p>
-                        </div>
-                        <div class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Compact</div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">person</span> 5 seats
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
-                            Automatic
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">work</span> 2 Large bags
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> Air
-                            conditioning
-                        </div>
-                    </div>
-                    <a href="car-rental-detail.html"
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
-                        <div class="space-y-1 w-full sm:w-auto">
-                            <div class="flex items-center gap-2 text-xs text-green-700 font-bold">
-                                <span class="material-symbols-outlined text-[18px]">check</span> Free cancellation
-                            </div>
-                        </div>
-                        <div class="text-right w-full sm:w-auto">
-                            <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
-                            <p class="text-2xl font-bold text-text-main">₹3,200</p>
-                            <button
-                                class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
-                        </div>
-                    </a>
-                </div>
-            </a>
-
-            <!-- Jeep Renegade Result -->
-            <a href="car-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
-                <div class="md:w-72 shrink-0 flex flex-col gap-2">
-                    <a href="car-rental-detail.html"
-                        class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
-                        <img alt="Jeep Renegade"
-                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            src="images/mahindra-scorpio.jpg" /> <!-- Using Scorpio as fallback -->
-                    </a>
-                </div>
-                <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main leading-tight mb-1">Jeep Renegade (or similar)
-                            </h3>
-                            <p class="text-xs text-text-muted flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> Available in
-                                Terminal
-                            </p>
-                        </div>
-                        <div class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">SUV</div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">person</span> 5 seats
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
-                            Automatic
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">work</span> 3 Large bags
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">ac_unit</span> Air
-                            conditioning
-                        </div>
-                    </div>
-                    <a href="car-rental-detail.html"
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
-                        <div class="text-right w-full sm:w-auto">
-                            <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
-                            <p class="text-2xl font-bold text-text-main">₹4,500</p>
-                            <button
-                                class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
-                        </div>
-                    </a>
-                </div>
-            </a>
-
-            <!-- BMW 3 Series Result -->
-            <a href="car-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-card transition-all group block mt-4">
-                <div class="md:w-72 shrink-0 flex flex-col gap-2">
-                    <a href="car-rental-detail.html"
-                        class="relative aspect-[16/10] rounded overflow-hidden p-2 bg-gray-50 flex items-center justify-center">
-                        <img alt="BMW 3 Series"
-                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            src="images/toyota-fortuner.jpg" /> <!-- Using Fortuner as fallback -->
-                    </a>
-                </div>
-                <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main leading-tight mb-1">BMW 3 Series (or similar)
-                            </h3>
-                            <p class="text-xs text-text-muted flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> Airport Premium
-                                Lounge
-                            </p>
-                        </div>
-                        <div class="bg-blue-50 text-primary text-[10px] font-bold px-2 py-1 rounded">Premium</div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-2 gap-y-2 gap-x-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">person</span> 5 seats
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
-                            Automatic
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">work</span> 2 Large bags
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-[18px] text-text-muted">speed</span> Unlimited
-                            mileage
-                        </div>
-                    </div>
-                    <a href="car-rental-detail.html"
-                        class="mt-auto flex flex-col sm:flex-row items-end justify-between pt-4 mt-auto border-t border-gray-100 gap-4">
-                        <div class="text-right w-full sm:w-auto">
-                            <p class="text-xs text-text-muted mb-1">Price for 1 day</p>
-                            <p class="text-2xl font-bold text-text-main">₹12,000</p>
-                            <button
-                                class="mt-2 w-full sm:w-auto bg-primary text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">Select</button>
-                        </div>
-                    </a>
-                </div>
-            </a>
+        </div>
     </main>
     <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
@@ -638,7 +592,8 @@
             </div>
             <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-2">
-                    <img src="images/travelhub-logo.png" alt="TravelHub" class="input-standard filter brightness-0 invert">
+                    <img src="images/travelhub-logo.png" alt="TravelHub"
+                        class="input-standard filter brightness-0 invert">
                 </div>
                 <div class="text-xs text-white/60 text-center md:text-right">
                     Copyright © 1996–2024 TravelHub. All rights reserved.
@@ -654,8 +609,8 @@
                     colors: {
                         "primary": "#003580",
                         "primary-hover": "#002357",
-                        "accent": "#febb02",
-                        "background-light": "#f5f7f8",
+                        "accent": "#FC7D05",
+                        "secondary": "#FC7D05",
                         "background-dark": "#0f1723",
                         "text-main": "#1a1a1a",
                         "text-muted": "#6b7280",

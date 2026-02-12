@@ -32,8 +32,40 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased h-screen overflow-hidden">
-    <div class="flex h-full w-full">
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased h-screen overflow-hidden page-fade-in text-[13px]">
+    <!-- Global Top Bar (Consistent with other pages) -->
+    <div class="bg-primary-dark border-b border-white/5 py-1.5 text-white sticky top-0 z-[60]">
+        <div
+            class="max-w-[1440px] mx-auto px-4 md:px-6 flex justify-between items-center text-[13px] font-medium opacity-90">
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="tel:+918600968888" class="flex items-center gap-1 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">call</span>
+                    +91 86009 68888
+                </a>
+            </div>
+            <!-- Flash Ads Ticker -->
+            <div class="hidden md:flex flex-1 mx-8 overflow-hidden">
+                <div class="animate-marquee whitespace-nowrap text-white/90 text-[12px]">
+                    <span class="mx-4">✨ Admin Panel - Manage bookings, users and vendors efficiently</span>
+                    <span class="mx-4">🚀 New features added to the dashboard system</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="mx-4" aria-hidden="true">✨ Admin Panel - Manage bookings, users and vendors
+                        efficiently</span>
+                    <span class="mx-4" aria-hidden="true">🚀 New features added to the dashboard system</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="https://wa.me/918600968888" target="_blank"
+                    class="flex items-center gap-1 hover:text-white transition-colors">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                        class="w-4 h-4">
+                    WhatsApp Admin
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex h-[calc(100vh-40px)] w-full relative">
         <!-- Sidebar -->
         <aside
             class="hidden md:flex w-64 flex-col border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-background-dark">
@@ -121,12 +153,11 @@
                         <span
                             class="absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-red-500 border-2 border-white dark:border-background-dark"></span>
                     </button>
-                    <button
-                        class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
-                        <span class="material-symbols-outlined">settings</span>
-                    </button>
-                    <a href="index.html" class="ml-2 text-sm font-medium text-primary hover:text-primary-hover">Exit to
-                        Site</a>
+                    <a href="index.html"
+                        class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary-hover transition-all shadow-sm">
+                        <span class="material-symbols-outlined text-sm">logout</span>
+                        Exit to Site
+                    </a>
                 </div>
             </header>
 
@@ -507,8 +538,8 @@
                     colors: {
                         "primary": "#003580",
                         "primary-hover": "#002357",
-                        "accent": "#febb02",
-                        "background-light": "#f5f7f8",
+                        "accent": "#FC7D05",
+                        "secondary": "#FC7D05",
                         "background-dark": "#0f1723",
                         "text-main": "#1a1a1a",
                         "text-muted": "#6b7280",

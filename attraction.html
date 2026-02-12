@@ -17,86 +17,221 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in overflow-hidden">
+    <!-- Smooth Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-700">
+        <div class="relative flex flex-col items-center gap-4">
+            <div class="w-24 h-24 md:w-32 md:h-32 relative">
+                <!-- White Logo (Initial) -->
+                <img src="images/travelhub.png" alt="Loading..."
+                    class="w-full h-full object-contain grayscale opacity-20 absolute inset-0">
+                <!-- Colorful Logo (Animation) -->
+                <img src="images/travelhub.png" alt="Loading..."
+                    class="w-full h-full object-contain animate-pulse-logo absolute inset-0">
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="h-1 w-48 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary animate-progress-bar"></div>
+                </div>
+                <span class="text-xs font-bold text-primary mt-3 tracking-[0.2em] uppercase">Loading Adventure</span>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes pulse-logo {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.95);
+                filter: grayscale(100%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+                filter: grayscale(0%);
+            }
+        }
+
+        .animate-pulse-logo {
+            animation: pulse-logo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes progress-bar {
+            0% {
+                width: 0%;
+                transition-timing-function: cubic-bezier(0.1, 0, 0.45, 1);
+            }
+
+            30% {
+                width: 40%;
+                transition-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        .animate-progress-bar {
+            animation: progress-bar 2.5s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            const body = document.body;
+
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    body.classList.remove('overflow-hidden');
+                }, 700);
+            }, 1000); // Minimum display time for smooth experience
+        });
+    </script>
     <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <!-- Contact Top Bar (Slimmed down) -->
+        <div class="bg-primary-dark border-b border-white/5 py-1.5">
+            <div
+                class="max-w-[1140px] mx-auto px-4 md:px-6 flex justify-between items-center text-[13px] font-medium opacity-90">
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="tel:+918600968888" class="flex items-center gap-1 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">call</span>
+                        +91 86009 68888
+                    </a>
+                </div>
+
+                <!-- Flash Ads Ticker -->
+                <div class="hidden md:flex flex-1 mx-8 overflow-hidden">
+                    <div class="animate-marquee whitespace-nowrap text-white/90 text-[12px]">
+                        <span class="mx-4">✨ Best places to visit in Sambhajinagar</span>
+                        <span class="mx-4">🚀 20% OFF on your first hotel booking</span>
+                        <span class="mx-4">🌟 Exclusive weekend deals for Car Rentals</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="mx-4" aria-hidden="true">✨ Best places to visit in Sambhajinagar</span>
+                        <span class="mx-4" aria-hidden="true">🚀 20% OFF on your first hotel booking</span>
+                        <span class="mx-4" aria-hidden="true">🌟 Exclusive weekend deals for Car Rentals</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="https://wa.me/918600968888" target="_blank"
+                        class="flex items-center gap-1 hover:text-white transition-colors">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                            class="w-4 h-4">
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between py-4">
-                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="images/travelhub.png" alt="TravelHub" class="input-standard md:h-[60px]">
+            <div class="flex items-center justify-between py-1.5 h-14 md:h-16">
+                <!-- Logo Left Side -->
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer shrink-0">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-8 md:h-[42px]">
                 </a>
-                <div class="flex items-center gap-4">
-                    <div class="relative hidden sm:block">
-                        <select id="currencySelect"
-                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
-                            <option value="USD">USD ($)</option>
-                            <option value="EUR">EUR (€)</option>
-                            <option value="INR">INR (₹)</option>
-                        </select>
-                        <span
-                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
-                    </div>
-                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
-                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
-                    </div>
 
-                    <div id="auth-buttons" class="flex gap-2">
-                        <a href="register.html"
-                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
-                        <a href="login.html"
-                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
-                            in</a>
-                    </div>
-                    <div id="user-profile" class="hidden flex items-center gap-4">
-                        <div class="flex items-center gap-2 cursor-pointer relative group">
-                            <div
-                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
-                                <span class="material-symbols-outlined text-sm">person</span>
-                            </div>
-                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+                <!-- Navigation and Auth Right Side -->
+                <div class="flex items-center gap-4 overflow-hidden">
+                    <nav class="hidden lg:flex items-center gap-1">
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="stays.html">
+                            <span class="material-symbols-outlined text-[20px]">bed</span>
+                            <span class="text-[13px] font-medium">Stays</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="car-rentals.html">
+                            <span class="material-symbols-outlined text-[20px]">directions_car</span>
+                            <span class="text-[13px] font-medium">Car Rentals</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="bike-rentals.html">
+                            <span class="material-symbols-outlined text-[20px]">pedal_bike</span>
+                            <span class="text-[13px] font-medium">Bike Rentals</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="restaurant.html">
+                            <span class="material-symbols-outlined text-[20px]">restaurant</span>
+                            <span class="text-[13px] font-medium">Restaurants</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
+                            href="attraction.html">
+                            <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                            <span class="text-[13px] font-medium">Attractions</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="bus.html">
+                            <span class="material-symbols-outlined text-[20px]">directions_bus</span>
+                            <span class="text-[13px] font-medium">Buses</span>
+                        </a>
+                    </nav>
 
-                            <div
-                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
-                                <a href="user-dashboard.html"
-                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
-                                <div class="border-t border-gray-100 my-1"></div>
-                                <button id="logout-btn"
-                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
-                                    Out</button>
+                    <div class="flex items-center gap-2 shrink-0 ml-2 lg:border-l border-white/10 lg:pl-4">
+                        <div id="auth-buttons" class="flex gap-2">
+                            <a href="register.html"
+                                class="text-white text-[13px] font-bold px-3 py-1.5 rounded hover:bg-white/10 transition-colors hidden sm:block">Register</a>
+                            <a href="login.html"
+                                class="bg-white text-primary text-[13px] font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors shadow-sm">Sign
+                                in</a>
+                        </div>
+                        <div id="user-profile" class="hidden">
+                            <div class="flex items-center gap-2 cursor-pointer relative group">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                    <span class="material-symbols-outlined text-sm">person</span>
+                                </div>
+                                <div
+                                    class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                    <a href="user-dashboard.html"
+                                        class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                    <div class="border-t border-gray-100 my-1"></div>
+                                    <button id="logout-btn"
+                                        class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                        Out</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+            <!-- Mobile Navigation (Visible only on smaller screens) -->
+            <!-- Mobile Navigation (Visible only on smaller screens) -->
+            <nav class="lg:hidden flex gap-1 sm:gap-2 pb-5 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="stays.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
-                    <span class="text-sm font-medium">Stays</span>
+                    <span class="material-symbols-outlined text-[18px]">bed</span>
+                    <span class="text-[12px] font-medium">Stays</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="car-rentals.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
-                    <span class="text-sm font-medium">Car Rentals</span>
+                    <span class="material-symbols-outlined text-[18px]">directions_car</span>
+                    <span class="text-[12px] font-medium">Car Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bike-rentals.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
-                    <span class="text-sm font-medium">Bike Rentals</span>
+                    <span class="material-symbols-outlined text-[18px]">pedal_bike</span>
+                    <span class="text-[12px] font-medium">Bike Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="restaurant.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
-                    <span class="text-sm font-medium">Restaurants</span>
+                    <span class="material-symbols-outlined text-[18px]">restaurant</span>
+                    <span class="text-[12px] font-medium">Restaurants</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
                     href="attraction.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
-                    <span class="text-sm font-medium">Attractions</span>
+                    <span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+                    <span class="text-[12px] font-medium">Attractions</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bus.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
-                    <span class="text-sm font-medium">Buses</span>
+                    <span class="material-symbols-outlined text-[18px]">directions_bus</span>
+                    <span class="text-[12px] font-medium">Buses</span>
                 </a>
             </nav>
         </div>
@@ -109,29 +244,30 @@
                 Maharashtra's historic capital.</p>
         </div>
         <div class="max-w-[1140px] mx-auto px-4 md:px-6 absolute left-0 right-0 -bottom-8 z-20">
-            <div class="bg-accent p-1 rounded-lg shadow-soft">
-                <div class="bg-white rounded p-1 flex flex-col md:flex-row gap-1">
-                    <div class="flex-1 relative group">
+            <div class="bg-white/10 backdrop-blur-md p-1.5 rounded-xl shadow-2xl border border-white/20">
+                <div class="bg-white rounded-lg p-1.5 flex flex-col md:flex-row gap-2 items-stretch shadow-inner">
+                    <div class="flex-[1.5] relative group">
                         <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                            <span class="material-symbols-outlined text-gray-400">search</span>
+                            <span class="material-symbols-outlined text-primary/60 text-[20px]">search</span>
                         </div>
                         <input
-                            class="w-full pl-10 pr-4 py-3 rounded border-2 border-transparent focus:border-transparent focus:ring-0 text-text-main placeholder-text-muted font-medium bg-transparent hover:bg-gray-50 focus:bg-white transition-colors input-standard"
+                            class="w-full pl-10 pr-4 h-[48px] rounded border-0 focus:ring-2 focus:ring-primary/20 text-text-main placeholder-text-muted font-medium bg-gray-50/50 hover:bg-gray-100/50 focus:bg-white transition-all text-sm"
                             placeholder="Where are you going?" type="text" value="Chhatrapati Sambhajinagar, India" />
                     </div>
-                    <div class="flex-1 relative border-t md:border-t-0 md:border-l border-gray-200">
+                    <div class="flex-1 relative border-t md:border-t-0 md:border-l border-gray-100">
                         <button
-                            class="w-full h-full flex items-center gap-3 px-3 py-3 hover:bg-gray-50 rounded transition-colors text-left">
-                            <span class="material-symbols-outlined text-gray-400">calendar_month</span>
-                            <div class="flex flex-col justify-center">
-                                <span class="text-text-main font-medium leading-none text-sm md:text-base">Select
-                                    dates</span>
+                            class="w-full h-full flex items-center gap-3 px-3 min-h-[48px] hover:bg-gray-50/50 transition-all text-left group">
+                            <span class="material-symbols-outlined text-primary/60 text-[20px]">calendar_month</span>
+                            <div class="flex flex-col">
+                                <span
+                                    class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Dates</span>
+                                <span class="text-text-main text-[13px] font-bold leading-tight">Select dates</span>
                             </div>
                         </button>
                     </div>
                     <button
-                        class="bg-primary hover:bg-primary-hover text-white font-bold text-lg px-8 py-3 rounded md:w-auto w-full transition-colors flex items-center justify-center">
-                        Search
+                        class="bg-primary hover:bg-primary-hover text-white font-bold text-sm h-[48px] px-8 rounded-lg transition-all flex items-center justify-center shadow-lg hover:shadow-primary/30 active:scale-95">
+                        SEARCH
                     </button>
                 </div>
             </div>
@@ -146,28 +282,28 @@
             <div class="border-b pb-4 border-gray-200">
                 <h4 class="font-bold text-sm text-text-main mb-3">Category</h4>
                 <div class="space-y-2">
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">Museums &amp;
                             Arts</span>
                         <span class="text-xs text-text-muted ml-auto">42</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">Tours &amp;
                             Sightseeing</span>
                         <span class="text-xs text-text-muted ml-auto">128</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">Outdoors &amp;
                             Nature</span>
                         <span class="text-xs text-text-muted ml-auto">15</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">Food &amp;
@@ -179,24 +315,24 @@
             <div class="border-b pb-4 border-gray-200">
                 <h4 class="font-bold text-sm text-text-main mb-3">Price</h4>
                 <div class="space-y-2">
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">€0 - €50</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">€50 -
                             €100</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">€100 -
                             €200</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">€200+</span>
@@ -230,22 +366,22 @@
             <div class="border-b pb-4 border-gray-200">
                 <h4 class="font-bold text-sm text-text-main mb-3">Language</h4>
                 <div class="space-y-2">
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">English</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">French</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">Spanish</span>
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer group">
+                    <label class="sidebar-filter-item group">
                         <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
                             type="checkbox" />
                         <span class="text-sm text-text-main group-hover:text-primary transition-colors">German</span>
@@ -313,7 +449,8 @@
                         </div>
                     </div>
                 </a>
-                <a href="attraction-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
+                <a href="attraction-detail.html"
+                    class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
                     <div class="h-56 relative overflow-hidden">
                         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             data-alt="Ellora Caves" src="images/ellora.png" />
@@ -321,7 +458,7 @@
                             class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
                             <span class="material-symbols-outlined text-[20px]">favorite</span>
                         </button>
-                    </a>
+                    </div>
                     <div class="p-4 flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Ellora Caves &amp;
@@ -349,44 +486,46 @@
                                 Tour</button>
                         </div>
                     </div>
+            </div>
+            <a href="attraction-detail.html"
+                class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
+                <div class="h-56 relative overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        data-alt="Bibi Ka Maqbara" src="images/bibi.png" />
+                    <button
+                        class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
+                        <span class="material-symbols-outlined text-[20px]">favorite</span>
+                    </button>
                 </div>
-                <a href="attraction-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
-                    <div class="h-56 relative overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="Bibi Ka Maqbara" src="images/bibi.png" />
-                        <button
-                            class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
-                            <span class="material-symbols-outlined text-[20px]">favorite</span>
-                        </button>
-                    </a>
-                    <div class="p-4 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Bibi Ka Maqbara: The
-                                Mini Taj Mahal Visit</h3>
-                            <div
-                                class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
-                                4.7
-                            </div>
-                        </div>
-                        <div class="space-y-2 mb-4">
-                            <p class="text-sm text-text-muted flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[16px]">schedule</span> 2 hours
-                            </p>
-                            <p class="text-xs text-green-700 bg-green-50 w-fit px-2 py-0.5 rounded font-medium">History
-                                Walk</p>
-                        </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹100</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
-                                tickets</button>
+                <div class="p-4 flex flex-col flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Bibi Ka Maqbara: The
+                            Mini Taj Mahal Visit</h3>
+                        <div
+                            class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
+                            4.7
                         </div>
                     </div>
+                    <div class="space-y-2 mb-4">
+                        <p class="text-sm text-text-muted flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">schedule</span> 2 hours
+                        </p>
+                        <p class="text-xs text-green-700 bg-green-50 w-fit px-2 py-0.5 rounded font-medium">History
+                            Walk</p>
+                    </div>
+                    <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
+                        <div>
+                            <span class="text-xs text-text-muted block mb-0.5">From</span>
+                            <span class="font-bold text-primary text-xl">₹100</span>
+                        </div>
+                        <button
+                            class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
+                            tickets</button>
+                    </div>
                 </div>
-                <a href="attraction-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
+                </div>
+                <a href="attraction-detail.html"
+                    class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
                     <div class="h-56 relative overflow-hidden">
                         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             data-alt="Daulatabad Fort" src="images/daulatabad.png" />
@@ -394,7 +533,7 @@
                             class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
                             <span class="material-symbols-outlined text-[20px]">favorite</span>
                         </button>
-                    </a>
+                    </div>
                     <div class="p-4 flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Daulatabad Fort:
@@ -421,85 +560,91 @@
                                 tickets</button>
                         </div>
                     </div>
-                </div>
-                <a href="attraction-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
-                    <div class="h-56 relative overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="Grishneshwar Temple" src="images/grishneshwar-temple.jpg" />
-                        <button
-                            class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
-                            <span class="material-symbols-outlined text-[20px]">favorite</span>
-                        </button>
-                    </a>
-                    <div class="p-4 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Grishneshwar
-                                Jyotirlinga Temple Visit</h3>
-                            <div
-                                class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
-                                4.9
-                            </div>
-                        </div>
-                        <div class="space-y-2 mb-4">
-                            <p class="text-sm text-text-muted flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[16px]">schedule</span> 1.5 hours
-                            </p>
-                            <p class="text-xs text-blue-700 bg-blue-50 w-fit px-2 py-0.5 rounded font-medium">Spiritual
-                            </p>
-                        </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">Free Entry</span>
-                                <span class="font-bold text-primary text-xl">₹0</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Join
-                                Group</button>
-                        </div>
                     </div>
-                </div>
-                <a href="attraction-detail.html" class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
-                    <div class="h-56 relative overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="Panchakki" src="images/panchakki.jpg" />
-                        <button
-                            class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
-                            <span class="material-symbols-outlined text-[20px]">favorite</span>
-                        </button>
-                    </a>
-                    <div class="p-4 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Panchakki: Ancient
-                                Water Mill Tour</h3>
-                            <div
-                                class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
-                                4.6
-                            </div>
-                        </div>
-                        <div class="space-y-2 mb-4">
-                            <p class="text-sm text-text-muted flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[16px]">schedule</span> 1 hour
-                            </p>
-                            <p class="text-xs text-blue-700 bg-blue-50 w-fit px-2 py-0.5 rounded font-medium">Historical
-                            </p>
-                        </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹20</span>
-                            </div>
+                    <a href="attraction-detail.html"
+                        class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
+                        <div class="h-56 relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Grishneshwar Temple" src="images/grishneshwar-temple.jpg" />
                             <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
-                                tickets</button>
+                                class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
+                                <span class="material-symbols-outlined text-[20px]">favorite</span>
+                            </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 flex justify-center">
-                <button
-                    class="border border-primary text-primary font-bold px-6 py-2 rounded hover:bg-blue-50 transition-colors">Show
-                    more results</button>
-            </div>
+                        <div class="p-4 flex flex-col flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Grishneshwar
+                                    Jyotirlinga Temple Visit</h3>
+                                <div
+                                    class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
+                                    4.9
+                                </div>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <p class="text-sm text-text-muted flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[16px]">schedule</span> 1.5 hours
+                                </p>
+                                <p class="text-xs text-blue-700 bg-blue-50 w-fit px-2 py-0.5 rounded font-medium">
+                                    Spiritual
+                                </p>
+                            </div>
+                            <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
+                                <div>
+                                    <span class="text-xs text-text-muted block mb-0.5">Free Entry</span>
+                                    <span class="font-bold text-primary text-xl">₹0</span>
+                                </div>
+                                <button
+                                    class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Join
+                                    Group</button>
+                            </div>
+                        </div>
+                        </div>
+                        <a href="attraction-detail.html"
+                            class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
+                            <div class="h-56 relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    data-alt="Panchakki" src="images/panchakki.jpg" />
+                                <button
+                                    class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm text-gray-500 hover:text-red-500">
+                                    <span class="material-symbols-outlined text-[20px]">favorite</span>
+                                </button>
+                            </div>
+                            <div class="p-4 flex flex-col flex-1">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg text-text-main leading-snug line-clamp-2">Panchakki:
+                                        Ancient
+                                        Water Mill Tour</h3>
+                                    <div
+                                        class="flex items-center gap-1 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
+                                        4.6
+                                    </div>
+                                </div>
+                                <div class="space-y-2 mb-4">
+                                    <p class="text-sm text-text-muted flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[16px]">schedule</span> 1 hour
+                                    </p>
+                                    <p class="text-xs text-blue-700 bg-blue-50 w-fit px-2 py-0.5 rounded font-medium">
+                                        Historical
+                                    </p>
+                                </div>
+                                <div
+                                    class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
+                                    <div>
+                                        <span class="text-xs text-text-muted block mb-0.5">From</span>
+                                        <span class="font-bold text-primary text-xl">₹20</span>
+                                    </div>
+                                    <button
+                                        class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
+                                        tickets</button>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="mt-8 flex justify-center">
+                                <button
+                                    class="border border-primary text-primary font-bold px-6 py-2 rounded hover:bg-blue-50 transition-colors">Show
+                                    more results</button>
+                            </div>
         </section>
     </main>
     <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
@@ -554,7 +699,8 @@
             </div>
             <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-2">
-                    <img src="images/travelhub-logo.png" alt="TravelHub" class="input-standard filter brightness-0 invert">
+                    <img src="images/travelhub-logo.png" alt="TravelHub"
+                        class="input-standard filter brightness-0 invert">
                 </div>
                 <div class="text-xs text-white/60 text-center md:text-right">
                     Copyright © 1996–2024 TravelHub. All rights reserved.
@@ -571,8 +717,8 @@
                     colors: {
                         "primary": "#003580",
                         "primary-hover": "#002357",
-                        "accent": "#febb02",
-                        "background-light": "#f5f7f8",
+                        "accent": "#FC7D05",
+                        "secondary": "#FC7D05",
                         "background-dark": "#0f1723",
                         "text-main": "#1a1a1a",
                         "text-muted": "#6b7280",

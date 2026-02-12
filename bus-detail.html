@@ -45,86 +45,144 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col">
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in">
     <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
+        <!-- Contact Top Bar (Slimmed down) -->
+        <div class="bg-primary-dark border-b border-white/5 py-1.5">
+            <div
+                class="max-w-[1140px] mx-auto px-4 md:px-6 flex justify-between items-center text-[13px] font-medium opacity-90">
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="tel:+918600968888" class="flex items-center gap-1 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">call</span>
+                        +91 86009 68888
+                    </a>
+                </div>
+
+                <!-- Flash Ads Ticker -->
+                <div class="hidden md:flex flex-1 mx-8 overflow-hidden">
+                    <div class="animate-marquee whitespace-nowrap text-white/90 text-[12px]">
+                        <span class="mx-4">✨ Best places to visit in Sambhajinagar</span>
+                        <span class="mx-4">🚀 20% OFF on your first hotel booking</span>
+                        <span class="mx-4">🌟 Exclusive weekend deals for Car Rentals</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="mx-4" aria-hidden="true">✨ Best places to visit in Sambhajinagar</span>
+                        <span class="mx-4" aria-hidden="true">🚀 20% OFF on your first hotel booking</span>
+                        <span class="mx-4" aria-hidden="true">🌟 Exclusive weekend deals for Car Rentals</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="https://wa.me/918600968888" target="_blank"
+                        class="flex items-center gap-1 hover:text-white transition-colors">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                            class="w-4 h-4">
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between py-4">
-                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="images/travelhub.png" alt="TravelHub" class="h-12 md:h-[60px]">
+            <div class="flex items-center justify-between py-1.5 h-14 md:h-16">
+                <!-- Logo Left Side -->
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer shrink-0">
+                    <img src="images/travelhub.png" alt="TravelHub" class="h-8 md:h-[42px]">
                 </a>
-                <div class="flex items-center gap-4">
-                    <div class="relative hidden sm:block">
-                        <select id="currencySelect"
-                            class="appearance-none bg-primary text-white text-sm font-medium px-3 py-1 rounded cursor-pointer hover:bg-primary-hover transition-colors pr-8">
-                            <option value="USD">USD ($)</option>
-                            <option value="EUR">EUR (€)</option>
-                            <option value="INR">INR (₹)</option>
-                        </select>
-                        <span
-                            class="material-symbols-outlined text-[16px] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
-                    </div>
-                    <div class="hidden md:flex items-center gap-1 cursor-pointer">
-                        <span class="material-symbols-outlined text-[24px]">help_outline</span>
-                    </div>
 
-                    <div id="auth-buttons" class="flex gap-2">
-                        <a href="register.html"
-                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors hidden sm:block">Register</a>
-                        <a href="login.html"
-                            class="bg-white text-primary text-sm font-bold px-4 py-2 h-9 flex items-center rounded hover:bg-gray-100 transition-colors">Sign
-                            in</a>
-                    </div>
-                    <div id="user-profile" class="hidden flex items-center gap-4">
-                        <div class="flex items-center gap-2 cursor-pointer relative group">
-                            <div
-                                class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
-                                <span class="material-symbols-outlined text-sm">person</span>
-                            </div>
-                            <span class="hidden sm:block text-sm font-medium" id="user-name-display">User</span>
+                <!-- Navigation and Auth Right Side -->
+                <div class="flex items-center gap-4 overflow-hidden">
+                    <nav class="hidden lg:flex items-center gap-1">
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="stays.html">
+                            <span class="material-symbols-outlined text-[20px]">bed</span>
+                            <span class="text-[13px] font-medium">Stays</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="car-rentals.html">
+                            <span class="material-symbols-outlined text-[20px]">directions_car</span>
+                            <span class="text-[13px] font-medium">Car Rentals</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="bike-rentals.html">
+                            <span class="material-symbols-outlined text-[20px]">pedal_bike</span>
+                            <span class="text-[13px] font-medium">Bike Rentals</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="restaurant.html">
+                            <span class="material-symbols-outlined text-[20px]">restaurant</span>
+                            <span class="text-[13px] font-medium">Restaurants</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
+                            href="attraction.html">
+                            <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                            <span class="text-[13px] font-medium">Attractions</span>
+                        </a>
+                        <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
+                            href="bus.html">
+                            <span class="material-symbols-outlined text-[20px]">directions_bus</span>
+                            <span class="text-[13px] font-medium">Buses</span>
+                        </a>
+                    </nav>
 
-                            <div
-                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
-                                <a href="user-dashboard.html"
-                                    class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
-                                <div class="border-t border-gray-100 my-1"></div>
-                                <button id="logout-btn"
-                                    class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
-                                    Out</button>
+                    <div class="flex items-center gap-2 shrink-0 ml-2 lg:border-l border-white/10 lg:pl-4">
+                        <div id="auth-buttons" class="flex gap-2">
+                            <a href="register.html"
+                                class="text-white text-[13px] font-bold px-3 py-1.5 rounded hover:bg-white/10 transition-colors hidden sm:block">Register</a>
+                            <a href="login.html"
+                                class="bg-white text-primary text-[13px] font-bold px-4 py-1.5 rounded hover:bg-gray-100 transition-colors shadow-sm">Sign
+                                in</a>
+                        </div>
+                        <div id="user-profile" class="hidden">
+                            <div class="flex items-center gap-2 cursor-pointer relative group">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white overflow-hidden">
+                                    <span class="material-symbols-outlined text-sm">person</span>
+                                </div>
+                                <div
+                                    class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-lg py-1 text-text-main hidden group-hover:block transition-all z-50">
+                                    <a href="user-dashboard.html"
+                                        class="block px-4 py-2 hover:bg-gray-50 text-sm">Dashboard</a>
+                                    <div class="border-t border-gray-100 my-1"></div>
+                                    <button id="logout-btn"
+                                        class="block w-full text-left px-4 py-2 hover:bg-gray-50 text-sm text-red-600">Sign
+                                        Out</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <nav class="flex gap-1 sm:gap-2 pb-4 overflow-x-auto no-scrollbar">
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+            <!-- Mobile Navigation (Visible only on smaller screens) -->
+            <!-- Mobile Navigation (Visible only on smaller screens) -->
+            <nav class="lg:hidden flex gap-1 sm:gap-2 pb-5 overflow-x-auto no-scrollbar">
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="stays.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
-                    <span class="text-sm font-medium">Stays</span>
+                    <span class="material-symbols-outlined text-[18px]">bed</span>
+                    <span class="text-[12px] font-medium">Stays</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="car-rentals.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
-                    <span class="text-sm font-medium">Car Rentals</span>
+                    <span class="material-symbols-outlined text-[18px]">directions_car</span>
+                    <span class="text-[12px] font-medium">Car Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap group"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="bike-rentals.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">pedal_bike</span>
-                    <span class="text-sm font-medium">Bike Rentals</span>
+                    <span class="material-symbols-outlined text-[20px]">pedal_bike</span>
+                    <span class="text-[12px] font-medium">Bike Rentals</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="restaurant.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant</span>
-                    <span class="text-sm font-medium">Restaurants</span>
+                    <span class="material-symbols-outlined text-[18px]">restaurant</span>
+                    <span class="text-[12px] font-medium">Restaurants</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
                     href="attraction.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">confirmation_number</span>
-                    <span class="text-sm font-medium">Attractions</span>
+                    <span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+                    <span class="text-[12px] font-medium">Attractions</span>
                 </a>
-                <a class="flex items-center gap-2 nav-item-mobile rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white"
+                <a class="flex items-center gap-2 px-3 py-2 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
                     href="bus.html">
-                    <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
-                    <span class="text-sm font-medium">Buses</span>
+                    <span class="material-symbols-outlined text-[18px]">directions_bus</span>
+                    <span class="text-[12px] font-medium">Buses</span>
                 </a>
             </nav>
         </div>
@@ -514,8 +572,8 @@
                     colors: {
                         "primary": "#003580",
                         "primary-hover": "#002357",
-                        "accent": "#febb02",
-                        "background-light": "#f5f7f8",
+                        "accent": "#FC7D05",
+                        "secondary": "#FC7D05",
                         "background-dark": "#0f1723",
                         "text-main": "#1a1a1a",
                         "text-muted": "#6b7280",
