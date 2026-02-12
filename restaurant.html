@@ -231,7 +231,14 @@
         </div>
     </div>
     <main class="listing-main max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-8 flex-grow">
-        <aside class="w-full lg:w-1/4 flex-shrink-0 space-y-6">
+        <aside id="listing-sidebar"
+            class="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 overflow-y-auto lg:translate-x-0 lg:static lg:shadow-none lg:block lg:overflow-visible p-4 lg:p-0 flex-shrink-0 space-y-4 hidden h-full">
+            <div class="flex items-center justify-between mb-4 lg:hidden">
+                <h3 class="font-bold text-lg text-text-main">Filters</h3>
+                <button id="close-sidebar" class="p-2 hover:bg-gray-100 rounded-full text-text-main">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
             <div class="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
 
             </div>
@@ -337,37 +344,51 @@
             </div>
         </aside>
         <section class="flex-1">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                 <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar: 18 restaurants found</h2>
-                <div class="flex items-center gap-2">
+
+                <div class="hidden md:flex items-center gap-2">
                     <span class="text-sm text-text-main">Sort by:</span>
                     <select
-                        class="text-sm font-bold bg-transparent border-none focus:ring-0 cursor-pointer text-primary p-0">
+                        class="text-sm font-bold bg-transparent border-none focus:ring-0 cursor-pointer text-text-main p-0 pr-8">
                         <option>Recommended</option>
                         <option>Top Rated</option>
                         <option>Price (Low to High)</option>
                     </select>
                 </div>
+
+                <!-- Mobile Filter & Sort Buttons -->
+                <div class="flex md:hidden gap-3 w-full">
+                    <button data-action="open-filters"
+                        class="flex-1 flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2.5 font-bold text-sm bg-white text-text-main shadow-sm active:bg-gray-50 transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">filter_list</span> Filters
+                    </button>
+                    <button
+                        class="flex-1 flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2.5 font-bold text-sm bg-white text-text-main shadow-sm active:bg-gray-50 transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">sort</span> Sort
+                    </button>
+                </div>
             </div>
             <div class="space-y-4">
-                <a href="restaurant-detail.html"
+                <div
                     class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-5 shadow-sm hover:shadow-card transition-all group block">
-                    <div class="md:w-56 shrink-0 relative aspect-[4/3] rounded overflow-hidden">
+                    <a href="restaurant-detail.html"
+                        class="md:w-56 shrink-0 relative aspect-[4/3] rounded overflow-hidden block">
                         <img alt="Naivedya Thali"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             src="images/indian-thali.jpg" />
                         <div
                             class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded shadow-sm text-[10px] font-bold text-primary">
                             BEST THALI</div>
-                        </button>
-                    </div>
+                    </a>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start mb-1">
                                 <div>
                                     <h3
                                         class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">
-                                        Naivedya Thali Restaurant</h3>
+                                        <a href="restaurant-detail.html">Naivedya Thali Restaurant</a>
+                                    </h3>
                                     <p class="text-xs text-text-muted flex items-center gap-1">
                                         <span class="text-text-main font-medium underline">Town Center, CIDCO</span>
                                         • 2.5 km from center
@@ -409,83 +430,87 @@
                             </div>
                         </div>
                     </div>
-            </div>
-
-            <a href="restaurant-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-5 shadow-sm hover:shadow-card transition-all group block">
-                <div class="md:w-56 shrink-0 relative aspect-[4/3] rounded overflow-hidden">
-                    <img alt="Bhoj Restaurant"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        src="images/restaurant-thali.jpg" />
-                    <div
-                        class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded shadow-sm text-[10px] font-bold text-primary">
-                        LEGENDARY</div>
-                </div>
-                <div class="flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-1">
-                            <div>
-                                <h3
-                                    class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">
-                                    Bhoj Thali Restaurant</h3>
-                                <p class="text-xs text-text-muted flex items-center gap-1">
-                                    <span class="text-text-main font-medium underline">Railway Station Road</span>
-                                    • 1.0 km from center
-                                </p>
-                            </div>
-                            <div class="flex items-center gap-2 flex-shrink-0">
-                                <div class="text-right hidden sm:block">
-                                    <p class="text-sm font-bold text-text-main leading-none">Superb</p>
-                                    <p class="text-xs text-text-muted mt-0.5">1.2k reviews</p>
-                                </div>
-                                <div
-                                    class="bg-primary text-white font-bold text-sm w-8 h-8 flex items-center justify-center rounded-t-md rounded-br-md">
-                                    4.7</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main font-medium mb-3">
-                            <span>Gujarati/Rajasthani</span>
-                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-                            <span>₹₹</span>
-                            <span class="text-orange-700 bg-orange-50 px-1.5 py-0.5 rounded text-xs">High
-                                demand</span>
-                        </div>
-                        <p class="text-sm text-text-muted line-clamp-2 mb-3">One of the oldest and most respected
-                            thali places in the city, known for its consistent quality and hospitality.</p>
-                    </div>
-                    <div class="mt-auto pt-3 border-t border-gray-100">
-                        <div class="flex flex-wrap items-center justify-between gap-4">
-                            <div class="flex flex-wrap gap-2">
-                                <button
-                                    class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">18:45</button>
-                                <button
-                                    class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">19:15</button>
-                            </div>
-                            <button
-                                class="bg-primary text-white font-bold py-2 px-5 rounded hover:bg-primary-hover transition-colors whitespace-nowrap ml-auto md:ml-0 w-full md:w-auto mt-2 md:mt-0">Book
-                                Table</button>
-                        </div>
-                    </div>
-                </div>
                 </div>
 
-                <a href="restaurant-detail.html"
+                <div
                     class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-5 shadow-sm hover:shadow-card transition-all group block">
-                    <div class="md:w-56 shrink-0 relative aspect-[4/3] rounded overflow-hidden">
-                        <img alt="Great Sagar"
+                    <a href="restaurant-detail.html"
+                        class="md:w-56 shrink-0 relative aspect-[4/3] rounded overflow-hidden block">
+                        <img alt="Bhoj Restaurant"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            src="images/restaurant-north-indian.jpg" />
+                            src="images/restaurant-thali.jpg" />
                         <div
                             class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded shadow-sm text-[10px] font-bold text-primary">
-                            FAMOUS BIRYANI</div>
-                    </div>
+                            LEGENDARY</div>
+                    </a>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start mb-1">
                                 <div>
                                     <h3
                                         class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">
-                                        Great Sagar Restaurant</h3>
+                                        <a href="restaurant-detail.html">Bhoj Thali Restaurant</a>
+                                    </h3>
+                                    <p class="text-xs text-text-muted flex items-center gap-1">
+                                        <span class="text-text-main font-medium underline">Railway Station Road</span>
+                                        • 1.0 km from center
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-2 flex-shrink-0">
+                                    <div class="text-right hidden sm:block">
+                                        <p class="text-sm font-bold text-text-main leading-none">Superb</p>
+                                        <p class="text-xs text-text-muted mt-0.5">1.2k reviews</p>
+                                    </div>
+                                    <div
+                                        class="bg-primary text-white font-bold text-sm w-8 h-8 flex items-center justify-center rounded-t-md rounded-br-md">
+                                        4.7</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-text-main font-medium mb-3">
+                                <span>Gujarati/Rajasthani</span>
+                                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                <span>₹₹</span>
+                                <span class="text-orange-700 bg-orange-50 px-1.5 py-0.5 rounded text-xs">High
+                                    demand</span>
+                            </div>
+                            <p class="text-sm text-text-muted line-clamp-2 mb-3">One of the oldest and most respected
+                                thali places in the city, known for its consistent quality and hospitality.</p>
+                        </div>
+                        <div class="mt-auto pt-3 border-t border-gray-100">
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-2">
+                                    <button
+                                        class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">18:45</button>
+                                    <button
+                                        class="px-3 py-1.5 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors shadow-sm">19:15</button>
+                                </div>
+                                <button
+                                    class="bg-primary text-white font-bold py-2 px-5 rounded hover:bg-primary-hover transition-colors whitespace-nowrap ml-auto md:ml-0 w-full md:w-auto mt-2 md:mt-0">Book
+                                    Table</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-5 shadow-sm hover:shadow-card transition-all group block">
+                    <a href="restaurant-detail.html"
+                        class="md:w-56 shrink-0 relative aspect-[4/3] rounded overflow-hidden block">
+                        <img alt="Great Sagar"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="images/restaurant-north-indian.jpg" />
+                        <div
+                            class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded shadow-sm text-[10px] font-bold text-primary">
+                            FAMOUS BIRYANI</div>
+                    </a>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <h3
+                                        class="text-xl font-bold text-primary hover:text-primary-hover cursor-pointer leading-tight mb-1">
+                                        <a href="restaurant-detail.html">Great Sagar Restaurant</a>
+                                    </h3>
                                     <p class="text-xs text-text-muted flex items-center gap-1">
                                         <span class="text-text-main font-medium underline">Buddi Lane</span>
                                         • 0.5 km from center
@@ -525,15 +550,19 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                    <div class="mt-8 flex justify-center">
-                        <button
-                            class="border border-primary text-primary font-bold py-2 px-6 rounded hover:bg-blue-50 transition-colors w-full md:w-auto">Show
-                            more results</button>
-                    </div>
+                </div>
+            </div>
+            <div class="mt-8 flex justify-center">
+                <button
+                    class="border border-primary text-primary font-bold py-2 px-6 rounded hover:bg-blue-50 transition-colors w-full md:w-auto">Show
+                    more results</button>
+            </div>
         </section>
     </main>
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay"
+        class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity opacity-100 backdrop-blur-sm"></div>
+
     <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">

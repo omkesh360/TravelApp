@@ -72,7 +72,118 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBookingButtons();
     checkLoginState();
     setupAuthListeners();
+    initializeMobileInteractions();
 });
+
+function initializeMobileInteractions() {
+    // Filter Sidebar Toggle
+    const filterBtns = document.querySelectorAll('[data-action="open-filters"]');
+    const sidebar = document.getElementById('listing-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const closeSidebarBtn = document.getElementById('close-sidebar');
+
+    function toggleSidebar(show) {
+        if (!sidebar) return;
+        if (show) {
+            sidebar.classList.remove('hidden');
+            // small delay to allow display:block to apply before transition
+            setTimeout(() => {
+                sidebar.classList.remove('-translate-x-full');
+            }, 10);
+            if (overlay) overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            sidebar.classList.add('-translate-x-full');
+            if (overlay) overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                // Check if user re-opened it quickly? No, just hide.
+                if (sidebar.classList.contains('-translate-x-full')) {
+                    sidebar.classList.add('hidden');
+                }
+            }, 300);
+        }
+    }
+
+    filterBtns.forEach(btn => btn.addEventListener('click', () => toggleSidebar(true)));
+
+    if (closeSidebarBtn) {
+        closeSidebarBtn.addEventListener('click', () => toggleSidebar(false));
+    }
+
+    // Sort Bottom Sheet Logic
+    const sortSheet = document.createElement('div');
+    sortSheet.className = 'fixed bottom-0 left-0 w-full bg-white z-50 rounded-t-2xl shadow-2xl transform translate-y-full transition-transform duration-300 lg:hidden block pb-6';
+    sortSheet.innerHTML = `
+        <div class="p-4">
+            <div class="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-6"></div>
+            <h3 class="font-bold text-lg mb-4 text-center text-text-main">Sort by</h3>
+            <div class="space-y-2">
+                <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-primary bg-primary/5 transition-colors">Recommended</button>
+                <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-text-main transition-colors">Price (Low to High)</button>
+                <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-text-main transition-colors">Price (High to Low)</button>
+                <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-text-main transition-colors">Top Rated</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(sortSheet);
+
+    function toggleSort(show) {
+        if (show) {
+            sortSheet.classList.remove('translate-y-full');
+            if (overlay) overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            sortSheet.classList.add('translate-y-full');
+            // Only hide overlay if sidebar is also closed
+            if (!sidebar || sidebar.classList.contains('-translate-x-full')) {
+                if (overlay) overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+    }
+
+    // Find Mobile Sort Buttons using specific text and hierarchy
+    // We look for buttons that have "Sort" text and are likely our mobile sort buttons
+    const allBtns = document.querySelectorAll('button');
+    allBtns.forEach(btn => {
+        // Check if button has "Sort" text directly or in a child
+        if (btn.textContent.includes('Sort') && !btn.classList.contains('hidden')) {
+            // Only add listener if it doesn't already have one? 
+            // We can check if it's the desktop one (hidden on mobile) or mobile one (flex md:hidden)
+            // The mobile buttons are in md:hidden containers.
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (icon && icon.textContent.includes('sort')) {
+                btn.addEventListener('click', () => toggleSort(true));
+            }
+        }
+    });
+
+    // Handle sort selection
+    sortSheet.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            sortSheet.querySelectorAll('button').forEach(b => {
+                b.classList.remove('text-primary', 'bg-primary/5');
+                b.classList.add('text-text-main');
+            });
+            btn.classList.add('text-primary', 'bg-primary/5');
+            btn.classList.remove('text-text-main');
+
+            if (window.utils && window.utils.showNotification) {
+                window.utils.showNotification(`Sorted by ${btn.textContent}`);
+            }
+            toggleSort(false);
+        });
+    });
+
+    // Unified Overlay Click
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            toggleSidebar(false);
+            toggleSort(false);
+        });
+    }
+}
 
 /*
 function initializeCurrency() {

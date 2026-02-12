@@ -221,8 +221,15 @@
         </div>
     </div>
     <main class="listing-main max-w-[1140px] mx-auto px-4 md:px-6 w-full flex-grow">
-        <div class="flex flex-col md:flex-row gap-6">
-            <aside class="w-full md:w-[280px] flex-shrink-0 space-y-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <aside id="listing-sidebar"
+                class="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 overflow-y-auto lg:translate-x-0 lg:static lg:shadow-none lg:block lg:overflow-visible p-4 lg:p-0 flex-shrink-0 space-y-4 hidden">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-lg text-text-main">Filters</h3>
+                    <button id="close-sidebar" class="p-2 hover:bg-gray-100 rounded-full text-text-main">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
                     <div class="p-4 border-b border-gray-200 bg-gray-50">
                         <h3 class="font-bold text-text-main">Filter by:</h3>
@@ -331,20 +338,35 @@
                 </div>
             </aside>
             <div class="flex-1">
-                <div class="flex items-center justify-between mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                     <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar: 8 rental spots found</h2>
-                    <div class="flex items-center gap-2">
+
+                    <!-- Desktop Sort -->
+                    <div class="hidden md:flex items-center gap-2">
                         <button
                             class="flex items-center gap-1 text-sm font-bold border border-gray-300 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors">
                             Sort by: Price (lowest) <span
                                 class="material-symbols-outlined text-[18px]">expand_more</span>
                         </button>
                     </div>
+
+                    <!-- Mobile Filter & Sort Buttons -->
+                    <div class="flex md:hidden gap-3 w-full">
+                        <button data-action="open-filters"
+                            class="flex-1 flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2.5 font-bold text-sm bg-white text-text-main shadow-sm active:bg-gray-50 transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">filter_list</span> Filters
+                        </button>
+                        <button
+                            class="flex-1 flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2.5 font-bold text-sm bg-white text-text-main shadow-sm active:bg-gray-50 transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">sort</span> Sort
+                        </button>
+                    </div>
                 </div>
                 <div class="space-y-4">
-                    <a href="bike-rental-detail.html"
+                    <div
                         class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-4 hover:shadow-soft transition-shadow block">
-                        <div class="w-full md:w-64 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
+                        <a href="bike-rental-detail.html"
+                            class="w-full md:w-64 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden block">
                             <img alt="Bajaj Pulsar" class="w-full h-full object-cover card-image-mobile"
                                 src="images/bajaj-pulsar.jpg" />
                             <div
@@ -357,23 +379,122 @@
                                     class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span>
                                 4.8
                             </div>
+                        </a>
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-text-main mb-1"><a href="bike-rental-detail.html"
+                                            class="hover:text-primary transition-colors">Bajaj Pulsar 220F</a></h3>
+                                    <div class="flex items-center gap-2 text-sm text-text-muted">
+                                        <span class="flex items-center gap-1"><span
+                                                class="material-symbols-outlined text-[18px]">electric_bolt_bolt</span>
+                                            Sporty</span>
+                                        <span class="text-gray-300">•</span>
+                                        <span>Apex Rentals, CIDCO</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-text-muted mb-1">Price for 1 day</div>
+                                    <div class="text-2xl font-bold text-primary">₹1,200</div>
+                                    <div class="text-[10px] text-text-muted">approx. ₹150/hr</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1 mb-4">
+                                <div class="flex items-center gap-2 text-sm text-text-main">
+                                    <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
+                                    <span>Helmet included</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-text-main">
+                                    <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
+                                    <span>Free cancellation</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-text-main">
+                                    <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
+                                    <span>Well maintained</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-3">
+                                <button
+                                    class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-4 hover:shadow-soft transition-shadow block">
+                        <a href="bike-rental-detail.html"
+                            class="w-full md:w-64 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden block">
+                            <img alt="RE Classic 350" class="w-full h-full object-cover card-image-mobile"
+                                src="images/royal-enfield.jpg" />
+                            <div
+                                class="absolute bottom-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
+                                <span
+                                    class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span>
+                                4.9
+                            </div>
+                        </a>
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-text-main mb-1"><a href="bike-rental-detail.html"
+                                            class="hover:text-primary transition-colors">Royal Enfield Classic 350</a>
+                                    </h3>
+                                    <div class="flex items-center gap-2 text-sm text-text-muted">
+                                        <span class="flex items-center gap-1"><span
+                                                class="material-symbols-outlined text-[18px]">motorcycle</span>
+                                            Cruiser</span>
+                                        <span class="text-gray-300">•</span>
+                                        <span>Bullet Hub, Osmanpura</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-text-muted mb-1">Price for 1 day</div>
+                                    <div class="text-2xl font-bold text-primary">₹1,500</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1 mb-4">
+                                <div class="flex items-center gap-2 text-sm text-text-main">
+                                    <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
+                                    <span>2 Helmets included</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-text-main">
+                                    <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
+                                    <span>Unlimited KMs</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-3">
+                                <button
+                                    class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-4 hover:shadow-soft transition-shadow block">
+                    <a href="bike-rental-detail.html"
+                        class="w-full md:w-64 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden block">
+                        <img alt="Honda Activa" class="w-full h-full object-cover card-image-mobile"
+                            src="images/honda-activa.jpg" />
                     </a>
                     <div class="flex-1 flex flex-col">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
                             <div>
-                                <h3 class="text-xl font-bold text-text-main mb-1">Bajaj Pulsar 220F</h3>
+                                <h3 class="text-xl font-bold text-text-main mb-1"><a href="bike-rental-detail.html"
+                                        class="hover:text-primary transition-colors">Honda Activa 6G</a></h3>
                                 <div class="flex items-center gap-2 text-sm text-text-muted">
                                     <span class="flex items-center gap-1"><span
-                                            class="material-symbols-outlined text-[18px]">electric_bolt_bolt</span>
-                                        Sporty</span>
+                                            class="material-symbols-outlined text-[18px]">pedal_bike</span>
+                                        Scooter</span>
                                     <span class="text-gray-300">•</span>
-                                    <span>Apex Rentals, CIDCO</span>
+                                    <span>City Scooters, Town Center</span>
                                 </div>
                             </div>
                             <div class="text-right">
                                 <div class="text-xs text-text-muted mb-1">Price for 1 day</div>
-                                <div class="text-2xl font-bold text-primary">₹1,200</div>
-                                <div class="text-[10px] text-text-muted">approx. ₹150/hr</div>
+                                <div class="text-2xl font-bold text-primary">₹600</div>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1 mb-4">
@@ -383,11 +504,7 @@
                             </div>
                             <div class="flex items-center gap-2 text-sm text-text-main">
                                 <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
-                                <span>Free cancellation</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-sm text-text-main">
-                                <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
-                                <span>Well maintained</span>
+                                <span>Fuel efficient</span>
                             </div>
                         </div>
                         <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-3">
@@ -398,93 +515,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="bike-rental-detail.html"
-                    class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-4 hover:shadow-soft transition-shadow block">
-                    <div class="w-full md:w-64 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
-                        <img alt="RE Classic 350" class="w-full h-full object-cover card-image-mobile"
-                            src="images/royal-enfield.jpg" />
-                        <div
-                            class="absolute bottom-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
-                            <span class="material-symbols-outlined text-yellow-500 text-[14px] fill-current">star</span>
-                            4.9
-                        </div>
-                </a>
-                <div class="flex-1 flex flex-col">
-                    <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main mb-1">Royal Enfield Classic 350</h3>
-                            <div class="flex items-center gap-2 text-sm text-text-muted">
-                                <span class="flex items-center gap-1"><span
-                                        class="material-symbols-outlined text-[18px]">motorcycle</span>
-                                    Cruiser</span>
-                                <span class="text-gray-300">•</span>
-                                <span>Bullet Hub, Osmanpura</span>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-xs text-text-muted mb-1">Price for 1 day</div>
-                            <div class="text-2xl font-bold text-primary">₹1,500</div>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
-                            <span>2 Helmets included</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
-                            <span>Unlimited KMs</span>
-                        </div>
-                    </div>
-                    <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-3">
-                        <button
-                            class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">
-                            Book Now
-                        </button>
-                    </div>
-                </div>
             </div>
-            <a href="bike-rental-detail.html"
-                class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-4 hover:shadow-soft transition-shadow block">
-                <div class="w-full md:w-64 h-48 md:h-auto flex-shrink-0 relative rounded-md overflow-hidden">
-                    <img alt="Honda Activa" class="w-full h-full object-cover card-image-mobile"
-                        src="images/honda-activa.jpg" />
-                </div>
-                <div class="flex-1 flex flex-col">
-                    <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-text-main mb-1">Honda Activa 6G</h3>
-                            <div class="flex items-center gap-2 text-sm text-text-muted">
-                                <span class="flex items-center gap-1"><span
-                                        class="material-symbols-outlined text-[18px]">pedal_bike</span>
-                                    Scooter</span>
-                                <span class="text-gray-300">•</span>
-                                <span>City Scooters, Town Center</span>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-xs text-text-muted mb-1">Price for 1 day</div>
-                            <div class="text-2xl font-bold text-primary">₹600</div>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
-                            <span>Helmet included</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-text-main">
-                            <span class="material-symbols-outlined text-green-600 text-[18px]">check</span>
-                            <span>Fuel efficient</span>
-                        </div>
-                    </div>
-                    <div class="mt-auto flex items-end justify-between border-t border-gray-100 pt-3">
-                        <button
-                            class="bg-primary hover:bg-primary-hover text-white font-bold px-6 py-2.5 rounded transition-colors shadow-sm">
-                            Book Now
-                        </button>
-                    </div>
-                </div>
-        </div>
         </div>
         <div class="mt-8 flex justify-center">
             <nav class="flex items-center gap-1">
@@ -509,104 +540,106 @@
         </div>
         </div>
         </div>
-        </div>
-        <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
-            <div class="max-w-[1140px] mx-auto px-4 md:px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
-                        <ul class="space-y-2 text-sm text-white/70">
-                            <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
-                        </ul>
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
-                        <ul class="space-y-2 text-sm text-white/70">
-                            <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
-                        </ul>
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
-                        <ul class="space-y-2 text-sm text-white/70">
-                            <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
-                        </ul>
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
-                        <ul class="space-y-2 text-sm text-white/70">
-                            <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
-                        </ul>
-                    </div>
-                    <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
-                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
-                        <ul class="space-y-2 text-sm text-white/70">
-                            <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
-                            <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
-                        </ul>
-                    </div>
+    </main>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay"
+        class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity opacity-100 backdrop-blur-sm"></div>
+
+    <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+                    </ul>
                 </div>
-                <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="flex items-center gap-2">
-                        <img src="images/travelhub-logo.png" alt="TravelHub"
-                            class="filter brightness-0 invert h-6 md:h-8">
-                    </div>
-                    <div class="text-xs text-white/60 text-center md:text-right">
-                        Copyright © 1996–2024 TravelHub. All rights reserved.
-                    </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="images/travelhub-logo.png" alt="TravelHub" class="filter brightness-0 invert h-6 md:h-8">
+                </div>
+                <div class="text-xs text-white/60 text-center md:text-right">
+                    Copyright © 1996–2024 TravelHub. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        <script src="js/app.js"></script>
-        <script>
-            tailwind.config = {
-                darkMode: "class",
-                theme: {
-                    extend: {
-                        colors: {
-                            "primary": "#003580",
-                            "primary-hover": "#002357",
-                            "accent": "#FC7D05",
-                            "secondary": "#FC7D05",
-                            "background-dark": "#0f1723",
-                            "text-main": "#1a1a1a",
-                            "text-muted": "#6b7280",
-                        },
-                        fontFamily: {
-                            "display": ["Be Vietnam Pro", "sans-serif"],
-                            "sans": ["Be Vietnam Pro", "sans-serif"],
-                        },
-                        borderRadius: {
-                            "DEFAULT": "0.25rem",
-                            "lg": "0.5rem",
-                            "xl": "0.75rem",
-                            "2xl": "1rem",
-                        },
-                        boxShadow: {
-                            'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
-                            'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
-                        }
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#FC7D05",
+                        "secondary": "#FC7D05",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
                     },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
                 },
-            }
-        </script>
-        <script src="js/app.js"></script>
-
+            },
+        }
+    </script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
