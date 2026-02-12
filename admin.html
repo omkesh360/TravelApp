@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin Dashboard - TravelHub</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="bg-[#f0f2f5] font-display text-text-main antialiased min-h-screen flex">
+    <!-- Admin Sidebar -->
+    <aside class="w-64 bg-primary text-white flex-shrink-0 flex flex-col hidden lg:flex">
+        <div class="p-6">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="images/travelhub.png" alt="TravelHub" class="h-8 brightness-0 invert">
+            </a>
+        </div>
+
+        <nav class="flex-grow px-4 space-y-2">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/10 font-bold">
+                <span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-white/70 hover:text-white">
+                <span class="material-symbols-outlined">hotel</span> Stays
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-white/70 hover:text-white">
+                <span class="material-symbols-outlined">directions_car</span> Car Rentals
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-white/70 hover:text-white">
+                <span class="material-symbols-outlined">restaurant</span> Restaurants
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-white/70 hover:text-white">
+                <span class="material-symbols-outlined">group</span> Users
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-white/70 hover:text-white border-t border-white/10 pt-4">
+                <span class="material-symbols-outlined">settings</span> Settings
+            </a>
+        </nav>
+
+        <div class="p-6 border-t border-white/10">
+            <button id="admin-logout"
+                class="flex items-center gap-3 w-full px-4 py-3 rounded-xl hover:bg-red-500/20 text-red-400 font-bold transition-all">
+                <span class="material-symbols-outlined">logout</span> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col h-screen overflow-hidden">
+        <!-- Top Header -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-shrink-0">
+            <div>
+                <h1 class="text-xl font-black text-primary">Overview</h1>
+                <p class="text-xs text-text-muted font-bold">Welcome back, Admin</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button
+                    class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                    <div class="text-right">
+                        <p class="text-sm font-bold text-text-main leading-none">Admin User</p>
+                        <p class="text-[10px] text-text-muted font-bold uppercase tracking-wider mt-1">Super Admin</p>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xs ring-2 ring-primary/20">
+                        AU
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <div class="flex-grow overflow-y-auto p-8 space-y-8 no-scrollbar">
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined">payments</span>
+                        </div>
+                        <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+12.5%</span>
+                    </div>
+                    <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1">Total Revenue</p>
+                    <h3 class="text-2xl font-black text-text-main">₹1,25,840</h3>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined">confirmation_number</span>
+                        </div>
+                        <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+8.2%</span>
+                    </div>
+                    <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1">Total Bookings</p>
+                    <h3 class="text-2xl font-black text-text-main">452</h3>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <span class="text-red-500 text-xs font-bold bg-red-50 px-2 py-1 rounded-lg">-2.4%</span>
+                    </div>
+                    <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1">Active Users</p>
+                    <h3 class="text-2xl font-black text-text-main">1,280</h3>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+15.1%</span>
+                    </div>
+                    <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1">Growth Rate</p>
+                    <h3 class="text-2xl font-black text-text-main">24.5%</h3>
+                </div>
+            </div>
+
+            <!-- Recent Bookings Table -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                    <h2 class="text-lg font-black text-primary">Recent Bookings</h2>
+                    <button class="text-sm font-bold text-primary hover:underline">View All</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr
+                                class="bg-gray-50/50 text-text-muted text-[10px] font-black uppercase tracking-widest border-b border-gray-100">
+                                <th class="px-6 py-4">Customer</th>
+                                <th class="px-6 py-4">Destination/Item</th>
+                                <th class="px-6 py-4">Date</th>
+                                <th class="px-6 py-4">Amount</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-gray-50">
+                            <tr class="hover:bg-gray-50/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs uppercase">
+                                            AS</div>
+                                        <span class="font-bold text-text-main">Anya Sharma</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-medium text-text-main">Hotel Renaissance</td>
+                                <td class="px-6 py-4 text-text-muted">Oct 20, 2024</td>
+                                <td class="px-6 py-4 font-bold text-primary">₹12,500</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="px-2.5 py-1 rounded-lg bg-green-100 text-green-700 text-[10px] font-black uppercase">Confirmed</span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button
+                                        class="material-symbols-outlined text-gray-400 hover:text-primary transition-colors">more_vert</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs uppercase">
+                                            MH</div>
+                                        <span class="font-bold text-text-main">Minna Halkam</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-medium text-text-main">Toyota Fortuner</td>
+                                <td class="px-6 py-4 text-text-muted">Oct 19, 2024</td>
+                                <td class="px-6 py-4 font-bold text-primary">₹3,200</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="px-2.5 py-1 rounded-lg bg-orange-100 text-orange-700 text-[10px] font-black uppercase">Pending</span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button
+                                        class="material-symbols-outlined text-gray-400 hover:text-primary transition-colors">more_vert</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-xs uppercase">
+                                            HM</div>
+                                        <span class="font-bold text-text-main">Hima Manila</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-medium text-text-main">Naivedya Thali</td>
+                                <td class="px-6 py-4 text-text-muted">Oct 18, 2024</td>
+                                <td class="px-6 py-4 font-bold text-primary">₹850</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="px-2.5 py-1 rounded-lg bg-red-100 text-red-700 text-[10px] font-black uppercase">Cancelled</span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button
+                                        class="material-symbols-outlined text-gray-400 hover:text-primary transition-colors">more_vert</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Simple Admin Guard
+        window.addEventListener('load', () => {
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            if (user.role !== 'admin') {
+                alert('Access Denied. Admins only.');
+                window.location.href = 'login.html';
+            }
+        });
+
+        document.getElementById('admin-logout')?.addEventListener('click', () => {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        });
+
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003580",
+                        "primary-hover": "#002357",
+                        "accent": "#febb02",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
+                        "text-main": "#1a1a1a",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "sans": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</body>
+
+</html>

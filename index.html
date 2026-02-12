@@ -17,84 +17,30 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in overflow-hidden">
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in overflow-x-hidden">
     <!-- Smooth Preloader -->
     <div id="preloader"
-        class="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-700">
-        <div class="relative flex flex-col items-center gap-4">
-            <div class="w-24 h-24 md:w-32 md:h-32 relative">
-                <!-- White Logo (Initial) -->
-                <img src="images/travelhub.png" alt="Loading..."
-                    class="w-full h-full object-contain grayscale opacity-20 absolute inset-0">
-                <!-- Colorful Logo (Animation) -->
-                <img src="images/travelhub.png" alt="Loading..."
-                    class="w-full h-full object-contain animate-pulse-logo absolute inset-0">
-            </div>
-            <div class="flex flex-col items-center">
-                <div class="h-1 w-48 bg-gray-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-primary animate-progress-bar"></div>
-                </div>
-                <span class="text-xs font-bold text-primary mt-3 tracking-[0.2em] uppercase">Loading Adventure</span>
-            </div>
+        class="fixed inset-0 z-[9999] bg-[#0f1723] flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="flex flex-col items-center gap-8">
+            <img src="images/travelhub.png" alt="TravelHub"
+                class="w-[246px] md:w-[374px] object-contain animate-fade-in">
+            <div class="loader"></div>
         </div>
     </div>
 
-    <style>
-        @keyframes pulse-logo {
-
-            0%,
-            100% {
-                opacity: 0.2;
-                transform: scale(0.95);
-                filter: grayscale(100%);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-                filter: grayscale(0%);
-            }
-        }
-
-        .animate-pulse-logo {
-            animation: pulse-logo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes progress-bar {
-            0% {
-                width: 0%;
-                transition-timing-function: cubic-bezier(0.1, 0, 0.45, 1);
-            }
-
-            30% {
-                width: 40%;
-                transition-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
-            }
-
-            100% {
-                width: 100%;
-            }
-        }
-
-        .animate-progress-bar {
-            animation: progress-bar 2.5s ease-in-out infinite;
-        }
-    </style>
-
+    <!-- Preloader script -->
     <script>
-        window.addEventListener('load', function () {
+        window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            const body = document.body;
-
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => {
                     preloader.style.display = 'none';
-                    body.classList.remove('overflow-hidden');
-                }, 700);
-            }, 1000); // Minimum display time for smooth experience
+                }, 1000);
+            }, 1000);
         });
     </script>
+
     <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
         <!-- Contact Top Bar (Slimmed down) -->
         <div class="bg-primary-dark border-b border-white/5 py-1.5">
@@ -119,9 +65,10 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3 shrink-0">
+                <div class="flex items-center gap-4 shrink-0">
+
                     <a href="https://wa.me/918600968888" target="_blank"
-                        class="flex items-center gap-1 hover:text-white transition-colors">
+                        class="flex items-center gap-1 hover:text-white transition-colors ml-2">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
                             class="w-4 h-4">
                         WhatsApp
@@ -279,41 +226,29 @@
         <div class="max-w-[1140px] mx-auto px-4 md:px-6 relative z-20">
             <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 md:p-6 shadow-2xl border border-white/20">
                 <!-- Service Switches -->
-                <div class="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-primary font-bold shadow-sm transition-all"
-                        id="btn-stays">
-                        <span class="material-symbols-outlined">bed</span>
+                <div class="grid grid-cols-3 gap-2 mb-6 md:flex md:flex-wrap md:justify-start">
+                    <button class="service-btn active" id="btn-stays">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">bed</span>
                         <span>Stays</span>
                     </button>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/20 text-white font-medium transition-all"
-                        id="btn-cars">
-                        <span class="material-symbols-outlined">directions_car</span>
-                        <span>Car Rentals</span>
+                    <button class="service-btn" id="btn-cars">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_car</span>
+                        <span class="text-center leading-tight">Car Rentals</span>
                     </button>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/20 text-white font-medium transition-all"
-                        id="btn-bikes">
-                        <span class="material-symbols-outlined">pedal_bike</span>
-                        <span>Bike Rentals</span>
+                    <button class="service-btn" id="btn-bikes">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bike</span>
+                        <span class="text-center leading-tight">Bike Rentals</span>
                     </button>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/20 text-white font-medium transition-all"
-                        id="btn-restaurants">
-                        <span class="material-symbols-outlined">restaurant</span>
+                    <button class="service-btn" id="btn-restaurants">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">restaurant_menu</span>
                         <span>Restaurants</span>
                     </button>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/20 text-white font-medium transition-all"
-                        id="btn-attractions">
-                        <span class="material-symbols-outlined">confirmation_number</span>
+                    <button class="service-btn" id="btn-attractions">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">local_activity</span>
                         <span>Attractions</span>
                     </button>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/20 text-white font-medium transition-all"
-                        id="btn-buses">
-                        <span class="material-symbols-outlined">directions_bus</span>
+                    <button class="service-btn" id="btn-buses">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">directions_bus</span>
                         <span>Buses</span>
                     </button>
                 </div>
@@ -370,7 +305,7 @@
         <div class="absolute -left-20 -top-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
     </div>
     <main class="flex-grow pt-16 pb-12 max-w-[1140px] mx-auto px-4 md:px-6 w-full space-y-8 md:space-y-12">
-        <section>
+        <section class="animate-slide-up">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-2xl font-bold text-text-main">Trending Transport</h2>
             </div>
@@ -429,7 +364,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="animate-slide-up" style="animation-delay: 0.1s;">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-2xl font-bold text-text-main">Taste the City</h2>
                 <a class="text-sm font-bold text-primary hover:bg-blue-50 px-2 py-1 rounded transition-colors"
@@ -637,7 +572,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="animate-slide-up" style="animation-delay: 0.1s;">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-2xl font-bold text-text-main">Explore Attractions</h2>
             </div>
@@ -732,7 +667,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="animate-slide-up" style="animation-delay: 0.1s;">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-2xl font-bold text-text-main">Quick Bike Rentals</h2>
             </div>
@@ -799,7 +734,7 @@
                 </a>
             </div>
         </section>
-        <section>
+        <section class="animate-slide-up" style="animation-delay: 0.1s;">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-2xl font-bold text-text-main">Featured Restaurants</h2>
             </div>
@@ -893,7 +828,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="animate-slide-up" style="animation-delay: 0.2s;">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-2xl font-bold text-text-main">Travel Insights</h2>
             </div>
@@ -1051,6 +986,7 @@
         }
     </script>
 
+
     <script src="js/app.js"></script>
     <script>
         // Category Switching & Carousel Logic
@@ -1103,12 +1039,13 @@
         let carouselInterval;
 
         function startCarousel() {
-            carouselInterval = setInterval(() => {
-                currentCategoryIndex = (currentCategoryIndex + 1) % categoryIds.length;
-                const nextId = categoryIds[currentCategoryIndex];
-                const btn = document.getElementById(nextId);
-                if (btn) btn.click();
-            }, 3000);
+            // Auto-rotation disabled per user request
+            // carouselInterval = setInterval(() => {
+            //     currentCategoryIndex = (currentCategoryIndex + 1) % categoryIds.length;
+            //     const nextId = categoryIds[currentCategoryIndex];
+            //     const btn = document.getElementById(nextId);
+            //     if (btn) btn.click();
+            // }, 3000);
         }
 
         Object.keys(content).forEach(id => {
@@ -1123,15 +1060,15 @@
                     startCarousel();
 
                     // Update button styles
+                    // Update button styles
                     Object.keys(content).forEach(otherId => {
                         const otherBtn = document.getElementById(otherId);
                         if (otherBtn) {
-                            otherBtn.classList.remove('bg-white', 'text-primary', 'font-bold', 'shadow-sm');
-                            otherBtn.classList.add('hover:bg-white/20', 'text-white', 'font-medium');
+                            otherBtn.classList.remove('active');
+                            // Ensure default state is restored if needed, though CSS handles non-active state
                         }
                     });
-                    btn.classList.add('bg-white', 'text-primary', 'font-bold', 'shadow-sm');
-                    btn.classList.remove('hover:bg-white/20', 'text-white', 'font-medium');
+                    btn.classList.add('active');
 
                     // Update Placeholder
                     if (searchInput) searchInput.placeholder = content[id].placeholder;

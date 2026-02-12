@@ -67,13 +67,14 @@ if ('serviceWorker' in navigator) {
 
 // Core Logic
 document.addEventListener('DOMContentLoaded', () => {
-    initializeCurrency();
+    // initializeCurrency(); // Removed as per request
     initializeSearch();
     initializeBookingButtons();
     checkLoginState();
     setupAuthListeners();
 });
 
+/*
 function initializeCurrency() {
     const currencySelect = document.getElementById('currencySelect');
     if (currencySelect) {
@@ -101,6 +102,7 @@ function updatePrices() {
         }
     });
 }
+*/
 
 function initializeSearch() {
     const searchBtn = document.querySelector('button.bg-primary.text-white.font-bold.text-lg'); // Main search button
@@ -236,31 +238,42 @@ function setupAuthListeners() {
         });
     }
 
-    const registerForm = document.getElementById('register-form');
+    const registerForm = document.getElementById('registration-form');
     if (registerForm) {
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            if (name && email && password) {
-                register(name, email, password);
+            if (firstName && lastName && email && password) {
+                register(`${firstName} ${lastName}`, email, password);
             }
         });
     }
 }
 
 function login(email, password) {
-    // Simulated login
-    const user = { name: email.split('@')[0], email: email, role: 'user' };
+    // Simulated login with Admin check
+    let user;
+    if (email === 'admin@travelhub.com' && password === 'admin123') {
+        user = { name: 'Admin User', email: email, role: 'admin' };
+    } else {
+        user = { name: email.split('@')[0], email: email, role: 'user' };
+    }
+
     localStorage.setItem('user', JSON.stringify(user));
     state.user = user;
     updateAuthUI(true);
     utils.showNotification(`Welcome back, ${user.name}!`);
 
-    if (window.location.pathname.includes('login.html')) {
-        setTimeout(() => window.location.href = 'index.html', 500);
-    }
+    setTimeout(() => {
+        if (user.role === 'admin') {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    }, 800);
 }
 
 function register(name, email, password) {

@@ -17,84 +17,30 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in overflow-hidden">
+    class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col page-fade-in overflow-x-hidden">
     <!-- Smooth Preloader -->
     <div id="preloader"
-        class="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-700">
-        <div class="relative flex flex-col items-center gap-4">
-            <div class="w-24 h-24 md:w-32 md:h-32 relative">
-                <!-- White Logo (Initial) -->
-                <img src="images/travelhub.png" alt="Loading..."
-                    class="w-full h-full object-contain grayscale opacity-20 absolute inset-0">
-                <!-- Colorful Logo (Animation) -->
-                <img src="images/travelhub.png" alt="Loading..."
-                    class="w-full h-full object-contain animate-pulse-logo absolute inset-0">
-            </div>
-            <div class="flex flex-col items-center">
-                <div class="h-1 w-48 bg-gray-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-primary animate-progress-bar"></div>
-                </div>
-                <span class="text-xs font-bold text-primary mt-3 tracking-[0.2em] uppercase">Loading Adventure</span>
-            </div>
+        class="fixed inset-0 z-[9999] bg-[#0f1723] flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="flex flex-col items-center gap-8">
+            <img src="images/travelhub.png" alt="TravelHub"
+                class="w-[246px] md:w-[374px] object-contain animate-fade-in">
+            <div class="loader"></div>
         </div>
     </div>
 
-    <style>
-        @keyframes pulse-logo {
-
-            0%,
-            100% {
-                opacity: 0.2;
-                transform: scale(0.95);
-                filter: grayscale(100%);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-                filter: grayscale(0%);
-            }
-        }
-
-        .animate-pulse-logo {
-            animation: pulse-logo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes progress-bar {
-            0% {
-                width: 0%;
-                transition-timing-function: cubic-bezier(0.1, 0, 0.45, 1);
-            }
-
-            30% {
-                width: 40%;
-                transition-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
-            }
-
-            100% {
-                width: 100%;
-            }
-        }
-
-        .animate-progress-bar {
-            animation: progress-bar 2.5s ease-in-out infinite;
-        }
-    </style>
-
+    <!-- Preloader script -->
     <script>
-        window.addEventListener('load', function () {
+        window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            const body = document.body;
-
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => {
                     preloader.style.display = 'none';
-                    body.classList.remove('overflow-hidden');
-                }, 700);
-            }, 1000); // Minimum display time for smooth experience
+                }, 1000);
+            }, 1000);
         });
     </script>
+
     <header class="bg-primary text-white w-full sticky top-0 z-50 shadow-md">
         <!-- Contact Top Bar (Slimmed down) -->
         <div class="bg-primary-dark border-b border-white/5 py-1.5">
@@ -120,9 +66,10 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3 shrink-0">
+                <div class="flex items-center gap-4 shrink-0">
+
                     <a href="https://wa.me/918600968888" target="_blank"
-                        class="flex items-center gap-1 hover:text-white transition-colors">
+                        class="flex items-center gap-1 hover:text-white transition-colors ml-2">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
                             class="w-4 h-4">
                         WhatsApp
@@ -152,17 +99,17 @@
                         </a>
                         <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white bg-white/10 transition-colors whitespace-nowrap text-white"
                             href="bike-rentals.html">
-                            <span class="material-symbols-outlined text-[20px]">pedal_bike</span>
+                            <span class="material-symbols-outlined text-[20px]">directions_bike</span>
                             <span class="text-[13px] font-medium">Bike Rentals</span>
                         </a>
                         <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
                             href="restaurant.html">
-                            <span class="material-symbols-outlined text-[20px]">restaurant</span>
+                            <span class="material-symbols-outlined text-[20px]">restaurant_menu</span>
                             <span class="text-[13px] font-medium">Restaurants</span>
                         </a>
                         <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
                             href="attraction.html">
-                            <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                            <span class="material-symbols-outlined text-[20px]">local_activity</span>
                             <span class="text-[13px] font-medium">Attractions</span>
                         </a>
                         <a class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors whitespace-nowrap text-white/90 hover:text-white group"
@@ -236,45 +183,45 @@
             </nav>
         </div>
     </header>
-    <div class="bg-primary text-white pb-16 pt-12 relative z-40">
+    <div class="listing-hero text-white">
         <div class="max-w-[1140px] mx-auto px-4 md:px-6">
             <h1 class="text-4xl md:text-5xl font-black leading-tight mb-2 tracking-tight">Experience the Majesty
                 of<br />Chhatrapati Sambhajinagar.</h1>
             <p class="text-lg md:text-xl font-normal text-white/90 mb-10">Discover the heritage, culture, and flavors of
                 Maharashtra's historic capital.</p>
         </div>
-        <div class="max-w-[1140px] mx-auto px-4 md:px-6 absolute left-0 right-0 -bottom-8 z-20">
-            <div class="bg-white/10 backdrop-blur-md p-1.5 rounded-xl shadow-2xl border border-white/20">
-                <div class="bg-white rounded-lg p-1.5 flex flex-col md:flex-row gap-2 items-stretch shadow-inner">
+        <div class="listing-hero-search">
+            <div class="bg-white/10 backdrop-blur-md p-1.5 rounded-2xl shadow-2xl border border-white/20">
+                <div class="bg-white rounded-xl p-2 flex flex-col md:flex-row gap-2 items-stretch shadow-inner">
                     <div class="flex-[1.5] relative group">
-                        <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                        <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                             <span class="material-symbols-outlined text-primary/60 text-[20px]">pedal_bike</span>
                         </div>
                         <input
-                            class="w-full pl-10 pr-4 h-[48px] rounded border-0 focus:ring-2 focus:ring-primary/20 text-text-main placeholder-text-muted font-medium bg-gray-50/50 hover:bg-gray-100/50 focus:bg-white transition-all text-sm"
+                            class="w-full pl-12 pr-4 h-[56px] rounded-lg border-0 focus:ring-2 focus:ring-primary/20 text-text-main placeholder-text-muted font-medium bg-gray-50/50 hover:bg-gray-100/50 focus:bg-white transition-all text-base"
                             placeholder="Pick-up location" type="text" value="Chhatrapati Sambhajinagar, India" />
                     </div>
                     <div class="flex-1 relative border-t md:border-t-0 md:border-l border-gray-100">
                         <button
-                            class="w-full h-full flex items-center gap-3 px-3 min-h-[48px] hover:bg-gray-50/50 transition-all text-left group">
+                            class="w-full h-[56px] flex items-center gap-3 px-4 py-2 hover:bg-gray-50/50 transition-all text-left group">
                             <span class="material-symbols-outlined text-primary/60 text-[20px]">calendar_month</span>
                             <div class="flex flex-col">
                                 <span
                                     class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Dates</span>
-                                <span class="text-text-main text-[13px] font-bold leading-tight">Sat 12 Oct — Sun 13
+                                <span class="text-text-main text-sm font-bold leading-tight">Sat 12 Oct — Sun 13
                                     Oct</span>
                             </div>
                         </button>
                     </div>
                     <button
-                        class="bg-primary hover:bg-primary-hover text-white font-bold text-sm h-[48px] px-8 rounded-lg transition-all flex items-center justify-center shadow-lg hover:shadow-primary/30 active:scale-95">
+                        class="bg-primary hover:bg-primary-hover text-white font-bold text-lg h-[56px] px-10 rounded-lg transition-all flex items-center justify-center shadow-lg hover:shadow-primary/30 active:scale-95">
                         SEARCH
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="max-w-[1140px] mx-auto px-4 md:px-6 pt-16 pb-12 w-full flex-grow">
+    <main class="listing-main max-w-[1140px] mx-auto px-4 md:px-6 w-full flex-grow">
         <div class="flex flex-col md:flex-row gap-6">
             <aside class="w-full md:w-[280px] flex-shrink-0 space-y-4">
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
@@ -539,126 +486,128 @@
                     </div>
                 </div>
         </div>
-    </div>
-    <div class="mt-8 flex justify-center">
-        <nav class="flex items-center gap-1">
-            <button
-                class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-gray-400 cursor-not-allowed">
-                <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button
-                class="w-10 h-10 flex items-center justify-center rounded border border-primary bg-primary text-white font-bold">1</button>
-            <button
-                class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">2</button>
-            <button
-                class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">3</button>
-            <span class="px-2 text-gray-400">...</span>
-            <button
-                class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">12</button>
-            <button
-                class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-        </nav>
-    </div>
-    </div>
-    </div>
-    </div>
-    <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
-        <div class="max-w-[1140px] mx-auto px-4 md:px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-                <div class="space-y-4">
-                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
-                    </ul>
-                </div>
-                <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
-                    <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
-                        <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-2">
-                    <img src="images/travelhub-logo.png" alt="TravelHub"
-                        class="input-standard filter brightness-0 invert">
-                </div>
-                <div class="text-xs text-white/60 text-center md:text-right">
-                    Copyright © 1996–2024 TravelHub. All rights reserved.
-                </div>
-            </div>
         </div>
-    </footer>
-    <script src="js/app.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#003580",
-                        "primary-hover": "#002357",
-                        "accent": "#FC7D05",
-                        "secondary": "#FC7D05",
-                        "background-dark": "#0f1723",
-                        "text-main": "#1a1a1a",
-                        "text-muted": "#6b7280",
+        <div class="mt-8 flex justify-center">
+            <nav class="flex items-center gap-1">
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-gray-400 cursor-not-allowed">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded border border-primary bg-primary text-white font-bold">1</button>
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">2</button>
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">3</button>
+                <span class="px-2 text-gray-400">...</span>
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main font-medium">12</button>
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-text-main">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </nav>
+        </div>
+        </div>
+        </div>
+        </div>
+        <footer class="bg-primary text-white pt-16 pb-8 mt-auto">
+            <div class="max-w-[1140px] mx-auto px-4 md:px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Support</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Safety Information</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Cancellation Options</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Report a Concern</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Discover</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition-colors" href="#">Genius Loyalty Program</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Seasonal Deals</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Travel Articles</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Booking Communities</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Terms &amp; Settings</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition-colors" href="#">Privacy &amp; Cookies</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Grievance Officer</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Manage Settings</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">Partners</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition-colors" href="#">Extranet Login</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Partner Help</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">List Your Property</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Become an Affiliate</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4 col-span-2 md:col-span-4 lg:col-span-1">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-white/80">About</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition-colors" href="#">About TravelHub</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">How We Work</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Press Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <img src="images/travelhub-logo.png" alt="TravelHub"
+                            class="filter brightness-0 invert h-6 md:h-8">
+                    </div>
+                    <div class="text-xs text-white/60 text-center md:text-right">
+                        Copyright © 1996–2024 TravelHub. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/app.js"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "primary": "#003580",
+                            "primary-hover": "#002357",
+                            "accent": "#FC7D05",
+                            "secondary": "#FC7D05",
+                            "background-dark": "#0f1723",
+                            "text-main": "#1a1a1a",
+                            "text-muted": "#6b7280",
+                        },
+                        fontFamily: {
+                            "display": ["Be Vietnam Pro", "sans-serif"],
+                            "sans": ["Be Vietnam Pro", "sans-serif"],
+                        },
+                        borderRadius: {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "2xl": "1rem",
+                        },
+                        boxShadow: {
+                            'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+                            'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
+                        }
                     },
-                    fontFamily: {
-                        "display": ["Be Vietnam Pro", "sans-serif"],
-                        "sans": ["Be Vietnam Pro", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                    },
-                    boxShadow: {
-                        'soft': '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
-                        'card': '0 2px 16px 0 rgba(0,0,0,0.08)',
-                    }
                 },
-            },
-        }
-    </script>
-    <script src="js/app.js"></script>
+            }
+        </script>
+        <script src="js/app.js"></script>
+
 </body>
 
 </html>
