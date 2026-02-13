@@ -221,7 +221,7 @@
     </div>
     <main class="listing-main max-w-[1140px] mx-auto px-4 md:px-6 w-full flex flex-col lg:flex-row gap-8 flex-grow">
         <aside id="listing-sidebar"
-            class="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 overflow-y-auto lg:translate-x-0 lg:static lg:shadow-none lg:block lg:overflow-visible p-4 lg:p-0 flex-shrink-0 space-y-4 hidden h-full">
+            class="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 overflow-y-auto lg:translate-x-0 lg:sticky lg:top-24 lg:shadow-none lg:block lg:overflow-y-auto p-4 lg:p-0 flex-shrink-0 space-y-4 hidden h-full max-h-[calc(100vh-6rem)]">
             <div class="flex items-center justify-between mb-4 lg:hidden">
                 <h3 class="font-bold text-lg text-text-main">Filters</h3>
                 <button id="close-sidebar" class="p-2 hover:bg-gray-100 rounded-full text-text-main">
@@ -265,57 +265,7 @@
                     </label>
                 </div>
             </div>
-            <div class="border-b pb-4 border-gray-200">
-                <h4 class="font-bold text-sm text-text-main mb-3">Price</h4>
-                <div class="space-y-2">
-                    <label class="sidebar-filter-item group">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main group-hover:text-primary transition-colors">€0 - €50</span>
-                    </label>
-                    <label class="sidebar-filter-item group">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main group-hover:text-primary transition-colors">€50 -
-                            €100</span>
-                    </label>
-                    <label class="sidebar-filter-item group">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main group-hover:text-primary transition-colors">€100 -
-                            €200</span>
-                    </label>
-                    <label class="sidebar-filter-item group">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main group-hover:text-primary transition-colors">€200+</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main">₹0 - ₹2,000</span>
-                        <span class="text-xs text-text-muted ml-auto">12</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main">₹2,000 - ₹5,000</span>
-                        <span class="text-xs text-text-muted ml-auto">8</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main">₹5,000 - ₹10,000</span>
-                        <span class="text-xs text-text-muted ml-auto">5</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                            type="checkbox" />
-                        <span class="text-sm text-text-main">₹10,000+</span>
-                        <span class="text-xs text-text-muted ml-auto">2</span>
-                    </label>
-                </div>
-            </div>
+
             <div class="border-b pb-4 border-gray-200">
                 <h4 class="font-bold text-sm text-text-main mb-3">Language</h4>
                 <div class="space-y-2">
@@ -366,7 +316,7 @@
                     </button>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 responsive-gap">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 responsive-gap gap-6">
                 <div
                     class="bg-white rounded-lg shadow-soft border border-gray-100 overflow-hidden flex flex-col hover:shadow-card transition-all group h-full block">
                     <div class="h-56 relative overflow-hidden">
@@ -404,14 +354,18 @@
                             <p class="text-xs text-green-700 bg-green-50 w-fit px-2 py-0.5 rounded font-medium">Top
                                 Choice</p>
                         </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹600</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Book
-                                Tour</button>
+                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex flex-row gap-2">
+                            <a href="tel:+918600968888"
+                                class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="https://wa.me/918600968888" target="_blank"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -445,14 +399,18 @@
                                 <span class="material-symbols-outlined text-[16px]">translate</span> English &amp; Hindi
                             </p>
                         </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹600</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Book
-                                Tour</button>
+                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex flex-row gap-2">
+                            <a href="tel:+918600968888"
+                                class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="https://wa.me/918600968888" target="_blank"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -485,14 +443,18 @@
                             <p class="text-xs text-green-700 bg-green-50 w-fit px-2 py-0.5 rounded font-medium">History
                                 Walk</p>
                         </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹100</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
-                                tickets</button>
+                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex flex-row gap-2">
+                            <a href="tel:+918600968888"
+                                class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="https://wa.me/918600968888" target="_blank"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -526,14 +488,18 @@
                             <p class="text-xs text-purple-700 bg-purple-50 w-fit px-2 py-0.5 rounded font-medium">
                                 Adventure</p>
                         </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹50</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
-                                tickets</button>
+                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex flex-row gap-2">
+                            <a href="tel:+918600968888"
+                                class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="https://wa.me/918600968888" target="_blank"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -568,14 +534,18 @@
                                 Spiritual
                             </p>
                         </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">Free Entry</span>
-                                <span class="font-bold text-primary text-xl">₹0</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Join
-                                Group</button>
+                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex flex-row gap-2">
+                            <a href="tel:+918600968888"
+                                class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="https://wa.me/918600968888" target="_blank"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -610,14 +580,18 @@
                                 Historical
                             </p>
                         </div>
-                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex items-end justify-between">
-                            <div>
-                                <span class="text-xs text-text-muted block mb-0.5">From</span>
-                                <span class="font-bold text-primary text-xl">₹20</span>
-                            </div>
-                            <button
-                                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-primary-hover transition-colors shadow-sm">Select
-                                tickets</button>
+                        <div class="mt-auto pt-4 mt-auto border-t border-gray-100 flex flex-row gap-2">
+                            <a href="tel:+918600968888"
+                                class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="https://wa.me/918600968888" target="_blank"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -225,8 +225,6 @@
                 <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
                 <span class="text-gray-700">Italian Cuisine</span>
                 <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-                <span class="text-gray-700">$$</span>
-                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
                 <div class="flex items-center text-text-muted">
                     <span class="material-symbols-outlined text-base mr-1">location_on</span>
                     Via Dante, 14, Milan
@@ -327,7 +325,7 @@
                                 <h3 class="font-bold text-text-main">Osso Buco</h3>
                                 <p class="text-sm text-text-muted mt-1 line-clamp-2">Braised veal shanks cooked with
                                     vegetables, white wine and broth.</p>
-                                <span class="block mt-2 font-semibold text-primary">$32.00</span>
+
                             </div>
                         </div>
                         <!-- Menu Item 2 -->
@@ -339,7 +337,7 @@
                                 <h3 class="font-bold text-text-main">Saffron Risotto</h3>
                                 <p class="text-sm text-text-muted mt-1 line-clamp-2">Creamy arborio rice infused with
                                     saffron and parmesan cheese.</p>
-                                <span class="block mt-2 font-semibold text-primary">$24.00</span>
+
                             </div>
                         </div>
                         <!-- Menu Item 3 -->
@@ -351,7 +349,7 @@
                                 <h3 class="font-bold text-text-main">Classic Tiramisu</h3>
                                 <p class="text-sm text-text-muted mt-1 line-clamp-2">Layers of coffee-soaked ladyfingers
                                     and mascarpone cream.</p>
-                                <span class="block mt-2 font-semibold text-primary">$12.00</span>
+
                             </div>
                         </div>
                         <!-- Menu Item 4 -->
@@ -363,7 +361,7 @@
                                 <h3 class="font-bold text-text-main">Caprese Salad</h3>
                                 <p class="text-sm text-text-muted mt-1 line-clamp-2">Fresh buffalo mozzarella, tomatoes,
                                     and sweet basil.</p>
-                                <span class="block mt-2 font-semibold text-primary">$16.00</span>
+
                             </div>
                         </div>
                     </div>
@@ -417,76 +415,17 @@
                         <h3 class="text-xl font-bold text-text-main">Make a Reservation</h3>
                         <p class="text-sm text-text-muted mt-1">Book your table instantly</p>
                     </div>
-                    <form class="space-y-4" onsubmit="event.preventDefault();">
-                        <!-- Party Size -->
-                        <div>
-                            <label
-                                class="block text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Party
-                                Size</label>
-                            <div class="relative">
-                                <select
-                                    class="w-full bg-gray-50 border-gray-200 rounded-lg py-2.5 pl-10 pr-4 text-text-main focus:ring-primary focus:border-primary appearance-none cursor-pointer">
-                                    <option>2 People</option>
-                                    <option>3 People</option>
-                                    <option>4 People</option>
-                                    <option>5 People</option>
-                                    <option>6+ People</option>
-                                </select>
-                                <span
-                                    class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400">group</span>
-                                <span
-                                    class="material-symbols-outlined absolute right-3 top-2.5 text-gray-400 pointer-events-none">expand_more</span>
-                            </div>
-                        </div>
-                        <!-- Date -->
-                        <div>
-                            <label
-                                class="block text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Date</label>
-                            <div class="relative">
-                                <input
-                                    class="w-full bg-gray-50 border-gray-200 rounded-lg py-2.5 pl-10 pr-4 text-text-main focus:ring-primary focus:border-primary placeholder-gray-400"
-                                    type="date" value="2023-10-27" />
-                                <span
-                                    class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400">calendar_today</span>
-                            </div>
-                        </div>
-                        <!-- Time Slots -->
-                        <div>
-                            <label
-                                class="block text-xs font-semibold text-text-muted uppercase tracking-wider mb-2">Select
-                                Time</label>
-                            <div class="grid grid-cols-3 gap-2">
-                                <button
-                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
-                                    type="button">6:00 PM</button>
-                                <button
-                                    class="py-2 text-sm font-medium bg-primary text-white border border-primary rounded shadow-md"
-                                    type="button">6:30 PM</button>
-                                <button
-                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
-                                    type="button">7:00 PM</button>
-                                <button
-                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
-                                    type="button">7:30 PM</button>
-                                <button
-                                    class="py-2 text-sm font-medium border border-gray-200 rounded bg-gray-100 text-gray-400 cursor-not-allowed"
-                                    type="button">8:00 PM</button>
-                                <button
-                                    class="py-2 text-sm font-medium border border-gray-200 rounded hover:border-primary hover:text-primary transition-colors text-gray-600"
-                                    type="button">8:30 PM</button>
-                            </div>
-                        </div>
-                        <!-- Submit Button -->
-                        <button
-                            class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 mt-6 flex items-center justify-center space-x-2"
-                            type="submit">
-                            <span>Reserve Table</span>
-                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </button>
-                        <p class="text-xs text-center text-text-muted mt-2">
-                            You won't be charged yet.
-                        </p>
-                    </form>
+                    <div class="flex gap-2">
+                        <a href="tel:+918600968888"
+                            class="flex-1 bg-primary hover:bg-primary-hover text-white py-2.5 px-3 rounded-lg shadow-md transition-all transform active:scale-[0.98] flex justify-center items-center gap-2 text-base font-bold">
+                            <span class="material-symbols-outlined text-lg">call</span> Call
+                        </a>
+                        <a href="https://wa.me/918600968888" target="_blank"
+                            class="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white py-2.5 px-3 rounded-lg shadow-md transition-all transform active:scale-[0.98] flex justify-center items-center gap-2 text-base font-bold">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                                class="w-5 h-5 brightness-0 invert"> WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

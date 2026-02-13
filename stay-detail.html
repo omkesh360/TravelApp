@@ -230,15 +230,18 @@
                     <button class="p-2 text-primary hover:bg-blue-50 rounded-full transition-colors">
                         <span class="material-symbols-outlined">share</span>
                     </button>
-                    <button
-                        class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded font-semibold transition-colors">
-                        Reserve
-                    </button>
-                </div>
-                <div class="text-right hidden md:block">
-                    <p class="text-xs text-text-muted">Price Match Guarantee</p>
+                    <a href="tel:+918600968888"
+                        class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded font-semibold transition-colors flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[20px]">call</span> Call
+                    </a>
+                    <a href="https://wa.me/918600968888" target="_blank"
+                        class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2 rounded font-semibold transition-colors flex items-center gap-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                            class="w-5 h-5 brightness-0 invert"> WhatsApp
+                    </a>
                 </div>
             </div>
+        </div>
         </div>
         <!-- Image Gallery -->
         <div class="grid grid-cols-4 grid-rows-2 gap-2 h-96 mb-8 rounded-xl overflow-hidden">
@@ -349,10 +352,17 @@
                             </div>
                         </div>
                     </div>
-                    <button
-                        class="w-full mt-5 bg-primary hover:bg-primary-hover text-white py-2.5 rounded font-semibold transition-colors shadow-sm">
-                        Reserve your stay
-                    </button>
+                    <div class="flex flex-row gap-2 mt-5">
+                        <a href="tel:+918600968888"
+                            class="flex-1 bg-primary hover:bg-primary-hover text-white py-2 rounded font-semibold transition-colors shadow-sm flex items-center justify-center gap-2 text-sm">
+                            <span class="material-symbols-outlined text-[18px]">call</span> Call
+                        </a>
+                        <a href="https://wa.me/918600968888" target="_blank"
+                            class="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white py-2 rounded font-semibold transition-colors shadow-sm flex items-center justify-center gap-2 text-sm">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                                class="w-4 h-4 brightness-0 invert"> WhatsApp
+                        </a>
+                    </div>
                 </div>
                 <!-- Mini Map -->
                 <div class="relative h-40 rounded-xl overflow-hidden border border-gray-200">
@@ -371,9 +381,8 @@
                         <tr class="bg-primary text-white text-sm">
                             <th class="p-4 font-semibold w-1/3">Room Type</th>
                             <th class="p-4 font-semibold w-24 text-center">Sleeps</th>
-                            <th class="p-4 font-semibold w-1/4">Price for 2 nights</th>
-                            <th class="p-4 font-semibold w-1/4">Your choices</th>
-                            <th class="p-4 font-semibold w-32">Select</th>
+                            <th class="p-4 font-semibold w-1/4">Features</th>
+                            <th class="p-4 font-semibold w-32">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -396,26 +405,16 @@
                                 <span class="material-symbols-outlined text-text-muted">person</span>
                             </td>
                             <td class="p-4 align-top">
-                                <div class="text-xl font-bold text-text-main">$345</div>
-                                <div class="text-xs text-text-muted mt-1">Includes taxes and fees</div>
-                            </td>
-                            <td class="p-4 align-top">
                                 <div class="flex items-center gap-1 text-green-600 font-bold text-sm mb-1">
                                     <span class="material-symbols-outlined text-sm">coffee</span> Breakfast included
                                 </div>
                                 <div class="flex items-center gap-1 text-green-600 font-bold text-sm">
                                     <span class="material-symbols-outlined text-sm">check</span> Free cancellation
                                 </div>
-                                <p class="text-xs text-text-muted mt-1">You can cancel later, so lock in this great
-                                    price today.</p>
                             </td>
                             <td class="p-4 align-top">
-                                <select
-                                    class="w-full rounded border-gray-300 bg-white text-text-main py-2 pl-3 pr-8 focus:ring-primary focus:border-primary text-sm">
-                                    <option value="0">0</option>
-                                    <option selected="" value="1">1 (345 $)</option>
-                                    <option value="2">2 (690 $)</option>
-                                </select>
+                                <a href="tel:+918600968888"
+                                    class="text-primary font-bold hover:underline whitespace-nowrap">Check Rates</a>
                             </td>
                         </tr>
                         <!-- Row 2 -->
@@ -441,10 +440,6 @@
                                 <span class="material-symbols-outlined text-text-muted">person</span>
                             </td>
                             <td class="p-4 align-top">
-                                <div class="text-xl font-bold text-text-main">$520</div>
-                                <div class="text-xs text-text-muted mt-1">Includes taxes and fees</div>
-                            </td>
-                            <td class="p-4 align-top">
                                 <div class="flex items-center gap-1 text-text-main font-bold text-sm mb-1">
                                     <span class="material-symbols-outlined text-sm">coffee_maker</span> No meals
                                     included
@@ -454,25 +449,24 @@
                                 </div>
                             </td>
                             <td class="p-4 align-top">
-                                <select
-                                    class="w-full rounded border-gray-300 bg-white text-text-main py-2 pl-3 pr-8 focus:ring-primary focus:border-primary text-sm">
-                                    <option selected="" value="0">0</option>
-                                    <option value="1">1 (520 $)</option>
-                                    <option value="2">2 (1040 $)</option>
-                                </select>
+                                <a href="tel:+918600968888"
+                                    class="text-primary font-bold hover:underline whitespace-nowrap">Check Rates</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="bg-blue-50 p-4 flex justify-end items-center gap-4">
-                    <div class="text-right">
-                        <span class="block text-sm text-text-muted">Total Price:</span>
-                        <span class="block text-2xl font-bold text-primary">$345</span>
+                    <div class="flex gap-2">
+                        <a href="tel:+918600968888"
+                            class="bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-base font-bold shadow-md transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">call</span> Call Property
+                        </a>
+                        <a href="https://wa.me/918600968888" target="_blank"
+                            class="bg-[#25D366] hover:bg-[#128C7E] text-white px-5 py-2.5 rounded text-base font-bold shadow-md transition-colors flex items-center gap-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                                class="w-5 h-5 brightness-0 invert"> WhatsApp
+                        </a>
                     </div>
-                    <button
-                        class="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded text-lg font-bold shadow-md transition-colors">
-                        I'll Reserve
-                    </button>
                 </div>
             </div>
         </div>

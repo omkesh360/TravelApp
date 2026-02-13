@@ -236,7 +236,7 @@
     <main class="listing-main max-w-[1140px] mx-auto px-4 md:px-6 w-full flex-grow">
         <div class="flex flex-col lg:flex-row gap-8">
             <aside id="listing-sidebar"
-                class="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 overflow-y-auto lg:translate-x-0 lg:static lg:shadow-none lg:block lg:overflow-visible p-4 lg:p-0 flex-shrink-0 space-y-4 hidden h-full">
+                class="fixed inset-y-0 left-0 z-50 w-[280px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 overflow-y-auto lg:translate-x-0 lg:sticky lg:top-24 lg:shadow-none lg:block lg:overflow-y-auto p-4 lg:p-0 flex-shrink-0 space-y-4 hidden h-full max-h-[calc(100vh-6rem)]">
                 <div class="flex items-center justify-between mb-4 lg:hidden">
                     <h3 class="font-bold text-lg text-text-main">Filters</h3>
                     <button id="close-sidebar" class="p-2 hover:bg-gray-100 rounded-full text-text-main">
@@ -270,31 +270,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-text-main mb-3">Your Budget (per night)</h3>
-                        <div class="space-y-2">
-                            <label class="sidebar-filter-item group">
-                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                                    type="checkbox" />
-                                <span class="text-sm text-text-main group-hover:text-primary">₹ 0 - ₹ 2,000</span>
-                            </label>
-                            <label class="sidebar-filter-item group">
-                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                                    type="checkbox" />
-                                <span class="text-sm text-text-main group-hover:text-primary">₹ 2,000 - ₹ 5,000</span>
-                            </label>
-                            <label class="sidebar-filter-item group">
-                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                                    type="checkbox" />
-                                <span class="text-sm text-text-main group-hover:text-primary">₹ 5,000 - ₹ 10,000</span>
-                            </label>
-                            <label class="sidebar-filter-item group">
-                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4"
-                                    type="checkbox" />
-                                <span class="text-sm text-text-main group-hover:text-primary">₹ 10,000+</span>
-                            </label>
-                        </div>
-                    </div>
+
                     <div class="p-4">
                         <h3 class="font-bold text-text-main mb-3">Star Rating</h3>
                         <div class="space-y-2">
@@ -357,7 +333,7 @@
                     </div>
                 </div>
             </aside>
-            <section class="flex-1 space-y-4">
+            <section class="flex-1 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <h2 class="text-xl font-bold text-text-main">Chhatrapati Sambhajinagar: 15 hotels found</h2>
 
@@ -436,16 +412,19 @@
                                 </div>
                             </div>
                             <div class="text-right w-full sm:w-auto">
-                                <p class="text-xs text-text-muted line-through">₹6,500</p>
-                                <div class="flex items-center justify-end gap-1">
-                                    <span class="text-xs text-text-muted">1 night, 2 adults</span>
-                                    <span class="text-2xl font-bold text-text-main">₹4,875</span>
+                                <div class="flex flex-row gap-2 mt-3 w-full sm:w-auto">
+                                    <a href="tel:+918600968888"
+                                        class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                        <span class="material-symbols-outlined text-[18px]">call</span>
+                                        Call
+                                    </a>
+                                    <a href="https://wa.me/918600968888" target="_blank"
+                                        class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                            alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                        WhatsApp
+                                    </a>
                                 </div>
-                                <p class="text-[10px] text-text-muted mt-0.5">+₹585 taxes and charges</p>
-                                <button
-                                    class="mt-3 w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded hover:bg-primary-hover transition-colors shadow-sm">
-                                    See availability
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -501,15 +480,19 @@
                                 </div>
                             </div>
                             <div class="text-right w-full sm:w-auto">
-                                <div class="flex items-center justify-end gap-1">
-                                    <span class="text-xs text-text-muted">1 night, 2 adults</span>
-                                    <span class="text-2xl font-bold text-text-main">₹2,200</span>
+                                <div class="flex flex-row gap-2 mt-3 w-full sm:w-auto">
+                                    <a href="tel:+918600968888"
+                                        class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                        <span class="material-symbols-outlined text-[18px]">call</span>
+                                        Call
+                                    </a>
+                                    <a href="https://wa.me/918600968888" target="_blank"
+                                        class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                            alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                        WhatsApp
+                                    </a>
                                 </div>
-                                <p class="text-[10px] text-text-muted mt-0.5">+₹264 taxes and charges</p>
-                                <button
-                                    class="mt-3 w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded hover:bg-primary-hover transition-colors shadow-sm">
-                                    See availability
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -570,15 +553,19 @@
                                 </div>
                             </div>
                             <div class="text-right w-full sm:w-auto">
-                                <div class="flex items-center justify-end gap-1">
-                                    <span class="text-xs text-text-muted">1 night, 2 adults</span>
-                                    <span class="text-2xl font-bold text-text-main">₹5,500</span>
+                                <div class="flex flex-row gap-2 mt-3 w-full sm:w-auto">
+                                    <a href="tel:+918600968888"
+                                        class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold px-4 py-2 text-sm rounded hover:bg-primary-hover transition-colors shadow-sm">
+                                        <span class="material-symbols-outlined text-[18px]">call</span>
+                                        Call
+                                    </a>
+                                    <a href="https://wa.me/918600968888" target="_blank"
+                                        class="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-4 py-2 text-sm rounded hover:bg-[#128C7E] transition-colors shadow-sm">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                            alt="WhatsApp" class="w-4 h-4 brightness-0 invert">
+                                        WhatsApp
+                                    </a>
                                 </div>
-                                <p class="text-[10px] text-text-muted mt-0.5">+₹660 taxes and charges</p>
-                                <button
-                                    class="mt-3 w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded hover:bg-primary-hover transition-colors shadow-sm">
-                                    See availability
-                                </button>
                             </div>
                         </div>
                     </div>
